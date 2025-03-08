@@ -111,3 +111,10 @@
     @apply text-2xl font-bold lg:text-3xl;
   }
 }
+
+body {
+  font-family: var(--font-outfit);
+}
+h1, h2, h3, h4, h5, h6, .primary {
+  font-family: var(--font-lato);
+}

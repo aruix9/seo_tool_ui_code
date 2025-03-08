@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Logo from "./logo";
 import PrimaryNavigation from "./primaryNavigation";
 
 const Header = () => {
@@ -6,12 +6,7 @@ const Header = () => {
         <header className="py-2 bg-purple-200">
             <div className="container mx-auto">
                 <div className="flex justify-between">
-                    <Image
-                    src='/images/6s-logo.png'
-                    width={140}
-                    height={46}
-                    className="object-cover"
-                    alt="Butterswipe"/>
+                    <Logo />
                     <PrimaryNavigation />
                 </div>
             </div>

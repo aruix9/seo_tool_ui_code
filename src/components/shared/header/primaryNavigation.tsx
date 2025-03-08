@@ -1,33 +1,20 @@
 'use client'
 
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
+import { JSX } from "react";
 import Link from "next/link";
+import { data } from "!@/data";
+import { NavigationLink } from "!@/types/type";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 
 const PrimaryNavigation = () => {
     return (
         <NavigationMenu>
           <NavigationMenuList className="flex gap-8">
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>Home</Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>Cart</Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>Orders</Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>Sign Up</Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>Sign In</Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>Forgot Password</Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>Reset Password</Link>
-            </NavigationMenuItem>
+            {data && data.primaryNavigation.map((navItem: NavigationLink | undefined, index:number): JSX.Element => (
+              <NavigationMenuItem key={index}>
+                <Link href={navItem?.slug || '#'} legacyBehavior passHref>{navItem?.title}</Link>
+              </NavigationMenuItem>
+            ))}
           </NavigationMenuList>
         </NavigationMenu>
     )
