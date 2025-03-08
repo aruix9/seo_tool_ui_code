@@ -1,4 +1,4 @@
-import { FormFieldProps } from "!@/types/forms"
+import { FormFieldProps } from "../../../../types/forms"
 import { FormControl, FormItem, FormLabel, FormMessage } from "../../ui/form"
 import { Input } from "../../ui/input"
 

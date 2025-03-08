@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
-import { FormFieldProps } from "!@/types/forms";
 import { FormControl, FormItem, FormLabel, FormMessage } from "../../ui/form";
+import { FormFieldProps } from "../../../../types/forms";
 
 const NameField = ({
     field,

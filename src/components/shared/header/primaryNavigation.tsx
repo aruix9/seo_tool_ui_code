@@ -2,9 +2,9 @@
 
 import { JSX } from "react";
 import Link from "next/link";
-import { data } from "!@/data";
-import { NavigationLink } from "!@/types/type";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
+import { NavigationLink } from "../../../../types/type";
+import { data } from "../../../../data";
 
 const PrimaryNavigation = () => {
     return (

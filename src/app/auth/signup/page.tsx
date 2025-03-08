@@ -1,17 +1,17 @@
 'use client'
 
 // import { useState } from "react";
-import NameField from "!@/src/components/shared/form/nameField";
-import EmailField from "!@/src/components/shared/form/emailField";
-import PasswordField from "!@/src/components/shared/form/passwordField";
-import Logo from "!@/src/components/shared/header/logo";
-import { Form } from "!@/src/components/ui/form";
-import { Button } from "!@/src/components/ui/button";
 
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signUpSchema } from "!@/schemas/zodsignupSchema";
 import { useForm } from "react-hook-form"
+import { signUpSchema } from "../../../../schemas/zodsignupSchema";
+import Logo from "@/components/shared/header/logo";
+import { Form } from "@/components/ui/form";
+import NameField from "@/components/shared/form/nameField";
+import EmailField from "@/components/shared/form/emailField";
+import PasswordField from "@/components/shared/form/passwordField";
+import { Button } from "@/components/ui/button";
 
 const SignUp = () => {
 
