@@ -1,14 +1,18 @@
-import Image from "next/image"
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Logo = () => {
-    return (
-        <Image
-            src='/images/6s-logo.png'
-            width={140}
-            height={46}
-            className="object-cover"
-            alt="Butterswipe"/>
-    )
+  return (
+    <Link href='/'>
+      <Image
+        src='/images/6s-logo.png'
+        width={140}
+        height={46}
+        className='object-cover'
+        alt='Butterswipe'
+      />
+    </Link>
+  )
 }
 
-export default Logo;
+export default Logo

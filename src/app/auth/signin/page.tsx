@@ -1,42 +1,38 @@
 'use client'
 
-// import { useState } from "react";
-
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import Logo from '@/components/shared/header/logo'
-import { Form } from '@/components/ui/form'
-import NameField from '@/components/shared/form/nameField'
 import EmailField from '@/components/shared/form/emailField'
 import PasswordField from '@/components/shared/form/passwordField'
+import Logo from '@/components/shared/header/logo'
 import { Button } from '@/components/ui/button'
-import { signUpSchema } from '@/schemas/zodSignupSchema'
+import { Form } from '@/components/ui/form'
+import { handleSignInSumit } from '@/lib/actions/handleSigninSubmit'
+import { signInSchema } from '@/schemas/zodSigninSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { handleSignUpSumit } from '@/lib/actions/handleSignupSubmit'
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-const SignUp = () => {
-  const router: AppRouterInstance = useRouter()
-  const form = useForm<z.infer<typeof signUpSchema>>({
-    resolver: zodResolver(signUpSchema),
+const SignIn = () => {
+  const router = useRouter()
+
+  const form = useForm<z.infer<typeof signInSchema>>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
-      name: '',
       email: '',
       password: '',
     },
   })
-
-  const onSubmit = (values: z.infer<typeof signUpSchema>) => {
-    handleSignUpSumit(values, router)
+  const onSubmit = async (values: z.infer<typeof signInSchema>) => {
+    handleSignInSumit(values, router)
   }
 
   return (
     <main className='flex max-xl:flex-col grow'>
       <div className='2xl:w-1/2 xl:w-1/2 max-xl:items-center flex flex-col grow gap-4 justify-center px-16 bg-purple-50'>
         <Logo />
-        <h2 className='text-4xl font-bold mt-4'>Signup Page Title</h2>
+        <h2 className='text-4xl font-bold mt-4'>Signin Page Title</h2>
         <p className='text-xl max-xl:text-center'>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
           facilis quaerat possimus dolores voluptatibus repudiandae, molestias
@@ -46,7 +42,7 @@ const SignUp = () => {
       </div>
 
       <div className='2xl:w-1/2 xl:w-1/2 flex flex-col grow items-center justify-center'>
-        <h2 className='text-3xl mb-6 font-[900]'>Sign Up</h2>
+        <h2 className='text-3xl mb-6 font-[900]'>Sign In</h2>
         <p className='mb-4 max-w-88 text-center'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
@@ -55,14 +51,13 @@ const SignUp = () => {
             onSubmit={form.handleSubmit(onSubmit)}
             className='space-y-4 bg-blue-50 p-8 rounded-lg w-sm'
           >
-            <NameField
-              field={form.register('name')}
-              error={form.formState.errors?.name}
-            />
             <EmailField
               field={form.register('email')}
               error={form.formState.errors?.email}
             />
+            <div className='text-right text-sm text-primary underline underline-offset-4'>
+              <Link href='/auth/forgot-password'>Forgot Password</Link>
+            </div>
             <PasswordField
               field={form.register('password')}
               error={form.formState.errors?.password}
@@ -77,12 +72,12 @@ const SignUp = () => {
           </form>
         </Form>
         <p className='mb-4 max-w-88 text-center mt-4'>
-          Already registered?{' '}
+          Do not have an account?{' '}
           <Link
-            href='/auth/signin'
+            href='/auth/signup'
             className='text-primary underline underline-offset-4'
           >
-            Sign In
+            Sign Up
           </Link>
         </p>
       </div>
@@ -90,4 +85,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignIn
