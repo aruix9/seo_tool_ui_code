@@ -6,7 +6,6 @@
     "user-seed": "npx tsx src/lib/db/seed/userSeed.ts",
     "link-seed": "npx tsx src/lib/db/seed/linkSeed.ts",
     "cart-seed": "npx tsx src/lib/db/seed/cartSeed.ts",
-    "order-seed": "npx tsx src/lib/db/seed/orderSeed.ts",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
