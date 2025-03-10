@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: hsl(0 0% 100%);
@@ -110,11 +110,20 @@
   .h1-bold {
     @apply text-2xl font-bold lg:text-3xl;
   }
+  .h2-bold {
+    @apply text-xl font-bold lg:text-2xl;
+  }
 }
 
 body {
   font-family: var(--font-outfit);
 }
-h1, h2, h3, h4, h5, h6, .primary {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.primary {
   font-family: var(--font-lato);
 }

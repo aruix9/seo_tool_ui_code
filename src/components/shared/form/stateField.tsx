@@ -2,11 +2,11 @@ import { Input } from '../../ui/input'
 import { FormControl, FormItem, FormLabel, FormMessage } from '../../ui/form'
 import { FormFieldProps } from '../../../../types/forms'
 
-const NameField = ({
+const StateField = ({
   field,
   error,
-  placeholder = 'Enter full name',
-  label = 'Full name',
+  placeholder = 'Enter state',
+  label = 'State',
   className,
 }: FormFieldProps) => {
   return (
@@ -27,4 +27,4 @@ const NameField = ({
   )
 }
 
-export default NameField
+export default StateField

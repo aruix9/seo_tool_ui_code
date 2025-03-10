@@ -1,11 +1,8 @@
-import Footer from "@/components/shared/footer"
-import Header from "@/components/shared/header"
+import React from 'react'
+import Header from '../header'
+import Footer from '../footer'
 
-export default async function HomeLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const CommonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='flex flex-col min-h-screen'>
       <Header />
@@ -14,3 +11,5 @@ export default async function HomeLayout({
     </div>
   )
 }
+
+export default CommonLayout

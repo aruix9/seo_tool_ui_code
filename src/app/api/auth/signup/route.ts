@@ -1,7 +1,7 @@
 import { connectToDatabase } from '@/lib/db'
-import User from '../../../models/user'
 import bcrypt from 'bcryptjs'
 import { sendEmail } from '@/utils/sendEmail'
+import User from '@/models/user'
 
 export async function POST(req: Request) {
   await connectToDatabase()
