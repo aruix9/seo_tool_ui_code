@@ -5,6 +5,10 @@ export const data = {
       slug: '/',
     },
     {
+      title: 'Backlinks',
+      slug: '/backlinks',
+    },
+    {
       title: 'Cart',
       slug: '/cart',
     },

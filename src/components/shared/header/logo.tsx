@@ -6,8 +6,8 @@ const Logo = () => {
     <Link href='/'>
       <Image
         src='/images/6s-logo.png'
-        width={140}
-        height={46}
+        width={115}
+        height={39}
         className='object-cover'
         alt='Butterswipe'
       />
