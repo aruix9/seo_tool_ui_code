@@ -34,7 +34,7 @@ export const data = {
     },
     {
       title: 'Audit',
-      slug: '/dashboard/audit',
+      slug: '/dashboard/audit-report',
       icon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoYXJ0LW5ldHdvcmsiPjxwYXRoIGQ9Im0xMy4xMSA3LjY2NCAxLjc4IDIuNjcyIi8+PHBhdGggZD0ibTE0LjE2MiAxMi43ODgtMy4zMjQgMS40MjQiLz48cGF0aCBkPSJtMjAgNC02LjA2IDEuNTE1Ii8+PHBhdGggZD0iTTMgM3YxNmEyIDIgMCAwIDAgMiAyaDE2Ii8+PGNpcmNsZSBjeD0iMTIiIGN5PSI2IiByPSIyIi8+PGNpcmNsZSBjeD0iMTYiIGN5PSIxMiIgcj0iMiIvPjxjaXJjbGUgY3g9IjkiIGN5PSIxNSIgcj0iMiIvPjwvc3ZnPg==',
     },
     {
