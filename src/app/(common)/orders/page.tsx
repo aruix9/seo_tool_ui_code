@@ -66,7 +66,12 @@ const OrdersPage = () => {
                     className={index % 2 == 0 ? 'bg-purple-100' : ''}
                   >
                     <TableCell className='font-medium'>
-                      <Link href={`/orders/${item._id}`}>{item._id}</Link>
+                      <Link
+                        href={`/orders/${item._id}`}
+                        className='text-primary hover:text-primary/80'
+                      >
+                        {item._id}
+                      </Link>
                     </TableCell>
                     <TableCell>{item.status}</TableCell>
                     <TableCell>{item.paymentMethod}</TableCell>

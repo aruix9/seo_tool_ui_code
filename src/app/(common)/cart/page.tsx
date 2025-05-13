@@ -22,7 +22,7 @@ import { useEffect, useState } from 'react'
 import { getUserCart } from '@/lib/actions/getUserCart'
 import { Cart } from '../../../../types/cart'
 import { Input } from '@/components/ui/input'
-import { Upload } from 'lucide-react'
+import { CircleHelp, Upload } from 'lucide-react'
 import Link from 'next/link'
 
 const CartPage = () => {
@@ -78,19 +78,28 @@ const CartPage = () => {
                   <TableCell>{item.quantity}</TableCell>
                   <TableCell>{item.price}</TableCell>
                   <TableCell className='text-center'>
-                    <label
-                      htmlFor={`attachment-${item.linkId}`}
-                      className='inline-block'
-                      title='Upload an Attachment'
-                    >
-                      <Upload className='text-primary' />
-                    </label>
-                    <Input
-                      type='file'
-                      id={`attachment-${item.linkId}`}
-                      name={`attachment-${item.linkId}`}
-                      className='hidden'
-                    />
+                    <div className='flex items-center justify-center gap-2'>
+                      <label
+                        htmlFor={`attachment-${item.linkId}`}
+                        className='inline-flex items-center justify-center  gap-2 cursor-pointer '
+                        title='Upload an Attachment'
+                      >
+                        <Upload className='text-primary' />
+                        Upload Document
+                      </label>
+                      <Input
+                        type='file'
+                        id={`attachment-${item.linkId}`}
+                        name={`attachment-${item.linkId}`}
+                        className='hidden'
+                      />
+                      <div className='relative group'>
+                        <CircleHelp className='cursor-pointer w-4 h-4' />
+                        <div className='hidden group-hover:block absolute top-1/2 right-4 -translate-y-1/2 bg-gray-100 border border-gray-300 rounded-md p-2 w-[150px] shadow-lg z-10 whitespace-normal'>
+                          Reference document to write the article on this site.
+                        </div>
+                      </div>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

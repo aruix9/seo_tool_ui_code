@@ -12,7 +12,6 @@ import ZipField from './zipField'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { BillingAddressSchema } from '@/schemas/zodBillingAddressSchema'
-import { Button } from '@/components/ui/button'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -95,12 +94,6 @@ const BillingAddress = () => {
               field={form.register('phone')}
               error={form.formState.errors?.phone}
             />
-          </div>
-
-          <div className='mt-8 w-3xs'>
-            <Button size='lg' className='w-full cursor-pointer' type='submit'>
-              Place Order
-            </Button>
           </div>
         </form>
       </Form>

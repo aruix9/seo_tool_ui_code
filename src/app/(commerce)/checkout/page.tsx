@@ -12,6 +12,8 @@ import { getUserCart } from '@/lib/actions/getUserCart'
 import { useEffect, useState } from 'react'
 import { Cart } from '../../../../types/cart'
 import BillingAddress from '@/components/shared/form/billingAddress'
+import PaymentDetails from '@/components/shared/form/paymentDetails'
+import { Button } from '@/components/ui/button'
 
 const CheckoutPage = () => {
   const [cart, setCart] = useState<Cart | null>(null)
@@ -40,6 +42,13 @@ const CheckoutPage = () => {
       <div className='flex mt-8 gap-8'>
         <div className='w-3/5'>
           <BillingAddress />
+          <PaymentDetails />
+
+          <div className='my-8 w-3xs'>
+            <Button size='lg' className='w-full cursor-pointer' type='submit'>
+              Place Order
+            </Button>
+          </div>
         </div>
         <aside className='w-2/5'>
           <h2 className='h2-bold mb-4'>Summary</h2>

@@ -1,42 +1,47 @@
 'use client'
 
-// import { useState } from "react";
-
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import Logo from '@/components/shared/header/logo'
-import { Form } from '@/components/ui/form'
-import NameField from '@/components/shared/form/nameField'
-import EmailField from '@/components/shared/form/emailField'
 import PasswordField from '@/components/shared/form/passwordField'
+import Logo from '@/components/shared/header/logo'
 import { Button } from '@/components/ui/button'
-import { signUpSchema } from '@/schemas/zodAuthFormSchemas'
+import { Form } from '@/components/ui/form'
+import { handleResetPasswordSubmit } from '@/lib/actions/handleAuthFormSubmits'
+import { resetPasswordSchema } from '@/schemas/zodAuthFormSchemas'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { handleSignUpSubmit } from '@/lib/actions/handleAuthFormSubmits'
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-const SignUp = () => {
-  const router: AppRouterInstance = useRouter()
-  const form = useForm<z.infer<typeof signUpSchema>>({
-    resolver: zodResolver(signUpSchema),
+const ResetPassword = ({ params }: { params: { token: string } }) => {
+  const router = useRouter()
+  const [token, setToken] = useState<{ token: string }>()
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const response = await params
+      setToken(response)
+    }
+
+    fetchProduct()
+  }, [token, params])
+
+  const form = useForm<z.infer<typeof resetPasswordSchema>>({
+    resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
-      name: '',
-      email: '',
       password: '',
     },
   })
-
-  const onSubmit = (values: z.infer<typeof signUpSchema>) => {
-    handleSignUpSubmit(values, router)
+  const onSubmit = async (values: z.infer<typeof resetPasswordSchema>) => {
+    const { password } = values
+    handleResetPasswordSubmit(password, token?.token, router)
   }
 
   return (
     <main className='flex max-xl:flex-col grow'>
       <div className='2xl:w-1/2 xl:w-1/2 max-xl:items-center flex flex-col grow gap-4 justify-center px-16 bg-purple-50'>
         <Logo />
-        <h2 className='text-4xl font-bold mt-4'>Signup Page Title</h2>
+        <h2 className='text-4xl font-bold mt-4'>Reset Password Title</h2>
         <p className='text-xl max-xl:text-center'>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
           facilis quaerat possimus dolores voluptatibus repudiandae, molestias
@@ -46,7 +51,7 @@ const SignUp = () => {
       </div>
 
       <div className='2xl:w-1/2 xl:w-1/2 flex flex-col grow items-center justify-center'>
-        <h2 className='text-3xl mb-6 font-[900]'>Sign Up</h2>
+        <h2 className='text-3xl mb-6 font-[900]'>Reset Password</h2>
         <p className='mb-4 max-w-88 text-center'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
@@ -55,14 +60,6 @@ const SignUp = () => {
             onSubmit={form.handleSubmit(onSubmit)}
             className='space-y-4 bg-blue-50 p-8 rounded-lg w-sm'
           >
-            <NameField
-              field={form.register('name')}
-              error={form.formState.errors?.name}
-            />
-            <EmailField
-              field={form.register('email')}
-              error={form.formState.errors?.email}
-            />
             <PasswordField
               field={form.register('password')}
               error={form.formState.errors?.password}
@@ -77,7 +74,7 @@ const SignUp = () => {
           </form>
         </Form>
         <p className='mb-4 max-w-88 text-center mt-4'>
-          Already registered?{' '}
+          Remember the password?{' '}
           <Link
             href='/auth/signin'
             className='text-primary underline underline-offset-4'
@@ -90,4 +87,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default ResetPassword
