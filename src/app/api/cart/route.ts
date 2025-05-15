@@ -27,7 +27,7 @@ export async function GET() {
         $match: { userId }, // Match the cart for the authenticated user
       },
       {
-        $unwind: '$items', // Unwind items array for lookup
+        $unwind: { path: '$items', preserveNullAndEmptyArrays: true }, // Unwind items array for lookup
       },
       {
         $lookup: {
@@ -46,20 +46,19 @@ export async function GET() {
         },
       },
       {
-        $unwind: '$linkData', // Unwind linkData to merge with items
-      },
-      {
-        $unwind: '$attachmentData', // Unwind linkData to merge with items
-      },
-      {
         $addFields: {
-          'items.url': '$linkData.url',
-          'items.website': '$linkData.website',
-          'items.attachmentUrl': '$attachmentData.fileUrl',
-          'items.description': '$linkData.description',
-          'items.price': '$linkData.price',
+          'items.url': { $arrayElemAt: ['$linkData.url', 0] },
+          'items.website': { $arrayElemAt: ['$linkData.website', 0] },
+          'items.attachmentUrl': {
+            $arrayElemAt: ['$attachmentData.fileUrl', 0],
+          },
+          'items.description': { $arrayElemAt: ['$linkData.description', 0] },
+          'items.price': { $arrayElemAt: ['$linkData.price', 0] },
           'items.totalPrice': {
-            $multiply: ['$items.quantity', '$linkData.price'],
+            $multiply: [
+              '$items.quantity',
+              { $arrayElemAt: ['$linkData.price', 0] },
+            ],
           },
         },
       },
