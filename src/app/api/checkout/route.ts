@@ -91,8 +91,6 @@ export async function POST(req: Request) {
       billingAddress,
     }
 
-    console.log(orderData)
-
     // Save the order to the database
     const order = new Order(orderData)
     await order.save()

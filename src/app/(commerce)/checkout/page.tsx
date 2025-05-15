@@ -8,7 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
-import { getUserCart } from '@/lib/actions/getUserCart'
+import { getUserCart } from '@/lib/actions/cartActions'
 import { useEffect, useState } from 'react'
 import { Cart } from '../../../../types/cart'
 import BillingAddress from '@/components/shared/form/billingAddress'

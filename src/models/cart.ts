@@ -4,8 +4,8 @@ import { IAttachment } from './attachment'
 
 export interface ICartItem {
   linkId: Schema.Types.ObjectId | ILink
-  attachment: Schema.Types.ObjectId | IAttachment
-  quantity: number
+  attachmentId?: Schema.Types.ObjectId | IAttachment
+  quantity?: number
 }
 
 export interface ICart extends Document {
@@ -16,7 +16,7 @@ export interface ICart extends Document {
 const CartItemSchema = new Schema<ICartItem>(
   {
     linkId: { type: Schema.Types.ObjectId, ref: 'Link', required: true },
-    attachment: { type: Schema.Types.ObjectId, ref: 'Attachment' },
+    attachmentId: { type: Schema.Types.ObjectId, ref: 'Attachment' },
     quantity: { type: Number, required: true, default: 1 },
   },
   { _id: false }

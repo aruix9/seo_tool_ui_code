@@ -7,9 +7,7 @@ import jwt from 'jsonwebtoken'
 export async function POST(req: Request) {
   await connectToDatabase()
   try {
-    console.log(await req.json)
     const { password, token } = await req.json()
-    console.log(token, password)
     const secret = process.env.JWT_SECRET
     if (!secret) {
       throw new Error('JWT_SECRET is not defined')

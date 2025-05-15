@@ -19,22 +19,55 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { useEffect, useState } from 'react'
-import { getUserCart } from '@/lib/actions/getUserCart'
+import { getUserCart } from '@/lib/actions/cartActions'
 import { Cart } from '../../../../types/cart'
 import { Input } from '@/components/ui/input'
-import { CircleHelp, Upload } from 'lucide-react'
+import { CircleHelp, LinkIcon, Upload } from 'lucide-react'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { User } from 'next-auth'
+import { toast } from 'sonner'
+import axios from 'axios'
 
 const CartPage = () => {
+  const { data: session } = useSession()
+  const user: User = session?.user
   const [cart, setCart] = useState<Cart | null>(null)
 
+  const fetchCartData = async () => {
+    const cartData = await getUserCart()
+    setCart(cartData)
+  }
+
   useEffect(() => {
-    const fetchCartData = async () => {
-      const cartData = await getUserCart()
-      setCart(cartData)
-    }
     fetchCartData()
   }, [])
+
+  const handleFileUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    linkId: string
+  ) => {
+    e.preventDefault()
+    if (!e.target.files || e.target.files.length === 0) return
+    const userId = user.id
+    if (!userId || !cart?._id) {
+      toast.error('Failed to upload the file.')
+      return
+    }
+
+    const formData = new FormData()
+    formData.append('attachment', e.target.files[0])
+    formData.append('userId', userId)
+    formData.append('linkId', linkId)
+
+    const response = await axios.post('/api/cart/uploadAttachment', formData)
+    if (response.data.success) {
+      fetchCartData()
+      toast.success('File uploaded successfully.')
+    } else {
+      toast.error('Failed to upload the file.')
+    }
+  }
 
   return (
     <main className='container'>
@@ -51,7 +84,7 @@ const CartPage = () => {
       </Breadcrumb>
 
       <h2 className='h2-bold mb-8'>Cart</h2>
-      {cart ? (
+      {cart && cart.items ? (
         <>
           <Table>
             <TableHeader>
@@ -79,26 +112,41 @@ const CartPage = () => {
                   <TableCell>{item.price}</TableCell>
                   <TableCell className='text-center'>
                     <div className='flex items-center justify-center gap-2'>
-                      <label
-                        htmlFor={`attachment-${item.linkId}`}
-                        className='inline-flex items-center justify-center  gap-2 cursor-pointer '
-                        title='Upload an Attachment'
-                      >
-                        <Upload className='text-primary' />
-                        Upload Document
-                      </label>
-                      <Input
-                        type='file'
-                        id={`attachment-${item.linkId}`}
-                        name={`attachment-${item.linkId}`}
-                        className='hidden'
-                      />
-                      <div className='relative group'>
-                        <CircleHelp className='cursor-pointer w-4 h-4' />
-                        <div className='hidden group-hover:block absolute top-1/2 right-4 -translate-y-1/2 bg-gray-100 border border-gray-300 rounded-md p-2 w-[150px] shadow-lg z-10 whitespace-normal'>
-                          Reference document to write the article on this site.
-                        </div>
-                      </div>
+                      {!item.attachmentUrl ? (
+                        <>
+                          <label
+                            htmlFor={`attachment-${item.linkId}`}
+                            className='inline-flex items-center justify-center  gap-2 cursor-pointer '
+                            title='Upload an Attachment'
+                          >
+                            <Upload className='text-primary' />
+                            Upload Document
+                          </label>
+                          <Input
+                            type='file'
+                            id={`attachment-${item.linkId}`}
+                            name={`attachment-${item.linkId}`}
+                            className='hidden'
+                            onChange={(e) => handleFileUpload(e, item.linkId)}
+                          />
+                          <div className='relative group'>
+                            <CircleHelp className='cursor-pointer w-4 h-4' />
+                            <div className='hidden group-hover:block absolute top-1/2 right-4 -translate-y-1/2 bg-gray-100 border border-gray-300 rounded-md p-2 w-[150px] shadow-lg z-10 whitespace-normal'>
+                              Reference document to write the article on this
+                              site.
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <Link
+                          href={item.attachmentUrl}
+                          target='_blank'
+                          className='inline-flex gap-2 text-primary'
+                        >
+                          <LinkIcon className=' w-4 h-4' />
+                          Link to File
+                        </Link>
+                      )}
                     </div>
                   </TableCell>
                 </TableRow>

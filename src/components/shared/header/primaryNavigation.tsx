@@ -22,7 +22,7 @@ const PrimaryNavigation = () => {
               index: number
             ): JSX.Element => (
               <NavigationMenuItem key={index}>
-                <Link href={navItem?.slug || '#'} legacyBehavior passHref>
+                <Link href={navItem?.slug || '#'} passHref>
                   {navItem?.title}
                 </Link>
               </NavigationMenuItem>

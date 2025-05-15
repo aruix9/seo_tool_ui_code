@@ -16,7 +16,7 @@ const lato = Lato({
 })
 
 export const metadata: Metadata = {
-  title: 'Butterswipe',
+  title: 'ButterSwipe',
   description: 'SEO tools for your website',
 }
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <AuthProvider>
-        <body className={`${outfit.variable} ${lato.variable} antialiased`}>
+        <body className={`${outfit.variable} ${lato.variable}`}>
           {children}
           <Toaster
             position='top-right'

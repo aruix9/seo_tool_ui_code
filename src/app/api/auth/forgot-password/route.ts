@@ -7,7 +7,6 @@ export async function POST(req: Request) {
   await connectToDatabase()
 
   try {
-    console.log(await req.json)
     const { email } = await req.json()
     // Check if user already exists
     const user = await User.findOne({ email })

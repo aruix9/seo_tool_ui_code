@@ -43,7 +43,6 @@ const DashboardHeader = () => {
                       <Link
                         className='hover:text-purple-500'
                         href={navItem?.slug || '#'}
-                        legacyBehavior
                         passHref
                       >
                         {navItem?.title}

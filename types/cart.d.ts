@@ -1,5 +1,7 @@
 export interface CartItem {
   linkId: string
+  attachmentId?: string
+  attachmentUrl?: string
   website: string
   url: string
   keywords: string

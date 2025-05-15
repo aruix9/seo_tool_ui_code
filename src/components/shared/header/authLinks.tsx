@@ -23,7 +23,7 @@ const AuthLinks = () => {
         <>
           <NavigationMenuItem>
             <Button>
-              <Link href='/auth/signin' legacyBehavior passHref>
+              <Link href='/auth/signin' passHref>
                 Sign In
               </Link>
             </Button>

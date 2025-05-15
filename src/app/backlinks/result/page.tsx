@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,8 +9,56 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { getAllLinks } from '@/lib/actions/getLinks'
+import { useEffect, useState } from 'react'
+import { Link } from '../../../../types/link'
+import { Button } from '@/components/ui/button'
+import { addLinkToCart, getUserCart } from '@/lib/actions/cartActions'
+import { useSession } from 'next-auth/react'
+import { User } from 'next-auth'
+import { Cart } from '../../../../types/cart'
 
 const BackLinkResults = () => {
+  const { data: session } = useSession()
+  const user: User = session?.user
+  const [links, setLinks] = useState<Link[] | null>(null)
+  const [cartItems, setCartItems] = useState<string[]>([])
+
+  useEffect(() => {
+    const fetchAllLinks = async () => {
+      const linkData = await getAllLinks()
+      setLinks(linkData)
+    }
+
+    const fetchCartData = async () => {
+      const cartData = await getUserCart()
+      getCartLinkId(cartData)
+    }
+
+    fetchAllLinks()
+    fetchCartData()
+  }, [])
+
+  const handleAddToCart = async (linkId: string) => {
+    const userId = user.id
+    const response = await addLinkToCart(linkId, userId)
+    const cart = response.cart
+    getCartLinkId(cart)
+  }
+
+  const getCartLinkId = (cart: Cart | null) => {
+    if (cart) {
+      const linkIds: string[] = cart.items.map(
+        (item: { linkId: string; quantity: number }) => item.linkId
+      )
+      setCartItems(linkIds)
+    }
+  }
+
+  if (!links) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className='container'>
       <Breadcrumb className='my-4'>
@@ -34,15 +84,15 @@ const BackLinkResults = () => {
           <div className='flex w-full items-center gap-8 max-md:flex-col'>
             <div className='border p-4 rounded-lg bg-purple-50 text-center grow'>
               <h3 className='font-bold text-lg'>Total Backlinks</h3>
-              <p className='font-bold text-2xl'>1,223</p>
+              <p className='font-bold text-2xl'>{links.length}</p>
             </div>
             <div className='border p-4 rounded-lg bg-purple-50 text-center grow'>
               <h3 className='font-bold text-lg'>Total Backlinks</h3>
-              <p className='font-bold text-2xl'>1,223</p>
+              <p className='font-bold text-2xl'>{links.length}</p>
             </div>
             <div className='border p-4 rounded-lg bg-purple-50 text-center grow'>
               <h3 className='font-bold text-lg'>Total Backlinks</h3>
-              <p className='font-bold text-2xl'>1,223</p>
+              <p className='font-bold text-2xl'>{links.length}</p>
             </div>
           </div>
         </CardContent>
@@ -53,54 +103,27 @@ const BackLinkResults = () => {
         </CardHeader>
         <CardContent>
           <div className='flex w-full gap-8 flex-col'>
-            <div className='border p-4 rounded-lg bg-purple-50 grow flex justify-between items-center'>
-              <div>
-                <h3 className='font-bold text-lg'>Wesbite</h3>
-                <p>https://www.example.com</p>
-                <p className='text-xs'>High Authority</p>
+            {links.map((link) => (
+              <div
+                key={link._id}
+                className='border p-4 rounded-lg bg-purple-50 grow flex justify-between items-center'
+              >
+                <div>
+                  <h3 className='font-bold text-lg' title={link.url}>
+                    {link.website}
+                  </h3>
+                  <p>{link.description}</p>
+                  <p className='font-bold'>${link.price}</p>
+                </div>
+                <Button
+                  className='cursor-pointer'
+                  disabled={cartItems.includes(link._id)}
+                  onClick={() => handleAddToCart(link._id)}
+                >
+                  Add to Cart
+                </Button>
               </div>
-              <strong className='text-green-600'>Safe</strong>
-            </div>
-            <div className='border p-4 rounded-lg bg-purple-50 grow flex justify-between items-center'>
-              <div>
-                <h3 className='font-bold text-lg'>Wesbite</h3>
-                <p>https://www.example.com</p>
-                <p className='text-xs'>High Authority</p>
-              </div>
-              <strong className='text-rose-600'>Safe</strong>
-            </div>
-            <div className='border p-4 rounded-lg bg-purple-50 grow flex justify-between items-center'>
-              <div>
-                <h3 className='font-bold text-lg'>Wesbite</h3>
-                <p>https://www.example.com</p>
-                <p className='text-xs'>High Authority</p>
-              </div>
-              <strong>Safe</strong>
-            </div>
-            <div className='border p-4 rounded-lg bg-purple-50 grow flex justify-between items-center'>
-              <div>
-                <h3 className='font-bold text-lg'>Wesbite</h3>
-                <p>https://www.example.com</p>
-                <p className='text-xs'>High Authority</p>
-              </div>
-              <strong>Safe</strong>
-            </div>
-            <div className='border p-4 rounded-lg bg-purple-50 grow flex justify-between items-center'>
-              <div>
-                <h3 className='font-bold text-lg'>Wesbite</h3>
-                <p>https://www.example.com</p>
-                <p className='text-xs'>High Authority</p>
-              </div>
-              <strong>Safe</strong>
-            </div>
-            <div className='border p-4 rounded-lg bg-purple-50 grow flex justify-between items-center'>
-              <div>
-                <h3 className='font-bold text-lg'>Wesbite</h3>
-                <p>https://www.example.com</p>
-                <p className='text-xs'>High Authority</p>
-              </div>
-              <strong>Safe</strong>
-            </div>
+            ))}
           </div>
         </CardContent>
       </Card>
