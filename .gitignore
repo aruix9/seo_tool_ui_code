@@ -42,5 +42,3 @@ next-env.d.ts
 
 aruix9*
 *workspace
-!public/uploads/
-public/uploads/*
