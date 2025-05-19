@@ -131,6 +131,16 @@
   .h2-bold {
     @apply text-xl font-bold lg:text-2xl;
   }
+  .bg-pending,
+  .bg-processing {
+    @apply bg-blue-100;
+  }
+  .bg-completed {
+    @apply bg-green-100;
+  }
+  .bg-cancelled {
+    @apply bg-rose-100;
+  }
 }
 
 body {

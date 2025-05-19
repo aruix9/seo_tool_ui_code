@@ -1,11 +1,15 @@
 import { Schema, model, models, Document } from 'mongoose'
 import { IUser } from './user'
-import { Cart } from '../../types/cart'
 import { LinkSchema } from './link'
+import { Link } from '../../types/link'
 
 export interface IOrder extends Document {
+  _id: string
   user: Schema.Types.ObjectId | IUser | string
-  cart: Cart
+  cart: {
+    userId: Schema.Types.ObjectId | IUser | string
+    items: Link[]
+  }
   status: 'pending' | 'processing' | 'completed' | 'cancelled'
   totalAmount: number
   paymentMethod: 'razorpay' | 'paypal' | 'cod'
