@@ -14,9 +14,36 @@ import { Cart } from '../../../../types/cart'
 import BillingAddress from '@/components/shared/form/billingAddress'
 import PaymentDetails from '@/components/shared/form/paymentDetails'
 import { Button } from '@/components/ui/button'
+import { handlePlaceOrder } from '@/lib/actions/handlePlaceOrder'
+import { useRouter } from 'next/navigation'
+import { z } from 'zod'
+import { CheckoutSchema } from '@/schemas/zodCheckoutSchema'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Form } from '@/components/ui/form'
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 
 const CheckoutPage = () => {
   const [cart, setCart] = useState<Cart | null>(null)
+
+  const router: AppRouterInstance = useRouter()
+  const form = useForm<z.infer<typeof CheckoutSchema>>({
+    resolver: zodResolver(CheckoutSchema),
+    defaultValues: {
+      name: 'Arun Biradar',
+      email: 'arunb@gmail.com',
+      street: '19-1-497/1, Mahadev Colony',
+      country: 'India',
+      state: 'Karnataka',
+      city: 'Bidar',
+      zipCode: '585402',
+      phone: '0987654321',
+      ccName: 'Arun Biradar',
+      ccNumber: '4111111111111111',
+      ccExpiry: '05/12',
+      ccCVV: '123',
+    },
+  })
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -25,6 +52,10 @@ const CheckoutPage = () => {
     }
     fetchCartData()
   }, [])
+
+  const onSubmit = (values: z.infer<typeof CheckoutSchema>) => {
+    handlePlaceOrder(values, router)
+  }
 
   return (
     <div className='container mx-auto'>
@@ -41,14 +72,29 @@ const CheckoutPage = () => {
       </Breadcrumb>
       <div className='flex mt-8 gap-8'>
         <div className='w-3/5'>
-          <BillingAddress />
-          <PaymentDetails />
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+              <BillingAddress
+                register={form.register}
+                formState={form.formState}
+              />
+              <PaymentDetails
+                register={form.register}
+                formState={form.formState}
+                errors={form.formState.errors}
+              />
 
-          <div className='my-8 w-3xs'>
-            <Button size='lg' className='w-full cursor-pointer' type='submit'>
-              Place Order
-            </Button>
-          </div>
+              <div className='mb-8 w-3xs'>
+                <Button
+                  size='lg'
+                  type='submit'
+                  className='w-full cursor-pointer'
+                >
+                  Place Order
+                </Button>
+              </div>
+            </form>
+          </Form>
         </div>
         <aside className='w-2/5'>
           <h2 className='h2-bold mb-4'>Summary</h2>
@@ -82,7 +128,7 @@ const CheckoutPage = () => {
               </div>
               <div className='flex justify-between mb-2 border-b py-2 font-bold gap-4 bg-purple-200 px-2'>
                 <p className=''>Total</p>
-                <span>{cart && cart?.totalPrice * 12}</span>
+                <span>{cart && cart?.totalPrice.toFixed(2)}</span>
               </div>
             </>
           )}

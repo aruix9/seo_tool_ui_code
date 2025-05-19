@@ -47,7 +47,7 @@ const BackLinkResults = () => {
   }
 
   const getCartLinkId = (cart: Cart | null) => {
-    if (cart) {
+    if (cart && cart.items) {
       const linkIds: string[] = cart.items.map(
         (item: { linkId: string; quantity: number }) => item.linkId
       )

@@ -5,6 +5,7 @@ import { IAttachment } from './attachment'
 export interface ICartItem {
   linkId: Schema.Types.ObjectId | ILink
   attachmentId?: Schema.Types.ObjectId | IAttachment
+  price?: number
   quantity?: number
 }
 
@@ -18,11 +19,12 @@ const CartItemSchema = new Schema<ICartItem>(
     linkId: { type: Schema.Types.ObjectId, ref: 'Link', required: true },
     attachmentId: { type: Schema.Types.ObjectId, ref: 'Attachment' },
     quantity: { type: Number, required: true, default: 1 },
+    price: { type: Number, required: true, default: 10 },
   },
   { _id: false }
 )
 
-const CartSchema = new Schema<ICart>(
+export const CartSchema = new Schema<ICart>(
   {
     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     items: [CartItemSchema],

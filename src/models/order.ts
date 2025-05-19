@@ -1,10 +1,11 @@
 import { Schema, model, models, Document } from 'mongoose'
 import { IUser } from './user'
-import { ICart } from './cart'
+import { Cart } from '../../types/cart'
+import { LinkSchema } from './link'
 
 export interface IOrder extends Document {
   user: Schema.Types.ObjectId | IUser | string
-  cart: Schema.Types.ObjectId | ICart | string
+  cart: Cart
   status: 'pending' | 'processing' | 'completed' | 'cancelled'
   totalAmount: number
   paymentMethod: 'razorpay' | 'paypal' | 'cod'
@@ -27,7 +28,10 @@ export interface IOrderType extends Document, IOrder {
 const OrderSchema = new Schema<IOrder>(
   {
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    cart: { type: Schema.Types.ObjectId, ref: 'Cart', required: true },
+    cart: {
+      userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+      items: [LinkSchema],
+    },
     status: {
       type: String,
       enum: ['pending', 'processing', 'completed', 'cancelled'],

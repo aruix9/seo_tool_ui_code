@@ -7,3 +7,18 @@ export interface FormFieldProps {
   label?: string
   error?: FieldError
 }
+
+export interface CheckoutFormProps {
+  email: string
+  name: string
+  street: string
+  country: string
+  state: string
+  city: string
+  zipCode: string
+  phone: string
+  ccName: string
+  ccNumber: string
+  ccExpiry: string
+  ccCVV: string
+}

@@ -82,10 +82,12 @@ export async function POST(req: Request) {
     // Calculate total amount from cart items
     const totalAmount = cart[0].totalPrice
 
+    console.log(cart[0].items)
+
     // Prepare the order data
     const orderData = {
       user: new mongoose.Types.ObjectId(_user.id),
-      cart: new mongoose.Types.ObjectId(cart[0]._id),
+      cart: cart[0],
       totalAmount,
       paymentMethod,
       billingAddress,

@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect } from 'react'
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -7,13 +9,16 @@ import {
   BreadcrumbItem,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import { getOrderById } from '@/lib/actions/getOrders'
 
-const OrderDetails = async ({
-  params,
-}: {
-  params: Promise<{ orderId: string }>
-}) => {
-  // const { orderId } = await params
+const OrderDetails = ({ params }: { params: { id: string } }) => {
+  useEffect(() => {
+    const getOrderId = async () => {
+      const { id } = await params
+      getOrderById(id)
+    }
+    getOrderId()
+  }, [params])
 
   return (
     <main className='container'>

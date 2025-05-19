@@ -12,7 +12,7 @@ export interface ILink extends Document {
 }
 
 // Define the schema for the Link model
-const LinkSchema = new Schema<ILink>(
+export const LinkSchema = new Schema<ILink>(
   {
     url: { type: String, required: true, trim: true },
     website: { type: String, required: true, trim: true },

@@ -1,11 +1,11 @@
-import { BillingAddressSchema } from '@/schemas/zodBillingAddressSchema'
+import { CheckoutSchema } from '@/schemas/zodCheckoutSchema'
 import axios from 'axios'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
 export const handlePlaceOrder = async (
-  values: z.infer<typeof BillingAddressSchema>,
+  values: z.infer<typeof CheckoutSchema>,
   router: AppRouterInstance
 ) => {
   const response = await axios.post('/api/checkout', values)
