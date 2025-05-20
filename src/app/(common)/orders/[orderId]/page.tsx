@@ -20,13 +20,19 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-const OrderDetails = ({ params }: { params: { id: string } }) => {
+export type OrderDetailsProps = {
+  params: Promise<{
+    orderId: string
+  }>
+}
+
+const OrderDetails = ({ params }: OrderDetailsProps) => {
   const [order, setOrder] = React.useState<IOrder | null>(null)
 
   useEffect(() => {
     const getOrderId = async () => {
-      const { id } = await params
-      const order = await getOrderById(id)
+      const { orderId } = await params
+      const order = await getOrderById(orderId)
       setOrder(order)
     }
     getOrderId()

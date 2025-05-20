@@ -23,7 +23,7 @@ const ForgotPassword = () => {
     },
   })
   const onSubmit = async (values: z.infer<typeof forgotPasswordSchema>) => {
-    handleForgotPasswordSubmit(values, router)
+    handleForgotPasswordSubmit(values.email, router)
   }
 
   return (

@@ -1,10 +1,8 @@
+import { OrderDetailsProps } from '@/app/(common)/orders/[orderId]/page'
 import { connectToDatabase } from '@/lib/db'
 import Order from '@/models/order'
 
-export async function GET(
-  req: Request,
-  { params }: { params: { orderId: string } }
-) {
+export async function GET(req: Request, { params }: OrderDetailsProps) {
   await connectToDatabase()
   const { orderId } = await params
   try {

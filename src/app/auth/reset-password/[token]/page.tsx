@@ -13,7 +13,13 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-const ResetPassword = ({ params }: { params: { token: string } }) => {
+type ResetPasswordProps = {
+  params: Promise<{
+    token: string
+  }>
+}
+
+const ResetPassword = ({ params }: ResetPasswordProps) => {
   const router = useRouter()
   const [token, setToken] = useState<{ token: string }>()
 
