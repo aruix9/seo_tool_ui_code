@@ -13,6 +13,8 @@ export interface IOrder extends Document {
   status: 'pending' | 'processing' | 'completed' | 'cancelled'
   totalAmount: number
   paymentMethod: 'razorpay' | 'paypal' | 'cod'
+  razorpayOrderId: string
+  razorpayPaymentId: string
   billingAddress: {
     name: string
     email: string
@@ -47,6 +49,8 @@ const OrderSchema = new Schema<IOrder>(
       enum: ['razorpay', 'paypal'],
       required: true,
     },
+    razorpayOrderId: { type: String, required: true },
+    razorpayPaymentId: { type: String },
     billingAddress: {
       name: { type: String, required: true },
       email: { type: String, required: true },

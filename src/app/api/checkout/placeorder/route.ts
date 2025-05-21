@@ -1,32 +1,28 @@
-import { connectToDatabase } from '@/lib/db'
 import { getServerSession, User } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]/options'
-import { Cart } from '@/models/cart'
-import Order from '@/models/order'
+import Razorpay from 'razorpay'
+import { authOptions } from '../../auth/[...nextauth]/options'
 import mongoose from 'mongoose'
-import { Cart as CartType } from '../../../../types/cart'
+import { Cart } from '@/models/cart'
+import { Cart as CartType } from '../../../../../types/cart'
+import { connectToDatabase } from '@/lib/db'
+import Order from '@/models/order'
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID!,
+  key_secret: process.env.RAZORPAY_KEY_SECRET!,
+})
 
 export async function POST(req: Request) {
-  await connectToDatabase()
-
-  const session = await getServerSession(authOptions)
-  const _user: User = session?.user
-  const userId = new mongoose.Types.ObjectId(_user.id)
-
-  if (!session || !_user) {
-    return new Response(
-      JSON.stringify({ success: false, message: 'Not authenticated' }),
-      { status: 401 }
-    )
-  }
-
   try {
-    const body = await req.json()
-
-    const billingAddress = { ...body }
-
-    // Default payment data (simulated for now)
-    const paymentMethod = 'razorpay'
+    const session = await getServerSession(authOptions)
+    const _user: User = session?.user
+    const userId = new mongoose.Types.ObjectId(_user.id)
+    if (!session || !_user.id) {
+      return new Response(
+        JSON.stringify({ success: false, message: 'Not authenticated' }),
+        { status: 401 }
+      )
+    }
 
     const cart: CartType[] = await Cart.aggregate([
       {
@@ -79,37 +75,50 @@ export async function POST(req: Request) {
       )
     }
 
-    // Calculate total amount from cart items
-    const totalAmount = cart[0].totalPrice
+    await connectToDatabase()
 
+    // create order in razorpay
+    const order = await razorpay.orders.create({
+      amount: Math.round(cart[0].totalPrice * 100), // amount in the smallest currency unit
+      currency: 'INR',
+      receipt: `receipt-${Date.now()}`,
+      notes: {
+        userId: _user.id,
+        items: JSON.stringify(cart[0].items),
+      },
+    })
+    const body = await req.json()
+    const billingAddress = { ...body }
+    if (!order) {
+      return Response.json(
+        { success: false, message: 'Failed to create order' },
+        { status: 500 }
+      )
+    }
     // Prepare the order data
     const orderData = {
-      user: new mongoose.Types.ObjectId(_user.id),
+      user: userId,
       cart: cart[0],
-      totalAmount,
-      paymentMethod,
+      totalAmount: cart[0].totalPrice,
+      paymentMethod: 'razorpay',
       billingAddress,
+      status: 'pending',
+      razorpayOrderId: order.id,
     }
-
     // Save the order to the database
-    const order = new Order(orderData)
-    await order.save()
-    await Cart.deleteOne({ _id: cart[0]._id })
+    const newOrder = await Order.create(orderData)
+    // await Cart.deleteOne({ _id: cart[0]._id })
 
     return Response.json(
       {
         success: true,
         message: 'Order placed successfully',
-        order,
+        newOrder,
       },
       { status: 201 }
     )
   } catch (error) {
-    console.error('Error placing order:', error)
-
-    return Response.json(
-      { success: false, message: 'Error placing order' },
-      { status: 500 }
-    )
+    console.error('Error in POST placeorder:', error)
+    return new Response('Internal Server Error', { status: 500 })
   }
 }

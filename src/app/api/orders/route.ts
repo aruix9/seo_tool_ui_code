@@ -5,8 +5,6 @@ import { authOptions } from '../auth/[...nextauth]/options'
 import Order from '@/models/order'
 
 export async function GET() {
-  await connectToDatabase()
-
   const session = await getServerSession(authOptions)
   const _user: User = session?.user
 
@@ -16,10 +14,15 @@ export async function GET() {
       { status: 401 }
     )
   }
+  await connectToDatabase()
 
   const userId = new mongoose.Types.ObjectId(_user.id)
   try {
     const orders = await Order.find({ user: userId })
+      .sort({
+        createdAt: -1,
+      })
+      .lean()
 
     return Response.json({ success: true, orders }, { status: 200 })
   } catch (error) {

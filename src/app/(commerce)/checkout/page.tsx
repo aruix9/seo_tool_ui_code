@@ -14,7 +14,6 @@ import { Cart } from '../../../../types/cart'
 import BillingAddress from '@/components/shared/form/billingAddress'
 import PaymentDetails from '@/components/shared/form/paymentDetails'
 import { Button } from '@/components/ui/button'
-import { handlePlaceOrder } from '@/lib/actions/handlePlaceOrder'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { CheckoutSchema } from '@/schemas/zodCheckoutSchema'
@@ -22,9 +21,20 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/components/ui/form'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import Script from 'next/script'
+import axios from 'axios'
+import { toast } from 'sonner'
+
+declare global {
+  interface Window {
+    Razorpay: unknown
+  }
+}
 
 const CheckoutPage = () => {
   const [cart, setCart] = useState<Cart | null>(null)
+
+  const [isProcessing, setIsProcessing] = useState(false)
 
   const router: AppRouterInstance = useRouter()
   const form = useForm<z.infer<typeof CheckoutSchema>>({
@@ -53,12 +63,56 @@ const CheckoutPage = () => {
     fetchCartData()
   }, [])
 
-  const onSubmit = (values: z.infer<typeof CheckoutSchema>) => {
-    handlePlaceOrder(values, router)
+  const onSubmit = async (values: z.infer<typeof CheckoutSchema>) => {
+    setIsProcessing(true)
+    try {
+      const newOrder = await axios.post('/api/checkout/placeorder', values)
+      const razorpay = new (window as any).Razorpay({
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: cart ? Number(cart.totalPrice.toFixed(2)) * 100 : 0,
+        currency: 'INR',
+        name: 'Butterswipe',
+        description: 'Purchase of websites',
+        image: '/images/6s-logo.png',
+        order_id: newOrder.data._id,
+        handler: async () => {
+          setIsProcessing(false)
+          toast.success('Order placed successfully', {
+            description: newOrder.data.message,
+          })
+
+          setIsProcessing(false)
+          router.replace('/order-confirmed')
+        },
+        prefill: {
+          name: values.name,
+          email: values.email,
+          contact: values.phone,
+        },
+      })
+      razorpay.open()
+      // handlePlaceOrder(values, router)
+    } catch (error) {
+      setIsProcessing(false)
+      console.log(error)
+      if (axios.isAxiosError(error)) {
+        toast.error('Error placing order', {
+          description: error.response?.data.message,
+        })
+      } else {
+        toast.error('Error placing order', {
+          description: 'Something went wrong',
+        })
+      }
+    }
   }
 
   return (
     <div className='container mx-auto'>
+      <Script
+        src='https://checkout.razorpay.com/v1/checkout.js'
+        strategy='lazyOnload'
+      />
       <Breadcrumb className='my-4'>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -88,9 +142,10 @@ const CheckoutPage = () => {
                 <Button
                   size='lg'
                   type='submit'
+                  disabled={isProcessing}
                   className='w-full cursor-pointer'
                 >
-                  Place Order
+                  {isProcessing ? 'Processing...' : 'Place Order'}
                 </Button>
               </div>
             </form>
@@ -128,7 +183,7 @@ const CheckoutPage = () => {
               </div>
               <div className='flex justify-between mb-2 border-b py-2 font-bold gap-4 bg-purple-200 px-2'>
                 <p className=''>Total</p>
-                <span>{cart && cart?.totalPrice.toFixed(2)}</span>
+                <span>{cart && (cart?.totalPrice + 12).toFixed(2)}</span>
               </div>
             </>
           )}

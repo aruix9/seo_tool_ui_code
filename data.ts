@@ -5,21 +5,16 @@ export const data = {
       slug: '/',
     },
     {
+      title: 'Orders',
+      slug: '/orders',
+    },
+    {
       title: 'Dashboard',
       slug: '/dashboard',
     },
     {
       title: 'Cart',
       slug: '/cart',
-    },
-    {
-      title: 'Orders',
-      slug: '/orders',
-    },
-    ,
-    {
-      title: 'Checkout',
-      slug: '/checkout',
     },
   ],
   dashboardNavigation: [

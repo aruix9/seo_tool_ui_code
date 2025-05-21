@@ -8,7 +8,7 @@ export const handlePlaceOrder = async (
   values: z.infer<typeof CheckoutSchema>,
   router: AppRouterInstance
 ) => {
-  const response = await axios.post('/api/checkout', values)
+  const response = await axios.post('/api/checkout/placeorder', values)
 
   toast.success('Order placed successfully', {
     description: response.data.message,
