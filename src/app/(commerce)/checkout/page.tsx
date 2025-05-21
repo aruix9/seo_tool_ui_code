@@ -24,10 +24,11 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 import Script from 'next/script'
 import axios from 'axios'
 import { toast } from 'sonner'
+import { Razorpay, RazorpayOptions } from '../../../../types/razorpay'
 
 declare global {
   interface Window {
-    Razorpay: unknown
+    Razorpay: new (options: RazorpayOptions) => Razorpay
   }
 }
 
@@ -67,8 +68,8 @@ const CheckoutPage = () => {
     setIsProcessing(true)
     try {
       const newOrder = await axios.post('/api/checkout/placeorder', values)
-      const razorpay = new (window as any).Razorpay({
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      const razorpay = new window.Razorpay({
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
         amount: cart ? Number(cart.totalPrice.toFixed(2)) * 100 : 0,
         currency: 'INR',
         name: 'Butterswipe',
