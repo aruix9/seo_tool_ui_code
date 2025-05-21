@@ -13,7 +13,10 @@ export async function POST(req: Request) {
       .update(body)
       .digest('hex')
 
+    console.log('Expected Signature:', expectedSignature)
+
     if (expectedSignature !== signature) {
+      console.log('signature:', signature)
       return new Response(
         JSON.stringify({ success: false, message: 'Invalid signature' }),
         { status: 400 }
