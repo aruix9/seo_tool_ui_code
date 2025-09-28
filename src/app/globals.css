@@ -119,6 +119,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  [data-slot="button"] {
+    @apply cursor-pointer;
+  }
 }
 
 @layer utilities {
