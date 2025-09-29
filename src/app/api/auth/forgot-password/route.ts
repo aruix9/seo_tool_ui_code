@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   await connectToDatabase()
 
   try {
-    const { email } = await req.json()
+    const email = await req.text(); 
     // Check if user already exists
     const user = await User.findOne({ email })
     if (!user) {
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     })
 
     // Send password reset email with the token
-    const resetUrl = `${process.env.CLIENT_URL}/api/auth/reset-password/${resetToken}`
+    const resetUrl = `${process.env.CLIENT_URL}/auth/reset-password/${resetToken}`
 
     await sendEmail(
       email,
