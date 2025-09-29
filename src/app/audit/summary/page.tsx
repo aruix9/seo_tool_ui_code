@@ -20,6 +20,8 @@ import {
 
 import { getBacklinksMetrics, getHistory, getMetrics, getSummary } from '@/lib/actions/audit/auditActions'
 import Link from 'next/link'
+import { Skeleton } from '@/components/ui/skeleton'
+import { useSearchParams } from 'next/navigation'
 
 const topAuditLinkObject = {
   top_anchors_by_backlinks: {
@@ -46,22 +48,34 @@ const Page = () => {
   const [auditData, setAuditData] = useState(null)
   const [auditKeys, setAuditKeys] = useState(null)
 
+  const searchParams = useSearchParams()
+  // Collect the main website
+  const urls: string[] = []
+  const mainUrl = searchParams.get('url')
+  if (mainUrl) urls.push(mainUrl)
+
+  // Collect competitors (competitor1..5)
+  for (let i = 1; i <= 5; i++) {
+    const competitor = searchParams.get(`competitor${i}`)
+    if (competitor) urls.push(competitor)
+  }
+
   const fetchAuditData = async () => {
-    const targets: String[] = ["https://www.seranking.com/", "https://www.google.com/"]
+    const targets: String[] = urls
     const summaryResponse = await getSummary(targets)
     const metricsResponse = await getMetrics(targets)
     const backlinksMetricsResponse = await getBacklinksMetrics(targets)
-    const historyResponse = await getHistory(targets[0], '2023-01-15', '2025-09-24')
+    // const historyResponse = await getHistory(targets[0], '2023-01-15', '2025-09-24')
     setAuditData({
       summary: summaryResponse,
       metrics: metricsResponse,
-      historyBacklink: historyResponse,
+      // historyBacklink: historyResponse,
       backlinksMetrics: backlinksMetricsResponse
     })
     setAuditKeys({
       summaryKeys: Object.keys(summaryResponse[0]),
       metricsKeys: Object.keys(metricsResponse[0]),
-      historyKeys: Object.keys(historyResponse[0]),
+      // historyKeys: Object.keys(historyResponse[0]),
       backlinksMetricsKeys: Object.keys(backlinksMetricsResponse[0]),
     })
   }
@@ -70,11 +84,19 @@ const Page = () => {
     fetchAuditData()
   }, [])
 
-  console.log(auditData)
-  console.log(auditKeys)
-
   if(!auditData && !auditKeys) {
-    return;
+    return (
+      <div className='my-12'>
+        <h1 className='text-xl font-bold mb-4'>Content Loading</h1>
+        <div className="flex items-center space-x-4">
+          <Skeleton className="h-12 w-12 rounded-full" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
+          </div>
+        </div>
+      </div>
+    )
   }
   
   return (
@@ -164,7 +186,7 @@ const Page = () => {
         </Table>
       </div>
       <hr className='my-8 border-b-2'/>
-      <h1 className='mt-8 font-bold text-xl'>Audit History</h1>
+      {/* <h1 className='mt-8 font-bold text-xl'>Audit History</h1>
       <div className='grow w-full flex my-8'>
         <Table className='table-fixed'>
           <TableHeader>
@@ -190,7 +212,7 @@ const Page = () => {
             ))}
           </TableBody>
         </Table>
-      </div>
+      </div> */}
     </div>
   )
 }
