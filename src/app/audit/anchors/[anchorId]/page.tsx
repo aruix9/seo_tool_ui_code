@@ -1,5 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { getAnchors } from '@/lib/actions/audit/auditActions'
+
 import {
   Breadcrumb,
   BreadcrumbItem,
