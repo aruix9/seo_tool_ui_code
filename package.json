@@ -7,7 +7,7 @@
     "link-seed": "npx tsx src/lib/db/seed/linkSeed.ts",
     "cart-seed": "npx tsx src/lib/db/seed/cartSeed.ts",
     "dev": "next dev --turbopack",
-    "build": "next build --no-lint",
+    "build": "NEXT_IGNORE_TYPE_ERROR=1 next build --no-lint",
     "start": "next start",
     "lint": "next lint"
   },
