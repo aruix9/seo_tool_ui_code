@@ -30,3 +30,15 @@ export async function getHistory(target: string, fromDate: string, toDate: strin
   const response = await axios.post(API_BASE + '/api/v1/audit/history', body)
   return response.data.new_lost_backlinks
 }
+
+export const getAnchors = async (orderBy: string) => {
+  try {
+    // Replace with your actual API endpoint and logic
+    const response = await fetch(`/api/anchors?orderBy=${orderBy}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching anchors:', error);
+    throw error;
+  }
+};
