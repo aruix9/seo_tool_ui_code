@@ -18,8 +18,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
+
+// Define an interface for anchor data
+interface AnchorData {
+  [key: string]: string | number; // Add more specific types if known
+}
 
 export type AuditAnchorProps = {
   params: Promise<{
@@ -31,12 +35,11 @@ const Page = ({params}: AuditAnchorProps) => {
   const searchParams = useSearchParams();
   const orderBy = searchParams.get('orderBy')
 
-  // Update the state definitions
-  const [anchorsData, setAnchorsData] = useState<any[] | null>(null)
+  // Update state with proper typing
+  const [anchorsData, setAnchorsData] = useState<AnchorData[] | null>(null)
   const [anchorsKeys, setAnchorsKeys] = useState<string[] | null>(null)
 
   useEffect(() => {
-    // The function remains the same
     const fetchAnchorsData = async () => {
       const response = await getAnchors(searchParams.get('orderBy') || '')
       const anchorsResponse = response.data.anchors
@@ -45,8 +48,8 @@ const Page = ({params}: AuditAnchorProps) => {
     }
 
     fetchAnchorsData()
-  }, [params, orderBy])
-  
+  }, [params, orderBy, searchParams])
+
   return (
     <div className='container grow flex flex-col'>
       <Breadcrumb className='my-4'>
