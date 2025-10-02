@@ -178,7 +178,7 @@ const Page = () => {
                   {auditData && auditData?.summary.map((summary, index) => (
                     typeof summary[key] !== 'object' ?
                       <TableCell key={index}>{summary[key]}</TableCell> :
-                      <TableCell>{summary[key].length} &nbsp; &nbsp;<Link target="_blank" href={`${topAuditLinkObject[key].link + encodeURIComponent(summary.target)}?orderBy=${topAuditLinkObject[key].orderBy}`} className='underline text-primary'>More</Link></TableCell>
+                      <TableCell key={index}>{summary[key].length} &nbsp; &nbsp;<Link target="_blank" href={`${topAuditLinkObject[key].link + encodeURIComponent(summary.target)}?orderBy=${topAuditLinkObject[key].orderBy}`} className='underline text-primary'>More</Link></TableCell>
                   )
                 )}
               </TableRow>
