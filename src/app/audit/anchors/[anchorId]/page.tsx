@@ -1,7 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { getAnchors } from '@/lib/actions/audit/auditActions'
-
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -20,12 +18,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
-
-// Define an interface for anchor data
-interface AnchorData {
-  [key: string]: string | number; // Add more specific types if known
-}
 
 export type AuditAnchorProps = {
   params: Promise<{
@@ -37,21 +31,21 @@ const Page = ({params}: AuditAnchorProps) => {
   const searchParams = useSearchParams();
   const orderBy = searchParams.get('orderBy')
 
-  // Update state with proper typing
-  const [anchorsData, setAnchorsData] = useState<AnchorData[] | null>(null)
-  const [anchorsKeys, setAnchorsKeys] = useState<string[] | null>(null)
+  const [anchorsData, setAnchorsData] = useState(null)
+  const [anchorsKeys, setAnchorsKeys] = useState(null)
 
   useEffect(() => {
     const fetchAnchorsData = async () => {
-      const response = await getAnchors(searchParams.get('orderBy') || '')
+      const { anchorId } = await params
+      const response = await axios.post('http://localhost:3000/api/v1/audit/anchors', {target: decodeURIComponent(anchorId), order: orderBy})
       const anchorsResponse = response.data.anchors
       setAnchorsData(anchorsResponse)
       setAnchorsKeys(Object.keys(anchorsResponse[0]))
     }
 
     fetchAnchorsData()
-  }, [params, orderBy, searchParams])
-
+  }, [params, orderBy])
+  
   return (
     <div className='container grow flex flex-col'>
       <Breadcrumb className='my-4'>

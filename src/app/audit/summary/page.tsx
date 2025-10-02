@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 'use client'
 import { useEffect, useState } from 'react'
 import {
@@ -178,7 +179,7 @@ const Page = () => {
                   {auditData && auditData?.summary.map((summary, index) => (
                     typeof summary[key] !== 'object' ?
                       <TableCell key={index}>{summary[key]}</TableCell> :
-                      <TableCell key={index}>{summary[key].length} &nbsp; &nbsp;<Link target="_blank" href={`${topAuditLinkObject[key].link + encodeURIComponent(summary.target)}?orderBy=${topAuditLinkObject[key].orderBy}`} className='underline text-primary'>More</Link></TableCell>
+                      <TableCell>{summary[key].length} &nbsp; &nbsp;<Link target="_blank" href={`${topAuditLinkObject[key].link + encodeURIComponent(summary.target)}?orderBy=${topAuditLinkObject[key].orderBy}`} className='underline text-primary'>More</Link></TableCell>
                   )
                 )}
               </TableRow>
@@ -187,7 +188,9 @@ const Page = () => {
         </Table>
       </div>
       <hr className='my-8 border-b-2'/>
-      {/* <h1 className='mt-8 font-bold text-xl'>Audit History</h1>
+      {/* eslint-disable react/jsx-key */}
+      {/* 
+      <h1 className='mt-8 font-bold text-xl'>Audit History</h1>
       <div className='grow w-full flex my-8'>
         <Table className='table-fixed'>
           <TableHeader>
@@ -200,7 +203,7 @@ const Page = () => {
               key !== 'target' && 
               <TableRow key={historyIndex}>
                 {auditKeys && auditKeys?.historyKeys.map((item, index) => (
-                    <TableCell className='break-all whitespace-normal'>{Array.isArray(key[item])
+                    <TableCell key={`${historyIndex}-${item}`} className='break-all whitespace-normal'>{Array.isArray(key[item])
                     ? JSON.stringify(key[item])
                     : typeof key[item] === 'boolean'
                     ? key[item].toString()
@@ -213,7 +216,9 @@ const Page = () => {
             ))}
           </TableBody>
         </Table>
-      </div> */}
+      </div>
+      */}
+      {/* eslint-enable react/jsx-key */}
     </div>
   )
 }
