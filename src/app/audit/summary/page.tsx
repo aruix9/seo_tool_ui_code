@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 'use client'
 import { useEffect, useState } from 'react'
 import {
@@ -188,9 +187,7 @@ const Page = () => {
         </Table>
       </div>
       <hr className='my-8 border-b-2'/>
-      {/* eslint-disable react/jsx-key */}
-      {/* 
-      <h1 className='mt-8 font-bold text-xl'>Audit History</h1>
+      {/* <h1 className='mt-8 font-bold text-xl'>Audit History</h1>
       <div className='grow w-full flex my-8'>
         <Table className='table-fixed'>
           <TableHeader>
@@ -203,7 +200,7 @@ const Page = () => {
               key !== 'target' && 
               <TableRow key={historyIndex}>
                 {auditKeys && auditKeys?.historyKeys.map((item, index) => (
-                    <TableCell key={`${historyIndex}-${item}`} className='break-all whitespace-normal'>{Array.isArray(key[item])
+                    <TableCell className='break-all whitespace-normal'>{Array.isArray(key[item])
                     ? JSON.stringify(key[item])
                     : typeof key[item] === 'boolean'
                     ? key[item].toString()
@@ -216,9 +213,7 @@ const Page = () => {
             ))}
           </TableBody>
         </Table>
-      </div>
-      */}
-      {/* eslint-enable react/jsx-key */}
+      </div> */}
     </div>
   )
 }
