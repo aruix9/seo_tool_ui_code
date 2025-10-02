@@ -104,7 +104,7 @@ export default function AdminDashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-gray-600 mt-1">Welcome back! Here's what's happening with ButterSwipe today.</p>
+          <p className="text-gray-600 mt-1">Welcome back! Here&apos;s what&apos;s happening with ButterSwipe today.</p>
         </div>
         <Button className="bg-purple-600 hover:bg-purple-700">
           <TrendingUp className="w-4 h-4 mr-2" />
