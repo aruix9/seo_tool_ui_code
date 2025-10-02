@@ -31,13 +31,14 @@ const Page = ({params}: AuditAnchorProps) => {
   const searchParams = useSearchParams();
   const orderBy = searchParams.get('orderBy')
 
-  const [anchorsData, setAnchorsData] = useState(null)
-  const [anchorsKeys, setAnchorsKeys] = useState(null)
+  // Update the state definitions
+  const [anchorsData, setAnchorsData] = useState<any[] | null>(null)
+  const [anchorsKeys, setAnchorsKeys] = useState<string[] | null>(null)
 
   useEffect(() => {
+    // The function remains the same
     const fetchAnchorsData = async () => {
-      const { anchorId } = await params
-      const response = await axios.post('http://localhost:3000/api/v1/audit/anchors', {target: decodeURIComponent(anchorId), order: orderBy})
+      const response = await getAnchors(searchParams.get('orderBy') || '')
       const anchorsResponse = response.data.anchors
       setAnchorsData(anchorsResponse)
       setAnchorsKeys(Object.keys(anchorsResponse[0]))

@@ -44,9 +44,17 @@ const topAuditLinkObject = {
   top_countries: 'countries'
 }
 
+interface AnchorData {
+  // Add your anchor properties here
+  id: string;
+  name: string;
+  // ... other properties
+}
+
 const Page = () => {
   const [auditData, setAuditData] = useState(null)
   const [auditKeys, setAuditKeys] = useState(null)
+  const [anchorsData, setAnchorsData] = useState<AnchorData[] | null>(null)
 
   const searchParams = useSearchParams()
 
