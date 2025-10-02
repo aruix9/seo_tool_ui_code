@@ -34,17 +34,17 @@ const Page = ({params}: AuditAnchorProps) => {
   const [anchorsData, setAnchorsData] = useState(null)
   const [anchorsKeys, setAnchorsKeys] = useState(null)
 
-  const fetchAnchorsData = async () => {
-    const { anchorId } = await params
-    const response = await axios.post('http://localhost:3000/api/v1/audit/anchors', {target: decodeURIComponent(anchorId), order: orderBy})
-    const anchorsResponse = response.data.anchors
-    setAnchorsData(anchorsResponse)
-    setAnchorsKeys(Object.keys(anchorsResponse[0]))
-  }
-
   useEffect(() => {
+    const fetchAnchorsData = async () => {
+      const { anchorId } = await params
+      const response = await axios.post('http://localhost:3000/api/v1/audit/anchors', {target: decodeURIComponent(anchorId), order: orderBy})
+      const anchorsResponse = response.data.anchors
+      setAnchorsData(anchorsResponse)
+      setAnchorsKeys(Object.keys(anchorsResponse[0]))
+    }
+
     fetchAnchorsData()
-  }, [])
+  }, [params, orderBy])
   
   return (
     <div className='container grow flex flex-col'>

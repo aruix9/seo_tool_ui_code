@@ -32,20 +32,16 @@ import {
 import {
   Package,
   RefreshCw,
-  Truck,
   CheckCircle,
-  XCircle,
   DollarSign,
   TrendingUp,
   Clock,
   Search,
-  Filter,
   MoreHorizontal,
   Eye,
   Edit,
   Mail,
   Download,
-  Calendar,
   ArrowUpDown,
 } from 'lucide-react'
 
@@ -83,7 +79,7 @@ export default function OrdersPage() {
 
   // Filter and sort orders
   const filteredAndSortedOrders = useMemo(() => {
-    let filtered = orders.filter((order) => {
+    const filtered = orders.filter((order) => {
       const matchesSearch = 
         order.orderNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

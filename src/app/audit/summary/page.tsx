@@ -18,7 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { getBacklinksMetrics, getHistory, getMetrics, getSummary } from '@/lib/actions/audit/auditActions'
+import { getBacklinksMetrics, getMetrics, getSummary } from '@/lib/actions/audit/auditActions'
 import Link from 'next/link'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useSearchParams } from 'next/navigation'
@@ -49,40 +49,41 @@ const Page = () => {
   const [auditKeys, setAuditKeys] = useState(null)
 
   const searchParams = useSearchParams()
-  // Collect the main website
-  const urls: string[] = []
-  const mainUrl = searchParams.get('url')
-  if (mainUrl) urls.push(mainUrl)
-
-  // Collect competitors (competitor1..5)
-  for (let i = 1; i <= 5; i++) {
-    const competitor = searchParams.get(`competitor${i}`)
-    if (competitor) urls.push(competitor)
-  }
-
-  const fetchAuditData = async () => {
-    const targets: String[] = urls
-    const summaryResponse = await getSummary(targets)
-    const metricsResponse = await getMetrics(targets)
-    const backlinksMetricsResponse = await getBacklinksMetrics(targets)
-    // const historyResponse = await getHistory(targets[0], '2023-01-15', '2025-09-24')
-    setAuditData({
-      summary: summaryResponse,
-      metrics: metricsResponse,
-      // historyBacklink: historyResponse,
-      backlinksMetrics: backlinksMetricsResponse
-    })
-    setAuditKeys({
-      summaryKeys: Object.keys(summaryResponse[0]),
-      metricsKeys: Object.keys(metricsResponse[0]),
-      // historyKeys: Object.keys(historyResponse[0]),
-      backlinksMetricsKeys: Object.keys(backlinksMetricsResponse[0]),
-    })
-  }
 
   useEffect(() => {
+    const fetchAuditData = async () => {
+      // Collect the main website
+      const urls: string[] = []
+      const mainUrl = searchParams.get('url')
+      if (mainUrl) urls.push(mainUrl)
+
+      // Collect competitors (competitor1..5)
+      for (let i = 1; i <= 5; i++) {
+        const competitor = searchParams.get(`competitor${i}`)
+        if (competitor) urls.push(competitor)
+      }
+
+      if (urls.length === 0) return // avoid empty API calls
+
+      const summaryResponse = await getSummary(urls)
+      const metricsResponse = await getMetrics(urls)
+      const backlinksMetricsResponse = await getBacklinksMetrics(urls)
+      setAuditData({
+        summary: summaryResponse,
+        metrics: metricsResponse,
+        // historyBacklink: historyResponse,
+        backlinksMetrics: backlinksMetricsResponse
+      })
+      setAuditKeys({
+        summaryKeys: Object.keys(summaryResponse[0]),
+        metricsKeys: Object.keys(metricsResponse[0]),
+        // historyKeys: Object.keys(historyResponse[0]),
+        backlinksMetricsKeys: Object.keys(backlinksMetricsResponse[0]),
+      })
+    }
+
     fetchAuditData()
-  }, [])
+  }, [searchParams])
 
   if(!auditData && !auditKeys) {
     return (

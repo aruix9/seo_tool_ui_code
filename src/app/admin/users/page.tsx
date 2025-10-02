@@ -22,20 +22,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from '@/components/ui/select'
 import {
   Users,
   UserCheck,
   UserX,
   Shield,
   Search,
-  Filter,
   MoreHorizontal,
   Eye,
   Edit,
@@ -43,7 +35,6 @@ import {
   Download,
   UserPlus,
   Mail,
-  Phone,
   ShoppingBag,
   CreditCard,
   UserCircle,
@@ -52,10 +43,9 @@ import {
   TrendingUp,
   TrendingDown
 } from 'lucide-react'
-import StatsCard from '../components/StatsCard'
 import UserDetailsModal from '../components/UserDetailsModal'
 import { EditUserModal, DeleteConfirmModal, EmailModal, AddUserModal } from '../components/UserActionModals'
-import { userManagementMockData, formatDate, formatDateTime, getTimeAgo, getUserStatusColor, getUserRoleBadgeVariant } from '../data/userMockData'
+import { userManagementMockData, formatDate, getTimeAgo, getUserStatusColor, getUserRoleBadgeVariant } from '../data/userMockData'
 
 interface User {
   id: string
@@ -82,7 +72,6 @@ export default function UserManagement() {
   const [searchQuery, setSearchQuery] = useState('')
   const [roleFilter, setRoleFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')
-  const [selectedUsers, setSelectedUsers] = useState<string[]>([])
   
   // Modal and action states
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
