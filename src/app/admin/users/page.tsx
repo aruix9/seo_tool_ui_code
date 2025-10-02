@@ -224,7 +224,7 @@ export default function UserManagement() {
   }
 
   // Send email (frontend simulation)
-  const handleSendEmail = (subject: string, message: string) => {
+  const handleSendEmail = () => {
     if (!selectedUser) return
     
     // Simulate sending email

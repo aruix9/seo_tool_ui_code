@@ -93,16 +93,24 @@ export default function OrdersPage() {
 
     // Sort orders
     filtered.sort((a, b) => {
-      let aValue: any = a[sortField]
-      let bValue: any = b[sortField]
+      let aValue: string | number
+      let bValue: string | number
 
       // Handle nested customer name sorting
       if (sortField === 'customer') {
         aValue = a.customer.name
         bValue = b.customer.name
+      } else if (sortField === 'orderDate' || sortField === 'createdAt' || sortField === 'updatedAt') {
+        // Handle date fields
+        aValue = new Date(a[sortField] as string).getTime()
+        bValue = new Date(b[sortField] as string).getTime()
+      } else {
+        // Handle other fields (string or number)
+        aValue = a[sortField] as string | number
+        bValue = b[sortField] as string | number
       }
 
-      if (typeof aValue === 'string') {
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
         aValue = aValue.toLowerCase()
         bValue = bValue.toLowerCase()
       }
@@ -151,12 +159,12 @@ export default function OrdersPage() {
     toast.success(`Order status updated to ${newStatus}`)
   }
 
-  const handleSendEmail = (orderId: string, subject: string, message: string) => {
+  const handleSendEmail = () => {
     // Simulate sending email
     toast.success('Email sent successfully!')
   }
 
-  const handleProcessRefund = (orderId: string, amount: number, reason: string) => {
+  const handleProcessRefund = (orderId: string, amount: number) => {
     setOrders(prev => 
       prev.map(order => 
         order.id === orderId 
@@ -196,7 +204,7 @@ export default function OrdersPage() {
     const pages = []
     const showPages = 5
     let startPage = Math.max(1, currentPage - Math.floor(showPages / 2))
-    let endPage = Math.min(totalPages, startPage + showPages - 1)
+    const endPage = Math.min(totalPages, startPage + showPages - 1)
     
     if (endPage - startPage + 1 < showPages) {
       startPage = Math.max(1, endPage - showPages + 1)

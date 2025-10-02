@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { User, Mail} from 'lucide-react'
+import { User, Mail } from 'lucide-react'
 
 interface User {
   id: string
