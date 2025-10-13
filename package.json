@@ -1,7 +1,7 @@
 {
   "name": "nextjs-learning",
   "version": "0.1.0",
-  "private": true,
+  "private": true, 
   "scripts": {
     "user-seed": "npx tsx src/lib/db/seed/userSeed.ts",
     "link-seed": "npx tsx src/lib/db/seed/linkSeed.ts",

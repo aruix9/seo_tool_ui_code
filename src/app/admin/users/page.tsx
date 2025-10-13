@@ -22,13 +22,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from '@/components/ui/select'
 import {
   Users,
   UserCheck,
@@ -231,11 +224,10 @@ export default function UserManagement() {
   }
 
   // Send email (frontend simulation)
-  const handleSendEmail = (subject: string, message: string) => {
+  const handleSendEmail = () => {
     if (!selectedUser) return
     
     // Simulate sending email
-    console.log('Sending email with subject:', subject, 'and message:', message)
     toast.success('Email sent successfully', {
       description: `Email sent to ${selectedUser.name} at ${selectedUser.email}`
     })

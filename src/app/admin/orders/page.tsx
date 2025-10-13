@@ -93,13 +93,21 @@ export default function OrdersPage() {
 
     // Sort orders
     filtered.sort((a, b) => {
-      let aValue: unknown = a[sortField]
-      let bValue: unknown = b[sortField]
+      let aValue: string | number
+      let bValue: string | number
 
       // Handle nested customer name sorting
       if (sortField === 'customer') {
         aValue = a.customer.name
         bValue = b.customer.name
+      } else if (sortField === 'orderDate' || sortField === 'createdAt' || sortField === 'updatedAt') {
+        // Handle date fields
+        aValue = new Date(a[sortField] as string).getTime()
+        bValue = new Date(b[sortField] as string).getTime()
+      } else {
+        // Handle other fields (string or number)
+        aValue = a[sortField] as string | number
+        bValue = b[sortField] as string | number
       }
 
       if (typeof aValue === 'string' && typeof bValue === 'string') {
@@ -108,9 +116,9 @@ export default function OrdersPage() {
       }
 
       if (sortDirection === 'asc') {
-        return aValue! < bValue! ? -1 : aValue! > bValue! ? 1 : 0
+        return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
       } else {
-        return aValue! > bValue! ? -1 : aValue! < bValue! ? 1 : 0
+        return aValue > bValue ? -1 : aValue < bValue ? 1 : 0
       }
     })
 
@@ -151,14 +159,12 @@ export default function OrdersPage() {
     toast.success(`Order status updated to ${newStatus}`)
   }
 
-  const handleSendEmail = (orderId: string, subject: string, message: string) => {
+  const handleSendEmail = () => {
     // Simulate sending email
-    console.log('Sending email for order:', orderId, 'Subject:', subject, 'Message:', message)
     toast.success('Email sent successfully!')
   }
 
-  const handleProcessRefund = (orderId: string, amount: number, reason: string) => {
-    console.log('Processing refund for order:', orderId, 'Amount:', amount, 'Reason:', reason)
+  const handleProcessRefund = (orderId: string, amount: number) => {
     setOrders(prev => 
       prev.map(order => 
         order.id === orderId 

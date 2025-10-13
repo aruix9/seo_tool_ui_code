@@ -1,8 +1,8 @@
 export const data = {
   primaryNavigation: [
     {
-      title: 'Home',
-      slug: '/',
+      title: 'Audit',
+      slug: '/audit',
     },
     {
       title: 'Orders',
@@ -11,6 +11,10 @@ export const data = {
     {
       title: 'Dashboard',
       slug: '/dashboard',
+    },
+    {
+      title: 'Admin',
+      slug: '/admin',
     },
     {
       title: 'Cart',

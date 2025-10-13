@@ -18,7 +18,7 @@ import {
   Settings,
   LogOut,
   Menu,
-  Sun,
+  Sun
 } from 'lucide-react'
 
 interface AdminHeaderProps {
