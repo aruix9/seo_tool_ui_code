@@ -1,10 +1,10 @@
 import axios from 'axios'
-// import {backlinks, backlinks2} from "../../../../auditData"
+import { summaryData } from '../../../../auditData';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
 export async function getSummary(targets: string[]) {
-  // return backlinks2;
+  // return summaryData.summary;
   const target = {target: targets}
   const response = await axios.post(API_BASE + '/api/v1/audit/summary', target)
   return response.data.summary

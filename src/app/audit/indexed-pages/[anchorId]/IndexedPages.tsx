@@ -26,16 +26,18 @@ const Page = ({params}: AuditAnchorProps) => {
   const searchParams = useSearchParams();
   const orderBy = searchParams.get('orderBy')
 
-  const [anchorsData, setAnchorsData] = useState(null)
-  const [anchorsKeys, setAnchorsKeys] = useState(null)
+  const [anchorsData, setAnchorsData] = useState<Record<string, any>[]>([]);
+  const [anchorsKeys, setAnchorsKeys] = useState<string[] | null>(null);
 
   useEffect(() => {
     const fetchAnchorsData = async () => {
       const { anchorId } = await params
       const response = await axios.post('http://localhost:3000/api/v1/audit/indexed-pages', {target: decodeURIComponent(anchorId), order: orderBy})
       const anchorsResponse = response.data.pages
-      setAnchorsData(anchorsResponse)
-      setAnchorsKeys(Object.keys(anchorsResponse[0]))
+      setAnchorsData(anchorsResponse) 
+      if (anchorsResponse.length > 0) {
+        setAnchorsKeys(Object.keys(anchorsResponse[0]))
+      }
     }
     fetchAnchorsData()
   }, [params, orderBy])
