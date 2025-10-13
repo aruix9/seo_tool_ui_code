@@ -9,7 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 import { AlertTriangle, Package, Globe, TrendingUp, Clock, Star, CheckCircle, AlertCircle, Edit } from 'lucide-react'
 import { Product, formatCurrency } from '../data/productMockData'
 
@@ -88,16 +87,19 @@ export function ProductActionModals({
     }
   }, [type, product])
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: string | number) => {
     if (field.includes('.')) {
       const [parent, child] = field.split('.')
-      setFormData(prev => ({
-        ...prev,
-        [parent]: {
-          ...(prev[parent as keyof Product] as any || {}),
-          [child]: value
+      setFormData(prev => {
+        const parentValue = prev[parent as keyof Product]
+        return {
+          ...prev,
+          [parent]: {
+            ...(typeof parentValue === 'object' && parentValue !== null ? parentValue : {}),
+            [child]: value
+          }
         }
-      }))
+      })
     } else {
       setFormData(prev => ({ ...prev, [field]: value }))
     }
@@ -197,7 +199,7 @@ export function ProductActionModals({
                       <Label className="text-sm font-medium text-muted-foreground">Status</Label>
                       <div className="flex items-center gap-2 mt-1">
                         {getStatusIcon(product.status)}
-                        <Badge variant={getStatusVariant(product.status) as any}>
+                        <Badge variant={getStatusVariant(product.status)}>
                           {product.status}
                         </Badge>
                       </div>

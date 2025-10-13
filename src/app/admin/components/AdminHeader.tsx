@@ -19,7 +19,6 @@ import {
   LogOut,
   Menu,
   Sun,
-  Moon
 } from 'lucide-react'
 
 interface AdminHeaderProps {

@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Switch } from "@/components/ui/switch"
-import { AlertTriangle, FileText, Globe, User, Calendar, DollarSign, Clock, CheckCircle, AlertCircle, XCircle, BarChart3, Target, Link, Settings } from 'lucide-react'
+import { AlertTriangle, FileText, Globe, User, Calendar, Clock, CheckCircle, XCircle, BarChart3, Target, Link, Settings } from 'lucide-react'
 import { Audit, formatCurrency } from '../data/auditMockData'
 
 interface AuditActionModalsProps {
@@ -91,16 +91,19 @@ export function AuditActionModals({
     }
   }, [type, audit])
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: string | number | boolean) => {
     if (field.includes('.')) {
       const [parent, child] = field.split('.')
-      setFormData(prev => ({
-        ...prev,
-        [parent]: {
-          ...(prev[parent as keyof Audit] as any || {}),
-          [child]: value
+      setFormData(prev => {
+        const parentValue = prev[parent as keyof Audit]
+        return {
+          ...prev,
+          [parent]: {
+            ...(typeof parentValue === 'object' && parentValue !== null ? parentValue : {}),
+            [child]: value
+          }
         }
-      }))
+      })
     } else {
       setFormData(prev => ({ ...prev, [field]: value }))
     }
@@ -226,7 +229,7 @@ export function AuditActionModals({
                       <Label className="text-sm font-medium text-muted-foreground">Status</Label>
                       <div className="flex items-center gap-2 mt-1">
                         {getStatusIcon(audit.status)}
-                        <Badge variant={getStatusVariant(audit.status) as any}>
+                        <Badge variant={getStatusVariant(audit.status)}>
                           {audit.status.replace('-', ' ')}
                         </Badge>
                       </div>
@@ -234,7 +237,7 @@ export function AuditActionModals({
                     <div>
                       <Label className="text-sm font-medium text-muted-foreground">Priority</Label>
                       <div className="mt-1">
-                        <Badge variant={getPriorityVariant(audit.priority) as any}>
+                        <Badge variant={getPriorityVariant(audit.priority)}>
                           {audit.priority}
                         </Badge>
                       </div>

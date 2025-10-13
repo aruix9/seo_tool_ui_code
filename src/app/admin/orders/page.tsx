@@ -32,20 +32,16 @@ import {
 import {
   Package,
   RefreshCw,
-  Truck,
   CheckCircle,
-  XCircle,
   DollarSign,
   TrendingUp,
   Clock,
   Search,
-  Filter,
   MoreHorizontal,
   Eye,
   Edit,
   Mail,
   Download,
-  Calendar,
   ArrowUpDown,
 } from 'lucide-react'
 
@@ -83,7 +79,7 @@ export default function OrdersPage() {
 
   // Filter and sort orders
   const filteredAndSortedOrders = useMemo(() => {
-    let filtered = orders.filter((order) => {
+    const filtered = orders.filter((order) => {
       const matchesSearch = 
         order.orderNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -97,8 +93,8 @@ export default function OrdersPage() {
 
     // Sort orders
     filtered.sort((a, b) => {
-      let aValue: any = a[sortField]
-      let bValue: any = b[sortField]
+      let aValue: unknown = a[sortField]
+      let bValue: unknown = b[sortField]
 
       // Handle nested customer name sorting
       if (sortField === 'customer') {
@@ -106,15 +102,15 @@ export default function OrdersPage() {
         bValue = b.customer.name
       }
 
-      if (typeof aValue === 'string') {
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
         aValue = aValue.toLowerCase()
         bValue = bValue.toLowerCase()
       }
 
       if (sortDirection === 'asc') {
-        return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
+        return aValue! < bValue! ? -1 : aValue! > bValue! ? 1 : 0
       } else {
-        return aValue > bValue ? -1 : aValue < bValue ? 1 : 0
+        return aValue! > bValue! ? -1 : aValue! < bValue! ? 1 : 0
       }
     })
 
@@ -157,10 +153,12 @@ export default function OrdersPage() {
 
   const handleSendEmail = (orderId: string, subject: string, message: string) => {
     // Simulate sending email
+    console.log('Sending email for order:', orderId, 'Subject:', subject, 'Message:', message)
     toast.success('Email sent successfully!')
   }
 
   const handleProcessRefund = (orderId: string, amount: number, reason: string) => {
+    console.log('Processing refund for order:', orderId, 'Amount:', amount, 'Reason:', reason)
     setOrders(prev => 
       prev.map(order => 
         order.id === orderId 
@@ -200,7 +198,7 @@ export default function OrdersPage() {
     const pages = []
     const showPages = 5
     let startPage = Math.max(1, currentPage - Math.floor(showPages / 2))
-    let endPage = Math.min(totalPages, startPage + showPages - 1)
+    const endPage = Math.min(totalPages, startPage + showPages - 1)
     
     if (endPage - startPage + 1 < showPages) {
       startPage = Math.max(1, endPage - showPages + 1)

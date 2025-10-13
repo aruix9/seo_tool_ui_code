@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Progress } from "@/components/ui/progress"
-import { Search, Plus, Filter, Download, Eye, Edit, Trash2, Clock, CheckCircle, AlertTriangle, XCircle, TrendingUp, DollarSign, FileText, Users, Link, BarChart3, Target, Settings } from 'lucide-react'
+import { Search, Plus, Filter, Download, Eye, Edit, Trash2, Clock, CheckCircle, AlertTriangle, XCircle, DollarSign, FileText, Link, BarChart3, Target, Settings } from 'lucide-react'
 import { auditMockData, type Audit, formatCurrency, getAuditStats } from '../data/auditMockData'
 import { AuditActionModals } from '../components/AuditActionModals'
 import { toast } from 'sonner'
@@ -336,13 +336,13 @@ export default function AuditsPage() {
                       <TableCell>
                         <div className="flex items-center gap-2">
                           {getStatusIcon(audit.status)}
-                          <Badge variant={getStatusVariant(audit.status) as any}>
+                          <Badge variant={getStatusVariant(audit.status)}>
                             {audit.status.replace('-', ' ')}
                           </Badge>
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant={getPriorityVariant(audit.priority) as any}>
+                        <Badge variant={getPriorityVariant(audit.priority)}>
                           {audit.priority}
                         </Badge>
                       </TableCell>

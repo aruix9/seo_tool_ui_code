@@ -23,7 +23,6 @@ import {
 import {
   DollarSign,
   TrendingUp,
-  TrendingDown,
   CreditCard,
   Download,
   Filter,
@@ -64,9 +63,9 @@ export default function FinancePage() {
     }).format(amount)
   }
 
-  const formatNumber = (num: number) => {
-    return new Intl.NumberFormat('en-US').format(num)
-  }
+  // const formatNumber = (num: number) => {
+  //   return new Intl.NumberFormat('en-US').format(num)
+  // }
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {

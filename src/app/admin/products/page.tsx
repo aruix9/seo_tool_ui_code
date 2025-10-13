@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Search, Plus, Filter, Download, Eye, Edit, Trash2, MoreHorizontal, Package, TrendingUp, AlertCircle, CheckCircle } from 'lucide-react'
+import { Search, Plus, Filter, Download, Eye, Edit, Trash2, Package, TrendingUp, AlertCircle, CheckCircle } from 'lucide-react'
 import { productMockData, type Product, formatCurrency, getProductStats } from '../data/productMockData'
 import {ProductActionModals} from '../components/ProductActionModals'
 import { toast } from 'sonner'
@@ -284,7 +284,7 @@ export default function ProductsPage() {
                       <TableCell>
                         <div className="flex items-center gap-2">
                           {getStatusIcon(product.status)}
-                          <Badge variant={getStatusVariant(product.status) as any}>
+                          <Badge variant={getStatusVariant(product.status)}>
                             {product.status}
                           </Badge>
                         </div>

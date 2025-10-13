@@ -15,7 +15,6 @@ import {
 import {
   BarChart3,
   TrendingUp,
-  TrendingDown,
   Users,
   DollarSign,
   ShoppingCart,
