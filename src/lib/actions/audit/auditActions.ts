@@ -4,10 +4,10 @@ import { summaryData } from '../../../../auditData';
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
 export async function getSummary(targets: string[]) {
-  // return summaryData.summary;
-  const target = {target: targets}
-  const response = await axios.post(API_BASE + '/api/v1/audit/summary', target)
-  return response.data.summary
+  return summaryData.summary;
+  // const target = {target: targets}
+  // const response = await axios.post(API_BASE + '/api/v1/audit/summary', target)
+  // return response.data.summary
 }
 
 export async function getMetrics(targets: string[]) {

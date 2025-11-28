@@ -158,3 +158,8 @@ h6,
 .primary {
   font-family: var(--font-lato);
 }
+
+
+.auditSummary .recharts-surface {
+  overflow: visible;
+}

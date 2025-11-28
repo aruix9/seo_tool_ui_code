@@ -46,6 +46,9 @@ const topAuditLinkObject = {
   top_countries: 'countries'
 }
 
+const displayCard = ["backlinks", "anchors", "refdomains", "inlink_rank"]
+const summaryList = ["backlinks", "refdomains", "dofollow_backlinks", "inlink_rank"]
+
 const Page = () => {
   const [auditData, setAuditData] = useState(null)
   const [auditKeys, setAuditKeys] = useState(null)
@@ -108,18 +111,19 @@ const Page = () => {
 
       <h1 className='my-8 font-bold text-xl'>Audit Summary</h1>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mb-6">
-        <div className='flex flex-col gap-4'>
-        <SummaryPieChart summaryData={auditData && auditData?.summary} type="backlinks" typeName='Backlinks' typeColor='Red' />
-        <SummaryPieChart summaryData={auditData && auditData?.summary} type="anchors" typeName='Anchors' typeColor='Red' />
-        </div>
-        <div className='flex flex-col gap-4'>
-        <SummaryPieChart summaryData={auditData && auditData?.summary} type="refdomains" typeName='Refdomains' typeColor='Red' />
-        <SummaryPieChart summaryData={auditData && auditData?.summary} type="inlink_rank" typeName='Inlink Rank' typeColor='Red' />
-        </div>
-        <SummaryLineChart summaryData={auditData && auditData?.summary} />
+      <div className='flex flex-row gap-4'>
+        {
+          displayCard.map((type, index) => (
+            <SummaryPieChart
+              key={index}
+              summaryData={auditData?.summary}
+              type={type}
+              typeName={type.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase())}
+            />
+          ))
+        }
       </div>
-      <div className='grow w-full flex my-8'>
+      <div className='w-full mt-8 mb-16'>
         <Table>
           <TableHeader>
             <TableRow>
@@ -129,19 +133,22 @@ const Page = () => {
           </TableHeader>
           <TableBody>
             {auditKeys && auditKeys?.summaryKeys.map((key) => (
-              key !== 'target' && 
+              summaryList.includes(key) && 
               <TableRow key={key}>
                 <TableCell className='capitalize'>{key.replaceAll("_", " ")}</TableCell>
                   {auditData && auditData?.summary.map((summary, index) => (
-                    typeof summary[key] !== 'object' ?
-                      <TableCell key={index}>{summary[key]}</TableCell> :
-                      <TableCell key={index}>{summary[key].length} &nbsp; &nbsp;<Link target="_blank" href={`${topAuditLinkObject[key].link + encodeURIComponent(summary.target)}?orderBy=${topAuditLinkObject[key].orderBy}`} className='underline text-primary'>More</Link></TableCell>
+                    // summaryList.includes(key) ? 'yes' : 'no'
+                    
+                      <TableCell key={index}>{summary[key].toLocaleString("en-IN")}</TableCell>
                   )
                 )}
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        <div className="text-center mt-8">
+          <Link href="/about">More</Link>
+        </div>
       </div>
     </div>
   )

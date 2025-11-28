@@ -20,6 +20,7 @@ import {
 
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export type AuditAnchorProps = {
   params: Promise<{
@@ -45,6 +46,21 @@ const Page = ({params}: AuditAnchorProps) => {
 
     fetchAnchorsData()
   }, [params, orderBy])
+
+  if(!anchorsData && !anchorsKeys) {
+    return (
+      <div className='my-12'>
+        <h1 className='text-xl font-bold mb-4'>Content Loading</h1>
+        <div className="flex items-center space-x-4">
+          <Skeleton className="h-12 w-12 rounded-full" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
+          </div>
+        </div>
+      </div>
+    )
+  }
   
   return (
     <div className='container grow flex flex-col'>
@@ -71,7 +87,7 @@ const Page = ({params}: AuditAnchorProps) => {
             {anchorsData && anchorsData.map((item, index) => (
               <TableRow key={index}>
                 {anchorsKeys && anchorsKeys.map((key, i) => (
-                  <TableCell key={key} className={`${i == 0 ? 'whitespace-normal' : ''}`}>{item[key]}</TableCell>
+                  <TableCell key={key} className={`${i == 0 ? 'whitespace-normal' : ''}`}>{item[key].toLocaleString("en-IN")}</TableCell>
                 ))}
               </TableRow>
             ))}
