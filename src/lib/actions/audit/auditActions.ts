@@ -3,42 +3,34 @@ import { summaryData } from '../../../../auditData';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
+// get Summary
 export async function getSummary(targets: string[]) {
   return summaryData.summary;
-  // const target = {target: targets}
-  // const response = await axios.post(API_BASE + '/api/v1/audit/summary', target)
-  // return response.data.summary
+  const target = {target: targets}
+  const response = await axios.post(API_BASE + '/api/v1/audit/summary', target)
+  return response.data.summary
 }
 
+// get metrics
 export async function getMetrics(targets: string[]) {
-  // return backlinks2;
+  return summaryData.metrics;
   const target = {target: targets}
   const response = await axios.post(API_BASE + '/api/v1/audit/metrics', target)
   return response.data.metrics
 }
 
-export async function getBacklinksMetrics(targets: string[]) {
-  // return backlinks2;
-  const target = {target: targets}
-  const response = await axios.post(API_BASE + '/api/v1/audit/backlinks-metrics', target)
-  return response.data.metrics
-}
-
-export async function getHistory(target: string, fromDate: string, toDate: string) {
-  // return backlinks2;
-  const body = {target, fromDate, toDate}
-  const response = await axios.post(API_BASE + '/api/v1/audit/history', body)
+// get anchors
+export const getAnchors = async (target:string, orderBy: string) => {
+  return summaryData.anchors;
+  const body = {target, orderBy}
+  const response = await axios.post(API_BASE + '/api/v1/audit/anchors', body)
   return response.data.new_lost_backlinks
-}
+};
 
-export const getAnchors = async (orderBy: string) => {
-  try {
-    // Replace with your actual API endpoint and logic
-    const response = await fetch(`/api/anchors?orderBy=${orderBy}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching anchors:', error);
-    throw error;
-  }
+// get refdomains
+export const getRefdomains = async (target:string, orderBy: string, limit:number) => {
+  return summaryData.refdomains;
+  const body = {target, orderBy, limit}
+  const response = await axios.post(API_BASE + '/api/v1/audit/refdomains', body)
+  return response.data.new_lost_backlinks
 };

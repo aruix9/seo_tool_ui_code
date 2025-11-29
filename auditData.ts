@@ -1570,5 +1570,1677 @@ export const summaryData= {
                 }
             ]
         }
+    ],
+    "metrics": [
+        {
+            "target": "www.zappos.com",
+            "backlinks": 9278733,
+            "refdomains": 57035,
+            "subnets": 14154,
+            "ips": 29018,
+            "nofollow_backlinks": 980392,
+            "dofollow_backlinks": 8298341,
+            "edu_backlinks": 1508,
+            "gov_backlinks": 254
+        },
+        {
+            "target": "www.nike.com",
+            "backlinks": 36238091,
+            "refdomains": 112690,
+            "subnets": 29654,
+            "ips": 64089,
+            "nofollow_backlinks": 2377358,
+            "dofollow_backlinks": 33860733,
+            "edu_backlinks": 5490,
+            "gov_backlinks": 74
+        },
+        {
+            "target": "www.adidas.com",
+            "backlinks": 5854069,
+            "refdomains": 52456,
+            "subnets": 16321,
+            "ips": 34680,
+            "nofollow_backlinks": -374482,
+            "dofollow_backlinks": 6228551,
+            "edu_backlinks": 20541,
+            "gov_backlinks": 21
+        },
+        {
+            "target": "www.underarmour.com",
+            "backlinks": 49881722,
+            "refdomains": 10837,
+            "subnets": 5074,
+            "ips": 9081,
+            "nofollow_backlinks": 18756,
+            "dofollow_backlinks": 49862966,
+            "edu_backlinks": 177,
+            "gov_backlinks": 11
+        },
+        {
+            "target": "www.asos.com",
+            "backlinks": 6506622,
+            "refdomains": 76989,
+            "subnets": 15678,
+            "ips": 33844,
+            "nofollow_backlinks": 1002674,
+            "dofollow_backlinks": 5503948,
+            "edu_backlinks": 380,
+            "gov_backlinks": 15
+        },
+        {
+            "target": "www.nordstrom.com",
+            "backlinks": 2292873,
+            "refdomains": 36040,
+            "subnets": 9624,
+            "ips": 22941,
+            "nofollow_backlinks": 755460,
+            "dofollow_backlinks": 1537413,
+            "edu_backlinks": 258,
+            "gov_backlinks": 35
+        }
+    ],
+    "anchors": [
+        {
+            "anchor": "Zappos",
+            "backlinks": 71383,
+            "refdomains": 10458,
+            "dofollow_backlinks": 64272,
+            "nofollow_backlinks": 7111,
+            "first_seen": "2014-01-01",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "",
+            "backlinks": 219829,
+            "refdomains": 3645,
+            "dofollow_backlinks": 200090,
+            "nofollow_backlinks": 19739,
+            "first_seen": "2014-01-26",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Zappos.com",
+            "backlinks": 965903,
+            "refdomains": 3091,
+            "dofollow_backlinks": 954163,
+            "nofollow_backlinks": 11740,
+            "first_seen": "2014-01-01",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "zappos.com",
+            "backlinks": 15119,
+            "refdomains": 1523,
+            "dofollow_backlinks": 11699,
+            "nofollow_backlinks": 3420,
+            "first_seen": "2014-01-26",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "here",
+            "backlinks": 6141,
+            "refdomains": 1126,
+            "dofollow_backlinks": 5668,
+            "nofollow_backlinks": 473,
+            "first_seen": "2014-01-01",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "www.zappos.com",
+            "backlinks": 61126,
+            "refdomains": 1118,
+            "dofollow_backlinks": 59928,
+            "nofollow_backlinks": 1198,
+            "first_seen": "2014-02-02",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "Zappos Shoes & Clothing",
+            "backlinks": 2253886,
+            "refdomains": 806,
+            "dofollow_backlinks": 2256190,
+            "nofollow_backlinks": -2304,
+            "first_seen": "2016-08-28",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "zappos",
+            "backlinks": 2919,
+            "refdomains": 661,
+            "dofollow_backlinks": 2811,
+            "nofollow_backlinks": 108,
+            "first_seen": "2014-01-01",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "these",
+            "backlinks": 2750,
+            "refdomains": 650,
+            "dofollow_backlinks": 2487,
+            "nofollow_backlinks": 263,
+            "first_seen": "2014-01-16",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "https://zappos.com",
+            "backlinks": 1489,
+            "refdomains": 514,
+            "dofollow_backlinks": 267,
+            "nofollow_backlinks": 1222,
+            "first_seen": "2020-11-27",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "http://www.zappos.com/",
+            "backlinks": 9364,
+            "refdomains": 443,
+            "dofollow_backlinks": 1425,
+            "nofollow_backlinks": 7939,
+            "first_seen": "2014-03-20",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "shoes",
+            "backlinks": 931,
+            "refdomains": 311,
+            "dofollow_backlinks": 770,
+            "nofollow_backlinks": 161,
+            "first_seen": "2015-01-24",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "http://www.zappos.com",
+            "backlinks": 2150,
+            "refdomains": 295,
+            "dofollow_backlinks": 1697,
+            "nofollow_backlinks": 453,
+            "first_seen": "2014-03-11",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "similar",
+            "backlinks": 988,
+            "refdomains": 270,
+            "dofollow_backlinks": 959,
+            "nofollow_backlinks": 29,
+            "first_seen": "2014-02-11",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "Shoes",
+            "backlinks": 947850,
+            "refdomains": 237,
+            "dofollow_backlinks": 944104,
+            "nofollow_backlinks": 3746,
+            "first_seen": "2015-04-02",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "https://www.zappos.com/",
+            "backlinks": 2250,
+            "refdomains": 227,
+            "dofollow_backlinks": 315,
+            "nofollow_backlinks": 1935,
+            "first_seen": "2018-08-23",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "boots",
+            "backlinks": 544,
+            "refdomains": 199,
+            "dofollow_backlinks": 457,
+            "nofollow_backlinks": 87,
+            "first_seen": "2014-02-26",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "TELEGRAM @SEO_ANOMALY - SEO BACKLINKS, BLACK-LINKS, TRAFFIC BOOST, LINK INDEXING",
+            "backlinks": 268,
+            "refdomains": 177,
+            "dofollow_backlinks": 0,
+            "nofollow_backlinks": 268,
+            "first_seen": "2025-05-17",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "ZAPPOS",
+            "backlinks": 499,
+            "refdomains": 171,
+            "dofollow_backlinks": 299,
+            "nofollow_backlinks": 200,
+            "first_seen": "2016-06-23",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Hope This Helps Justin Boots Boots Shoes",
+            "backlinks": 208,
+            "refdomains": 170,
+            "dofollow_backlinks": 208,
+            "nofollow_backlinks": 0,
+            "first_seen": "2020-11-17",
+            "last_visited": "2025-11-21"
+        },
+        {
+            "anchor": "TG @BHS_LINKS - BEST SEO LINKS - https://t.me/bhs_links",
+            "backlinks": 416,
+            "refdomains": 164,
+            "dofollow_backlinks": 0,
+            "nofollow_backlinks": 416,
+            "first_seen": "2025-07-07",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "blogs",
+            "backlinks": 187,
+            "refdomains": 164,
+            "dofollow_backlinks": 183,
+            "nofollow_backlinks": 4,
+            "first_seen": "2018-05-07",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "Tony Hsieh",
+            "backlinks": 429,
+            "refdomains": 163,
+            "dofollow_backlinks": 368,
+            "nofollow_backlinks": 61,
+            "first_seen": "2016-05-19",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "about",
+            "backlinks": 179,
+            "refdomains": 160,
+            "dofollow_backlinks": 178,
+            "nofollow_backlinks": 1,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "HERE",
+            "backlinks": 457,
+            "refdomains": 158,
+            "dofollow_backlinks": 431,
+            "nofollow_backlinks": 26,
+            "first_seen": "2016-02-19",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "couture",
+            "backlinks": 161,
+            "refdomains": 155,
+            "dofollow_backlinks": 159,
+            "nofollow_backlinks": 2,
+            "first_seen": "2018-06-29",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "this",
+            "backlinks": 845,
+            "refdomains": 154,
+            "dofollow_backlinks": 766,
+            "nofollow_backlinks": 79,
+            "first_seen": "2014-02-15",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "jobs",
+            "backlinks": 158,
+            "refdomains": 153,
+            "dofollow_backlinks": 157,
+            "nofollow_backlinks": 1,
+            "first_seen": "2022-04-16",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "ipad",
+            "backlinks": 151,
+            "refdomains": 146,
+            "dofollow_backlinks": 150,
+            "nofollow_backlinks": 1,
+            "first_seen": "2022-05-10",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "Sandals",
+            "backlinks": 947598,
+            "refdomains": 145,
+            "dofollow_backlinks": 944179,
+            "nofollow_backlinks": 3419,
+            "first_seen": "2016-09-12",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "privo",
+            "backlinks": 154,
+            "refdomains": 143,
+            "dofollow_backlinks": 149,
+            "nofollow_backlinks": 5,
+            "first_seen": "2022-05-10",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "tarynrose",
+            "backlinks": 148,
+            "refdomains": 142,
+            "dofollow_backlinks": 140,
+            "nofollow_backlinks": 8,
+            "first_seen": "2022-06-17",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Zappos Adaptive",
+            "backlinks": 217,
+            "refdomains": 140,
+            "dofollow_backlinks": 184,
+            "nofollow_backlinks": 33,
+            "first_seen": "2017-08-27",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "top-pins",
+            "backlinks": 143,
+            "refdomains": 140,
+            "dofollow_backlinks": 143,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-09-18",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "anything",
+            "backlinks": 143,
+            "refdomains": 139,
+            "dofollow_backlinks": 140,
+            "nofollow_backlinks": 3,
+            "first_seen": "2022-04-15",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Zappos Couture",
+            "backlinks": 1446,
+            "refdomains": 137,
+            "dofollow_backlinks": 1400,
+            "nofollow_backlinks": 46,
+            "first_seen": "2014-07-08",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "secure-www",
+            "backlinks": 137,
+            "refdomains": 135,
+            "dofollow_backlinks": 137,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-09-18",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "hatch",
+            "backlinks": 132,
+            "refdomains": 130,
+            "dofollow_backlinks": 132,
+            "nofollow_backlinks": 0,
+            "first_seen": "2022-06-18",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "wow",
+            "backlinks": 132,
+            "refdomains": 130,
+            "dofollow_backlinks": 132,
+            "nofollow_backlinks": 0,
+            "first_seen": "2022-06-18",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "shopping",
+            "backlinks": 136,
+            "refdomains": 128,
+            "dofollow_backlinks": 128,
+            "nofollow_backlinks": 8,
+            "first_seen": "2016-03-24",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "zn",
+            "backlinks": 124,
+            "refdomains": 122,
+            "dofollow_backlinks": 124,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Stuart Weitzman",
+            "backlinks": 461,
+            "refdomains": 118,
+            "dofollow_backlinks": 292,
+            "nofollow_backlinks": 169,
+            "first_seen": "2014-02-28",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Kate Spade",
+            "backlinks": 214,
+            "refdomains": 118,
+            "dofollow_backlinks": 194,
+            "nofollow_backlinks": 20,
+            "first_seen": "2016-02-18",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "twitter",
+            "backlinks": 120,
+            "refdomains": 116,
+            "dofollow_backlinks": 119,
+            "nofollow_backlinks": 1,
+            "first_seen": "2020-10-10",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "these shoes",
+            "backlinks": 279,
+            "refdomains": 115,
+            "dofollow_backlinks": 227,
+            "nofollow_backlinks": 52,
+            "first_seen": "2016-10-01",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "Shoe Size Conversion | Zappos.com",
+            "backlinks": 249,
+            "refdomains": 113,
+            "dofollow_backlinks": 238,
+            "nofollow_backlinks": 11,
+            "first_seen": "2017-11-14",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "luxury",
+            "backlinks": 114,
+            "refdomains": 112,
+            "dofollow_backlinks": 114,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Steve Madden",
+            "backlinks": 450,
+            "refdomains": 110,
+            "dofollow_backlinks": 164,
+            "nofollow_backlinks": 286,
+            "first_seen": "2014-02-13",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "m",
+            "backlinks": 219,
+            "refdomains": 109,
+            "dofollow_backlinks": 217,
+            "nofollow_backlinks": 2,
+            "first_seen": "2022-04-16",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "These",
+            "backlinks": 249,
+            "refdomains": 104,
+            "dofollow_backlinks": 202,
+            "nofollow_backlinks": 47,
+            "first_seen": "2016-10-09",
+            "last_visited": "2025-11-23"
+        },
+        {
+            "anchor": "https://www.zappos.com",
+            "backlinks": 253,
+            "refdomains": 102,
+            "dofollow_backlinks": 158,
+            "nofollow_backlinks": 95,
+            "first_seen": "2018-09-10",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "sandals",
+            "backlinks": 242,
+            "refdomains": 102,
+            "dofollow_backlinks": 195,
+            "nofollow_backlinks": 47,
+            "first_seen": "2016-04-13",
+            "last_visited": "2025-11-27"
+        },
+        {
+            "anchor": "2",
+            "backlinks": 910,
+            "refdomains": 98,
+            "dofollow_backlinks": 895,
+            "nofollow_backlinks": 15,
+            "first_seen": "2016-06-22",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "Jeans",
+            "backlinks": 947104,
+            "refdomains": 96,
+            "dofollow_backlinks": 943677,
+            "nofollow_backlinks": 3427,
+            "first_seen": "2018-04-05",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "Converse",
+            "backlinks": 237,
+            "refdomains": 95,
+            "dofollow_backlinks": 221,
+            "nofollow_backlinks": 16,
+            "first_seen": "2015-09-30",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "Zappos.com - Powered by Service",
+            "backlinks": 646,
+            "refdomains": 95,
+            "dofollow_backlinks": 645,
+            "nofollow_backlinks": 1,
+            "first_seen": "2016-09-01",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Similar",
+            "backlinks": 264,
+            "refdomains": 95,
+            "dofollow_backlinks": 255,
+            "nofollow_backlinks": 9,
+            "first_seen": "2016-06-22",
+            "last_visited": "2025-11-27"
+        },
+        {
+            "anchor": "Here",
+            "backlinks": 529,
+            "refdomains": 94,
+            "dofollow_backlinks": 503,
+            "nofollow_backlinks": 26,
+            "first_seen": "2017-05-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "couture.zappos.com",
+            "backlinks": 8915,
+            "refdomains": 93,
+            "dofollow_backlinks": 8876,
+            "nofollow_backlinks": 39,
+            "first_seen": "2016-04-13",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "Zappo's",
+            "backlinks": 338,
+            "refdomains": 93,
+            "dofollow_backlinks": 314,
+            "nofollow_backlinks": 24,
+            "first_seen": "2014-06-26",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Sam Edelman",
+            "backlinks": 197,
+            "refdomains": 90,
+            "dofollow_backlinks": 176,
+            "nofollow_backlinks": 21,
+            "first_seen": "2016-06-24",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "Shop Now",
+            "backlinks": 341487,
+            "refdomains": 90,
+            "dofollow_backlinks": 590,
+            "nofollow_backlinks": 340897,
+            "first_seen": "2018-11-16",
+            "last_visited": "2025-11-27"
+        },
+        {
+            "anchor": "Source",
+            "backlinks": 191,
+            "refdomains": 88,
+            "dofollow_backlinks": 166,
+            "nofollow_backlinks": 25,
+            "first_seen": "2016-02-19",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "844. zappos.com",
+            "backlinks": 132,
+            "refdomains": 87,
+            "dofollow_backlinks": 132,
+            "nofollow_backlinks": 0,
+            "first_seen": "2019-11-27",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "Clarks",
+            "backlinks": 331,
+            "refdomains": 87,
+            "dofollow_backlinks": 166,
+            "nofollow_backlinks": 165,
+            "first_seen": "2017-09-06",
+            "last_visited": "2025-11-26"
+        },
+        {
+            "anchor": "Boots",
+            "backlinks": 346,
+            "refdomains": 86,
+            "dofollow_backlinks": 239,
+            "nofollow_backlinks": 107,
+            "first_seen": "2016-07-20",
+            "last_visited": "2025-11-25"
+        },
+        {
+            "anchor": "labs",
+            "backlinks": 163,
+            "refdomains": 85,
+            "dofollow_backlinks": 163,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "3",
+            "backlinks": 835,
+            "refdomains": 83,
+            "dofollow_backlinks": 825,
+            "nofollow_backlinks": 10,
+            "first_seen": "2016-06-22",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "Zappo’s",
+            "backlinks": 172,
+            "refdomains": 83,
+            "dofollow_backlinks": 167,
+            "nofollow_backlinks": 5,
+            "first_seen": "2017-03-07",
+            "last_visited": "2025-11-27"
+        },
+        {
+            "anchor": "glance",
+            "backlinks": 160,
+            "refdomains": 81,
+            "dofollow_backlinks": 160,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-10-11",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "zeta",
+            "backlinks": 81,
+            "refdomains": 81,
+            "dofollow_backlinks": 81,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-10-02",
+            "last_visited": "2025-11-19"
+        },
+        {
+            "anchor": "vip",
+            "backlinks": 81,
+            "refdomains": 80,
+            "dofollow_backlinks": 75,
+            "nofollow_backlinks": 6,
+            "first_seen": "2022-04-14",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Zappos Luxury",
+            "backlinks": 112132,
+            "refdomains": 80,
+            "dofollow_backlinks": 113397,
+            "nofollow_backlinks": -1265,
+            "first_seen": "2018-04-05",
+            "last_visited": "2025-11-18"
+        },
+        {
+            "anchor": "askzappos",
+            "backlinks": 79,
+            "refdomains": 79,
+            "dofollow_backlinks": 79,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-10-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "es",
+            "backlinks": 82,
+            "refdomains": 79,
+            "dofollow_backlinks": 79,
+            "nofollow_backlinks": 3,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "auth",
+            "backlinks": 79,
+            "refdomains": 79,
+            "dofollow_backlinks": 78,
+            "nofollow_backlinks": 1,
+            "first_seen": "2022-05-11",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "1",
+            "backlinks": 478,
+            "refdomains": 78,
+            "dofollow_backlinks": 458,
+            "nofollow_backlinks": 20,
+            "first_seen": "2016-12-20",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "BLACK SEO LINKS, BACKLINKS, MASS BACKLINKING – TELEGRAM @SEO_LINKK",
+            "backlinks": 90,
+            "refdomains": 77,
+            "dofollow_backlinks": 1,
+            "nofollow_backlinks": 89,
+            "first_seen": "2025-07-18",
+            "last_visited": "2025-11-27"
+        },
+        {
+            "anchor": "amazon",
+            "backlinks": 79,
+            "refdomains": 77,
+            "dofollow_backlinks": 76,
+            "nofollow_backlinks": 3,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Zappos.",
+            "backlinks": 150,
+            "refdomains": 76,
+            "dofollow_backlinks": 135,
+            "nofollow_backlinks": 15,
+            "first_seen": "2016-12-08",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Dresses",
+            "backlinks": 947082,
+            "refdomains": 76,
+            "dofollow_backlinks": 943661,
+            "nofollow_backlinks": 3421,
+            "first_seen": "2018-04-05",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "Frye",
+            "backlinks": 235,
+            "refdomains": 75,
+            "dofollow_backlinks": 172,
+            "nofollow_backlinks": 63,
+            "first_seen": "2014-08-02",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "4",
+            "backlinks": 471,
+            "refdomains": 75,
+            "dofollow_backlinks": 467,
+            "nofollow_backlinks": 4,
+            "first_seen": "2014-02-03",
+            "last_visited": "2025-11-23"
+        },
+        {
+            "anchor": "expo",
+            "backlinks": 75,
+            "refdomains": 74,
+            "dofollow_backlinks": 75,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-13"
+        },
+        {
+            "anchor": "developer",
+            "backlinks": 74,
+            "refdomains": 74,
+            "dofollow_backlinks": 74,
+            "nofollow_backlinks": 0,
+            "first_seen": "2022-04-17",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Nike Kids Air Max 97 Big Kid Zappos",
+            "backlinks": 141,
+            "refdomains": 71,
+            "dofollow_backlinks": 141,
+            "nofollow_backlinks": 0,
+            "first_seen": "2025-08-30",
+            "last_visited": "2025-11-20"
+        },
+        {
+            "anchor": "Visit Website",
+            "backlinks": 107,
+            "refdomains": 70,
+            "dofollow_backlinks": 70,
+            "nofollow_backlinks": 37,
+            "first_seen": "2019-06-13",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "pinpointing",
+            "backlinks": 71,
+            "refdomains": 70,
+            "dofollow_backlinks": 71,
+            "nofollow_backlinks": 0,
+            "first_seen": "2021-07-02",
+            "last_visited": "2025-11-16"
+        },
+        {
+            "anchor": "this one",
+            "backlinks": 228,
+            "refdomains": 69,
+            "dofollow_backlinks": 213,
+            "nofollow_backlinks": 15,
+            "first_seen": "2017-04-08",
+            "last_visited": "2025-11-29"
+        },
+        {
+            "anchor": "www.Zappos.com",
+            "backlinks": 169,
+            "refdomains": 67,
+            "dofollow_backlinks": 115,
+            "nofollow_backlinks": 54,
+            "first_seen": "2014-02-04",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "sneakers",
+            "backlinks": 140,
+            "refdomains": 66,
+            "dofollow_backlinks": 108,
+            "nofollow_backlinks": 32,
+            "first_seen": "2016-04-28",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "5",
+            "backlinks": 358,
+            "refdomains": 66,
+            "dofollow_backlinks": 347,
+            "nofollow_backlinks": 11,
+            "first_seen": "2016-06-22",
+            "last_visited": "2025-11-21"
+        },
+        {
+            "anchor": "(Click to see more images)",
+            "backlinks": 6026,
+            "refdomains": 66,
+            "dofollow_backlinks": 0,
+            "nofollow_backlinks": 6026,
+            "first_seen": "2018-06-09",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Michael Kors",
+            "backlinks": 230,
+            "refdomains": 66,
+            "dofollow_backlinks": 188,
+            "nofollow_backlinks": 42,
+            "first_seen": "2017-07-21",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "Zappos,",
+            "backlinks": 158,
+            "refdomains": 63,
+            "dofollow_backlinks": 150,
+            "nofollow_backlinks": 8,
+            "first_seen": "2016-12-27",
+            "last_visited": "2025-11-24"
+        },
+        {
+            "anchor": "via",
+            "backlinks": 243,
+            "refdomains": 61,
+            "dofollow_backlinks": 242,
+            "nofollow_backlinks": 1,
+            "first_seen": "2016-09-06",
+            "last_visited": "2025-11-22"
+        },
+        {
+            "anchor": "Zappos for Good",
+            "backlinks": 154,
+            "refdomains": 60,
+            "dofollow_backlinks": 137,
+            "nofollow_backlinks": 17,
+            "first_seen": "2018-03-21",
+            "last_visited": "2025-11-28"
+        },
+        {
+            "anchor": "source",
+            "backlinks": 146,
+            "refdomains": 59,
+            "dofollow_backlinks": 141,
+            "nofollow_backlinks": 5,
+            "first_seen": "2016-07-21",
+            "last_visited": "2025-11-18"
+        },
+        {
+            "anchor": "Shoe Size Conversion Zappos",
+            "backlinks": 98,
+            "refdomains": 59,
+            "dofollow_backlinks": 98,
+            "nofollow_backlinks": 0,
+            "first_seen": "2025-08-30",
+            "last_visited": "2025-10-29"
+        },
+        {
+            "anchor": "Nine West",
+            "backlinks": 225,
+            "refdomains": 58,
+            "dofollow_backlinks": 118,
+            "nofollow_backlinks": 107,
+            "first_seen": "2016-05-23",
+            "last_visited": "2025-11-28"
+        }
+    ],
+    "refdomains": [
+        {
+            "refdomain": "forumonti.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 8,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "vuink.com",
+            "backlinks": 3,
+            "dofollow_backlinks": 3,
+            "domain_inlink_rank": 47,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "tg.martech.zone",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 88,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "centredge.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 28,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "pentoz.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 27,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "sv.martech.zone",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 88,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "pl.martech.zone",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 88,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "newerlinks.com",
+            "backlinks": 3,
+            "dofollow_backlinks": 3,
+            "domain_inlink_rank": 37,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "contenthurricane.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 35,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "americarga.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 2,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "no.martech.zone",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 88,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "readingmytealeaves.us",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "yi.martech.zone",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 88,
+            "first_seen": "2025-11-29"
+        },
+        {
+            "refdomain": "successknocks.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 49,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "final-promotion.store",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "explorenationalparks.store",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "www.whole-codes.com",
+            "backlinks": 4,
+            "dofollow_backlinks": 4,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "www.coupico.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 4,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "imunofer.com.br",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "everpetite.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 6,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "nauanngon2019.blogspot.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "www.wordwriteagency.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 45,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "topratedprime.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "lizspaperloft.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 50,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "isxrkkst.top",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "toppicksnavigator.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "redo.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 4,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "www.nuovobasketfeltre.it",
+            "backlinks": 3,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 4,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "platformchronicles.substack.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 97,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "yelogs.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "www.lifeshowofgirl.com",
+            "backlinks": 3,
+            "dofollow_backlinks": 3,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "www.ailincheap.cheap",
+            "backlinks": 16,
+            "dofollow_backlinks": 16,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "verdantvows.com",
+            "backlinks": 19,
+            "dofollow_backlinks": 15,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "vvkbwhqe.top",
+            "backlinks": 4,
+            "dofollow_backlinks": 4,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "lmk.today",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 13,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "wealth-radar.live",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "www.shihuicoupon.coupons",
+            "backlinks": 22,
+            "dofollow_backlinks": 22,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "bricxlabs.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 60,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "sales.globbing.kz",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 3,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "aircall.me",
+            "backlinks": 3,
+            "dofollow_backlinks": 3,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-28"
+        },
+        {
+            "refdomain": "j-padalecki.org",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 22,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.code-savings.com",
+            "backlinks": 4,
+            "dofollow_backlinks": 4,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "metamagic.top",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 53,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "mediaconnectgazette.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "bhs-links-dionysus.space",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 16,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "ja.floraloasis.art",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 2,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.gauthmath.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 71,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "naturlicher-weg.today",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "psbiosguide.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 2,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.bobojicoupon.coupons",
+            "backlinks": 9,
+            "dofollow_backlinks": 9,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "jimisaherb.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 20,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "kellyintheciy.com",
+            "backlinks": 40,
+            "dofollow_backlinks": 32,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.seventech.ai",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 50,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.j-padalecki.org",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 22,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "athens.bhs-links-hades.site",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 16,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "piclumenai.art",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.jonvanhala.com",
+            "backlinks": 4,
+            "dofollow_backlinks": 4,
+            "domain_inlink_rank": 13,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.turtleloveco.com",
+            "backlinks": 4,
+            "dofollow_backlinks": 4,
+            "domain_inlink_rank": 38,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "entertainmentnow.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 57,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "share.hypelist.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 43,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "www.pdaydeals.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "gritout1.shop",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "caucasianculture.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "rxmental.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 37,
+            "first_seen": "2025-11-27"
+        },
+        {
+            "refdomain": "staging.information-age.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 89,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "factorizalo.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "nuggetos.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "media.bormm.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "infonews.ca",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 42,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "yosemitenews.info",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 50,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "www.zoechip.shop",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "nudgenow.framer.website",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 6,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "uonyuouo.buzz",
+            "backlinks": 15,
+            "dofollow_backlinks": 14,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "www.lumenop.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "vault-elevate.live",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "invest-glide.live",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "underthepalmleaves.com",
+            "backlinks": 7,
+            "dofollow_backlinks": 7,
+            "domain_inlink_rank": 33,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "auditstudent.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 6,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "beverlyunfolded.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "www.spocket.co",
+            "backlinks": 3,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 90,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "notdeadyetstyle.us",
+            "backlinks": 3,
+            "dofollow_backlinks": 3,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "forum.pickup.ru",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 42,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "www.iredpage.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 20,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "bhs-links-persephone.online",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 16,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "newlifetrick.site",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "helenesinbetween.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "onlinecoursesdigital.com",
+            "backlinks": 2,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "superblueottertoys.shop",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "msqtyeqj.top",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "hotterthanever.substack.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 97,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "capital-balance.live",
+            "backlinks": 2,
+            "dofollow_backlinks": 2,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "dexter84.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-26"
+        },
+        {
+            "refdomain": "chilfeed.site",
+            "backlinks": 9,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-25"
+        },
+        {
+            "refdomain": "starbucksbear.coffee",
+            "backlinks": 7,
+            "dofollow_backlinks": 7,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-25"
+        },
+        {
+            "refdomain": "athens.bhs-links-uranus.website",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 16,
+            "first_seen": "2025-11-25"
+        },
+        {
+            "refdomain": "7adramout.net",
+            "backlinks": 1,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 59,
+            "first_seen": "2025-11-25"
+        },
+        {
+            "refdomain": "newmedia.rickbulow.com",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 30,
+            "first_seen": "2025-11-25"
+        },
+        {
+            "refdomain": "allviti.ru",
+            "backlinks": 1,
+            "dofollow_backlinks": 1,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-25"
+        },
+        {
+            "refdomain": "shoppingdealspot.com",
+            "backlinks": 3,
+            "dofollow_backlinks": 0,
+            "domain_inlink_rank": 0,
+            "first_seen": "2025-11-25"
+        },
+        {
+            "refdomain": "www.einatdotanzach.com",
+            "backlinks": 7,
+            "dofollow_backlinks": 7,
+            "domain_inlink_rank": 1,
+            "first_seen": "2025-11-25"
+        }
     ]
 }

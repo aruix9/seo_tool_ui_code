@@ -1,3 +1,29 @@
+export const displayCard = ["backlinks", "anchors", "refdomains", "inlink_rank"]
+export const summaryList = ["backlinks", "refdomains", "dofollow_backlinks", "inlink_rank"]
+export const allSummaryList = [
+    "target",
+    "backlinks",
+    "refdomains",
+    "subnets",
+    "ips",
+    "nofollow_backlinks",
+    "dofollow_backlinks",
+    "edu_backlinks",
+    "gov_backlinks",
+    "inlink_rank",
+    "domain_inlink_rank",
+    "from_home_page_backlinks",
+    "dofollow_from_home_page_backlinks",
+    "text_backlinks",
+    "dofollow_refdomains",
+    "from_home_page_refdomains",
+    "edu_refdomains",
+    "gov_refdomains",
+    "anchors",
+    "dofollow_anchors",
+    "pages_with_backlinks"
+]
+
 export const data = {
   primaryNavigation: [
     // {
