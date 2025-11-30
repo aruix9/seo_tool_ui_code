@@ -2,11 +2,11 @@ import { Input } from "../../ui/input";
 import { FormControl, FormItem, FormLabel, FormMessage } from "../../ui/form";
 import { FormFieldProps } from "../../../../types/forms";
 
-const NameField = ({
+const NumberField = ({
   field,
   error,
-  placeholder = "Enter full name",
-  label = "Full name",
+  placeholder,
+  label,
   className,
 }: FormFieldProps) => {
   return (
@@ -14,7 +14,7 @@ const NameField = ({
       <FormLabel>{label}</FormLabel>
       <FormControl>
         <Input
-          type="text"
+          type="number"
           placeholder={placeholder}
           {...field}
           className="bg-white h-10"
@@ -27,4 +27,4 @@ const NameField = ({
   );
 };
 
-export default NameField;
+export default NumberField;

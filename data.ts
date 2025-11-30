@@ -26,13 +26,13 @@ export const allSummaryList = [
 
 export const data = {
   primaryNavigation: [
-    // {
-    //   title: 'Audit',
-    //   slug: '/audit',
-    // },
     {
-      title: 'Orders',
-      slug: '/orders',
+      title: 'Audit',
+      slug: '/audit',
+    },
+    {
+      title: 'Keywords',
+      slug: '/keywords',
     },
     {
       title: 'Dashboard',
