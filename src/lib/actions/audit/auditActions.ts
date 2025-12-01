@@ -5,7 +5,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
 // get Summary
 export async function getSummary(targets: string[]) {
-  return summaryData.summary;
+  // return summaryData.summary;
   const target = { target: targets };
   const response = await axios.post(API_BASE + "/api/v1/audit/summary", target);
   return response.data.summary;
@@ -13,7 +13,7 @@ export async function getSummary(targets: string[]) {
 
 // get metrics
 export async function getMetrics(targets: string[]) {
-  return summaryData.metrics;
+  // return summaryData.metrics;
   const target = { target: targets };
   const response = await axios.post(API_BASE + "/api/v1/audit/metrics", target);
   return response.data.metrics;
@@ -21,7 +21,7 @@ export async function getMetrics(targets: string[]) {
 
 // get anchors
 export const getAnchors = async (target: string, orderBy: string) => {
-  return summaryData.anchors;
+  // return summaryData.anchors;
   const body = { target, orderBy };
   const response = await axios.post(API_BASE + "/api/v1/audit/anchors", body);
   return response.data.new_lost_backlinks;
@@ -33,7 +33,7 @@ export const getRefdomains = async (
   orderBy: string,
   limit: number
 ) => {
-  return summaryData.refdomains;
+  // return summaryData.refdomains;
   const body = { target, orderBy, limit };
   const response = await axios.post(
     API_BASE + "/api/v1/audit/refdomains",
@@ -44,7 +44,7 @@ export const getRefdomains = async (
 
 // Similar keywords
 export const getSimilarKeywordData = async (body: any) => {
-  return summaryData.similarKeywordData;
+  // return summaryData.similarKeywordData;
   const response = await axios.post(
     API_BASE + "/api/v1/keywords/similar",
     body
@@ -54,7 +54,7 @@ export const getSimilarKeywordData = async (body: any) => {
 
 // Related keywords
 export const getRelatedKeywordData = async (body: any) => {
-  return summaryData.relatedKeywordData;
+  // return summaryData.relatedKeywordData;
   const response = await axios.post(
     API_BASE + "/api/v1/keywords/related",
     body
@@ -64,7 +64,7 @@ export const getRelatedKeywordData = async (body: any) => {
 
 // Questions keywords
 export const getQuestionsKeywordData = async (body: any) => {
-  return summaryData.questionsKeywordData;
+  // return summaryData.questionsKeywordData;
   const response = await axios.post(
     API_BASE + "/api/v1/keywords/questions",
     body
