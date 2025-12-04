@@ -2,7 +2,7 @@
 
 import Breadcrumbs from "@/components/shared/breadcrumb";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Filters from "./Filters";
 import KeywordContent from "./KeywordContent";
 
@@ -18,19 +18,21 @@ const AiOverviewPage = () => {
   };
 
   return (
-    <div className="container grow flex flex-col">
-      <Breadcrumbs
-        list={[
-          { name: "Home", link: "/" },
-          { name: "Ai", link: "/ai" },
-          { name: "Overview", link: "" },
-        ]}
-      />
-      <h1 className="my-8 font-bold text-xl">Ai Keywords by Target</h1>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="container grow flex flex-col">
+        <Breadcrumbs
+          list={[
+            { name: "Home", link: "/" },
+            { name: "Ai", link: "/ai" },
+            { name: "Overview", link: "" },
+          ]}
+        />
+        <h1 className="my-8 font-bold text-xl">Ai Keywords by Target</h1>
 
-      <Filters onFiltered={handleFilteredData} />
-      <KeywordContent data={aiOverviewData} isLoading={isLoading} />
-    </div>
+        <Filters onFiltered={handleFilteredData} />
+        <KeywordContent data={aiOverviewData} isLoading={isLoading} />
+      </div>
+    </Suspense>
   );
 };
 
