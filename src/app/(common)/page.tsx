@@ -1,4 +1,4 @@
-import AuditPage from "../audit/AuditPage";
+import AuditPage from "../(tool)/audit/AuditPage";
 
 const HomePage = () => {
   return <AuditPage />;

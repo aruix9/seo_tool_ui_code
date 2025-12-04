@@ -1,0 +1,36 @@
+"use client";
+
+import Breadcrumbs from "@/components/shared/breadcrumb";
+
+import Filters from "./Filters";
+import { useState } from "react";
+import KeywordContent from "./KeywordContent";
+
+const RelatedKeywordPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [keywordData, setKeywordData] = useState(null);
+
+  const handleFilteredData = async (data: any) => {
+    setIsLoading(true);
+    const response = await data;
+    setKeywordData(response);
+    setIsLoading(false);
+  };
+
+  return (
+    <div className="container grow flex flex-col mb-16">
+      <Breadcrumbs
+        list={[
+          { name: "Home", link: "/" },
+          { name: "Keywords", link: "/keywords" },
+          { name: "Related", link: "" },
+        ]}
+      />
+      <h1 className="my-8 font-bold text-xl">Related Keywords</h1>
+      <Filters onFiltered={handleFilteredData} />
+      <KeywordContent data={keywordData} isLoading={isLoading} />
+    </div>
+  );
+};
+
+export default RelatedKeywordPage;

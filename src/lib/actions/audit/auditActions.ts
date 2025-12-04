@@ -81,3 +81,50 @@ export const getLongtailKeywordData = async (body: any) => {
   );
   return response.data;
 };
+
+// ai overview
+export const getAiOverviewData = async (body: any) => {
+  // return summaryData.longtailKeywordData;
+  const response = await axios.post(API_BASE + "/api/v1/aio/overview", body);
+  return response.data;
+};
+
+// ai discover
+export const getAiDiscoverData = async (body: any) => {
+  // return summaryData.longtailKeywordData;
+  const response = await axios.post(
+    API_BASE + "/api/v1/aio/discover-brand",
+    body
+  );
+  return response.data;
+};
+
+// ai keywords
+export const getAiKeywordsData = async (body: any) => {
+  // return summaryData.longtailKeywordData;
+  const response = await axios.post(
+    API_BASE + "/api/v1/aio/keywords-by-target",
+    body
+  );
+  return response.data;
+};
+
+// ai keywords Target
+export const getAiKeywordsTargetData = async (body: any) => {
+  // return summaryData.longtailKeywordData;
+  const response = await axios.post(
+    API_BASE + "/api/v1/aio/keywords-by-target",
+    body
+  );
+  return response.data;
+};
+
+// ai keywords Brand
+export const getAiKeywordsBrandData = async (body: any) => {
+  // return summaryData.longtailKeywordData;
+  const response = await axios.post(
+    API_BASE + "/api/v1/aio/keywords-by-brand",
+    body
+  );
+  return response.data;
+};
