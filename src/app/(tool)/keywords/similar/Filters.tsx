@@ -8,11 +8,9 @@ import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import TextField from "@/components/shared/form/textField";
-import NumberField from "@/components/shared/form/numberField";
-import SelectField from "@/components/shared/form/selectField";
-import RadioBtnFields from "@/components/shared/form/radioFields";
-import { getSimilarKeywordData } from "@/lib/actions/audit/auditActions";
 import { filterDefaultValues, filterSchemaObject } from "../SchemaFilters";
+import SelectField from "@/components/shared/form/selectField";
+import { getSimilarKeywordData } from "@/lib/actions/audit/auditActions";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 

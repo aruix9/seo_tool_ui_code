@@ -1,25 +1,40 @@
+"use client";
+
 import Breadcrumbs from "@/components/shared/breadcrumb";
 import Link from "next/link";
+import React, { useState } from "react";
+import Filters from "./Filters";
+import KeywordContent from "./KeywordContent";
 
-const AiDiscoverPage = () => {
+const AiOverviewPage = () => {
+  // const [aiOverviewData, setAiOverviewData] = useState(null);
+
+  const handleFilteredData = (data: any) => {
+    // setAiOverviewData(data);
+    console.log(data);
+  };
+
   return (
     <div className="container grow flex flex-col">
       <Breadcrumbs
         list={[
           { name: "Home", link: "/" },
           { name: "Ai", link: "/ai" },
-          { name: "Discover", link: "" },
+          { name: "Overview", link: "" },
         ]}
       />
-      <h1 className="my-8 font-bold text-xl">Ai Discover</h1>
+      <h1 className="my-8 font-bold text-xl">Ai Overview</h1>
 
-      <div className="flex gap-6">
+      <div className="flex gap-6 mb-8">
         <Link href="overview">AI Overview</Link>
         <Link href="discover">AI Discover</Link>
         <Link href="keywords">AI keywords</Link>
       </div>
+
+      <Filters onFiltered={handleFilteredData} />
+      {/* <KeywordContent data={aiOverviewData} /> */}
     </div>
   );
 };
 
-export default AiDiscoverPage;
+export default AiOverviewPage;

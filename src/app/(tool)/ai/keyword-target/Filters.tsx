@@ -3,14 +3,16 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 
-import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Form } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import TextField from "@/components/shared/form/textField";
 import { filterDefaultValues, filterSchemaObject } from "./SchemaFilters";
 import SelectField from "@/components/shared/form/selectField";
-import { Button } from "@/components/ui/button";
-import { getAiOverviewData } from "@/lib/actions/audit/auditActions";
+import { getAiKeywordsByTargetData } from "@/lib/actions/audit/auditActions";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 type FilterFormProps = {
   onFiltered: (data: any) => void;
@@ -22,25 +24,41 @@ const scopeList = [
   { value: "url", text: "URL" },
 ];
 
-const engineList = [
-  { value: "ai-overview", text: "AI Overview" },
-  { value: "chatgpt", text: "ChatGPT" },
-  { value: "perplexity", text: "Perplexity" },
-  { value: "gemini", text: "Gemini" },
-  { value: "ai-mode", text: "AI Mode" },
+const sortList = [
+  { value: "volume", text: "Volume" },
+  { value: "type", text: "Type" },
+  { value: "snippet_length", text: "Snippet Length" },
 ];
 
 const filterSchema = z.object(filterSchemaObject);
 
 const Filters = ({ onFiltered }: FilterFormProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const getData = async (data) => {
+    return await getAiKeywordsByTargetData(data);
+  };
+
+  useEffect(() => {
+    const paramsObj = Object.fromEntries(searchParams.entries());
+
+    if (!paramsObj.target) return;
+
+    const fetchData = async () => {
+      onFiltered(getData(paramsObj));
+    };
+
+    fetchData();
+  }, [searchParams]);
+
   const filterForm = useForm<z.infer<typeof filterSchema>>({
     resolver: zodResolver(filterSchema),
     defaultValues: filterDefaultValues,
   });
 
   const onSubmit = async (data: z.infer<typeof filterSchema>) => {
-    const aiOverviewResponse = await getAiOverviewData(data);
-    onFiltered(aiOverviewResponse);
+    router.push(`keyword-target?${new URLSearchParams(data).toString()}`);
   };
 
   return (
@@ -59,7 +77,7 @@ const Filters = ({ onFiltered }: FilterFormProps) => {
               error={filterForm.formState.errors?.target}
             />
             <TextField
-              label="Source"
+              label="Source (country)"
               className="grow"
               placeholder="Eg: us"
               field={filterForm.register("source")}
@@ -76,14 +94,14 @@ const Filters = ({ onFiltered }: FilterFormProps) => {
               error={filterForm.formState.errors?.scope}
             />
             <SelectField
-              label="Engine"
-              name="engine"
+              label="Sort"
+              name="sort"
               className="grow"
-              defaultValue="ai-overview"
-              selectList={engineList}
+              defaultValue="volume"
+              selectList={sortList}
               control={filterForm.control}
-              field={filterForm.register("engine")}
-              error={filterForm.formState.errors?.engine}
+              field={filterForm.register("sort")}
+              error={filterForm.formState.errors?.sort}
             />
             <div className="grow self-end">
               <Button

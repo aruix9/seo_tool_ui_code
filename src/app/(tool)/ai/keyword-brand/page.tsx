@@ -7,11 +7,14 @@ import Filters from "./Filters";
 import KeywordContent from "./KeywordContent";
 
 const AiOverviewPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [aiOverviewData, setAiOverviewData] = useState(null);
 
-  const handleFilteredData = (data: any) => {
-    setAiOverviewData(data);
-    console.log(data);
+  const handleFilteredData = async (data: any) => {
+    setIsLoading(true);
+    const response = await data;
+    setAiOverviewData(response);
+    setIsLoading(false);
   };
 
   return (
@@ -23,16 +26,10 @@ const AiOverviewPage = () => {
           { name: "Overview", link: "" },
         ]}
       />
-      <h1 className="my-8 font-bold text-xl">Ai Overview</h1>
-
-      <div className="flex gap-6 mb-8">
-        <Link href="overview">AI Overview</Link>
-        <Link href="discover">AI Discover</Link>
-        <Link href="keywords">AI keywords</Link>
-      </div>
+      <h1 className="my-8 font-bold text-xl">Ai Keywords by Brand</h1>
 
       <Filters onFiltered={handleFilteredData} />
-      <KeywordContent data={aiOverviewData} />
+      <KeywordContent data={aiOverviewData} isLoading={isLoading} />
     </div>
   );
 };

@@ -12,9 +12,10 @@ const AiPage = () => {
       />
       <h1 className="my-8 font-bold text-xl">Ai Summary</h1>
       <div className="flex gap-6">
-        <Link href="overview">AI Overview</Link>
-        <Link href="discover">AI Discover</Link>
-        <Link href="keywords">AI keywords</Link>
+        <Link href="/ai/overview">AI Overview</Link>
+        {/* <Link href="/ai/discover">AI Discover</Link> */}
+        <Link href="/ai/keyword-target">AI Keywords by Target</Link>
+        <Link href="/ai/keyword-brand">AI Keywords by Brand</Link>
       </div>
     </div>
   );

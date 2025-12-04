@@ -4,12 +4,12 @@ export const filterSchemaObject = {
   scope: z.string(),
   target: z.string(),
   source: z.string(),
-  engine: z.string(),
+  // engine: z.string(),
 };
 
 export const filterDefaultValues = {
   scope: "domain",
-  target: "flexiloans.com",
+  target: "",
   source: "us",
-  engine: "ai-overview",
+  // engine: "ai-overview",
 };

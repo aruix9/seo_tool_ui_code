@@ -85,46 +85,52 @@ export const getLongtailKeywordData = async (body: any) => {
 // ai overview
 export const getAiOverviewData = async (body: any) => {
   // return summaryData.longtailKeywordData;
-  const response = await axios.post(API_BASE + "/api/v1/aio/overview", body);
-  return response.data;
+  try {
+    const response = await axios.post(API_BASE + "/api/v1/ai/overview", body);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // ai discover
 export const getAiDiscoverData = async (body: any) => {
   // return summaryData.longtailKeywordData;
-  const response = await axios.post(
-    API_BASE + "/api/v1/aio/discover-brand",
-    body
-  );
-  return response.data;
+  try {
+    const response = await axios.post(
+      API_BASE + "/api/v1/ai/discover-brand",
+      body
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // ai keywords
-export const getAiKeywordsData = async (body: any) => {
+export const getAiKeywordsByTargetData = async (body: any) => {
   // return summaryData.longtailKeywordData;
-  const response = await axios.post(
-    API_BASE + "/api/v1/aio/keywords-by-target",
-    body
-  );
-  return response.data;
+  try {
+    const response = await axios.post(
+      API_BASE + "/api/v1/ai/keywords-by-target",
+      body
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-// ai keywords Target
-export const getAiKeywordsTargetData = async (body: any) => {
+// ai keywords
+export const getAiKeywordsByBrandData = async (body: any) => {
   // return summaryData.longtailKeywordData;
-  const response = await axios.post(
-    API_BASE + "/api/v1/aio/keywords-by-target",
-    body
-  );
-  return response.data;
-};
-
-// ai keywords Brand
-export const getAiKeywordsBrandData = async (body: any) => {
-  // return summaryData.longtailKeywordData;
-  const response = await axios.post(
-    API_BASE + "/api/v1/aio/keywords-by-brand",
-    body
-  );
-  return response.data;
+  try {
+    const response = await axios.post(
+      API_BASE + "/api/v1/ai/keywords-by-brand",
+      body
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };

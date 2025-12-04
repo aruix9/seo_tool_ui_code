@@ -10,7 +10,7 @@ import TextField from "@/components/shared/form/textField";
 import { filterDefaultValues, filterSchemaObject } from "./SchemaFilters";
 import SelectField from "@/components/shared/form/selectField";
 import { Button } from "@/components/ui/button";
-import { getAiOverviewData } from "@/lib/actions/audit/auditActions";
+import { getAiDiscoverData } from "@/lib/actions/audit/auditActions";
 
 type FilterFormProps = {
   onFiltered: (data: any) => void;
@@ -22,14 +22,6 @@ const scopeList = [
   { value: "url", text: "URL" },
 ];
 
-const engineList = [
-  { value: "ai-overview", text: "AI Overview" },
-  { value: "chatgpt", text: "ChatGPT" },
-  { value: "perplexity", text: "Perplexity" },
-  { value: "gemini", text: "Gemini" },
-  { value: "ai-mode", text: "AI Mode" },
-];
-
 const filterSchema = z.object(filterSchemaObject);
 
 const Filters = ({ onFiltered }: FilterFormProps) => {
@@ -39,7 +31,7 @@ const Filters = ({ onFiltered }: FilterFormProps) => {
   });
 
   const onSubmit = async (data: z.infer<typeof filterSchema>) => {
-    const aiOverviewResponse = await getAiOverviewData(data);
+    const aiOverviewResponse = await getAiDiscoverData(data);
     onFiltered(aiOverviewResponse);
   };
 
@@ -59,7 +51,7 @@ const Filters = ({ onFiltered }: FilterFormProps) => {
               error={filterForm.formState.errors?.target}
             />
             <TextField
-              label="Source"
+              label="Source (country)"
               className="grow"
               placeholder="Eg: us"
               field={filterForm.register("source")}
@@ -74,16 +66,6 @@ const Filters = ({ onFiltered }: FilterFormProps) => {
               control={filterForm.control}
               field={filterForm.register("scope")}
               error={filterForm.formState.errors?.scope}
-            />
-            <SelectField
-              label="Engine"
-              name="engine"
-              className="grow"
-              defaultValue="ai-overview"
-              selectList={engineList}
-              control={filterForm.control}
-              field={filterForm.register("engine")}
-              error={filterForm.formState.errors?.engine}
             />
             <div className="grow self-end">
               <Button
