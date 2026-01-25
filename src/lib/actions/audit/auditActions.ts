@@ -4,10 +4,17 @@ import { summaryData } from '../../../../auditData'
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE
 
 // get Summary
-export async function getSummary(targets: string[]) {
+export async function getSummary(targets: string[], update: boolean) {
   // return summaryData.summary;
-  const target = { target: targets }
+  const target = { target: targets, update }
   const response = await axios.post(API_BASE + '/api/v1/audit/summary', target)
+  console.log(response.data)
+  return response.data
+}
+
+// get Summary
+export async function getbacklinkData() {
+  const response = await axios.get(API_BASE + '/api/v1/audit/all-backlinks')
   console.log(response.data)
   return response.data
 }
@@ -32,7 +39,7 @@ export const getAnchors = async (target: string, orderBy: string) => {
 export const getRefdomains = async (
   target: string,
   orderBy: string,
-  limit: number
+  limit: number,
 ) => {
   // return summaryData.refdomains;
   const body = { target, orderBy, limit }
@@ -59,7 +66,7 @@ export const getQuestionsKeywordData = async (body: any) => {
   // return summaryData.questionsKeywordData;
   const response = await axios.post(
     API_BASE + '/api/v1/keywords/questions',
-    body
+    body,
   )
   return response.data
 }
@@ -69,7 +76,7 @@ export const getLongtailKeywordData = async (body: any) => {
   // return summaryData.longtailKeywordData;
   const response = await axios.post(
     API_BASE + '/api/v1/keywords/longtail',
-    body
+    body,
   )
   return response.data
 }
@@ -91,7 +98,7 @@ export const getAiDiscoverData = async (body: any) => {
   try {
     const response = await axios.post(
       API_BASE + '/api/v1/ai/discover-brand',
-      body
+      body,
     )
     return response.data
   } catch (error) {
@@ -105,7 +112,7 @@ export const getAiKeywordsByTargetData = async (body: any) => {
   try {
     const response = await axios.post(
       API_BASE + '/api/v1/ai/keywords-by-target',
-      body
+      body,
     )
     return response.data
   } catch (error) {
@@ -119,7 +126,7 @@ export const getAiKeywordsByBrandData = async (body: any) => {
   try {
     const response = await axios.post(
       API_BASE + '/api/v1/ai/keywords-by-brand',
-      body
+      body,
     )
     return response.data
   } catch (error) {
