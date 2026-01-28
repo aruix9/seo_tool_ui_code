@@ -81,3 +81,40 @@ export interface TopTld {
   tld: string // e.g. "com"
   count: number
 }
+
+export interface MetricsDataType {
+  backlinks: number
+  dofollow_backlinks: number
+  edu_backlinks: number
+  gov_backlinks: number
+  ips: number
+  nofollow_backlinks: number
+  refdomains: number
+  subnets: number
+  target: string
+}
+
+export interface AnchorDataType {
+  anchor: string
+  backlinks: number
+  dofollow_backlinks: number
+  first_seen: string
+  last_visited: string
+  nofollow_backlinks: number
+  refdomains: number
+}
+
+export interface RefDomainDataType {
+  refdomain: string
+  backlinks: number
+  dofollow_backlinks: number
+  domain_inlink_rank: number
+  first_seen: string
+}
+
+export interface auditDataType {
+  summary: BacklinkDataType
+  metrics: MetricsDataType
+  anchors: AnchorDataType[]
+  refDomains: RefDomainDataType[]
+}

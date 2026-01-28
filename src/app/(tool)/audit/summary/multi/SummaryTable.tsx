@@ -6,9 +6,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { summaryList } from '../../../../../../data'
 
-const SummaryTable = ({ auditData, auditKeys, summaryList }) => {
-  console.log(auditData)
+const SummaryTable = ({ auditData, auditKeys }) => {
   return (
     <div className='w-full my-8'>
       <Table>
@@ -40,7 +40,7 @@ const SummaryTable = ({ auditData, auditKeys, summaryList }) => {
                         </TableCell>
                       ))}
                   </TableRow>
-                )
+                ),
             )}
         </TableBody>
       </Table>

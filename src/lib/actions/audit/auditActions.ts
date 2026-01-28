@@ -1,14 +1,13 @@
 import axios from 'axios'
-import { summaryData } from '../../../../auditData'
+// import { summaryData } from '../../../../auditData'
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE
 
 // get Summary
-export async function getSummary(targets: string[], update: boolean) {
+export async function getSummary(targets: string[]) {
   // return summaryData.summary;
-  const target = { target: targets, update }
+  const target = { target: targets }
   const response = await axios.post(API_BASE + '/api/v1/audit/summary', target)
-  console.log(response.data)
   return response.data
 }
 
@@ -24,7 +23,7 @@ export async function getMetrics(targets: string[]) {
   // return summaryData.metrics;
   const target = { target: targets }
   const response = await axios.post(API_BASE + '/api/v1/audit/metrics', target)
-  return response.data.metrics
+  return response.data
 }
 
 // get anchors
@@ -32,7 +31,7 @@ export const getAnchors = async (target: string, orderBy: string) => {
   // return summaryData.anchors;
   const body = { target, orderBy }
   const response = await axios.post(API_BASE + '/api/v1/audit/anchors', body)
-  return response.data.new_lost_backlinks
+  return response.data
 }
 
 // get refdomains
@@ -44,7 +43,7 @@ export const getRefdomains = async (
   // return summaryData.refdomains;
   const body = { target, orderBy, limit }
   const response = await axios.post(API_BASE + '/api/v1/audit/refdomains', body)
-  return response.data.new_lost_backlinks
+  return response.data
 }
 
 // Similar keywords
