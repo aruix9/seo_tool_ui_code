@@ -1,12 +1,12 @@
-import React from "react";
-import MetricCard from "./MetricCard";
-import SummaryTable from "../summary/SummaryTable";
-import { allSummaryList } from "../../../../../data";
+import React from 'react'
+import MetricCard from './MetricCard'
+import { allSummaryList } from '../../../../../data'
+import SummaryTable from '../summary/multi/SummaryTable'
 
 const MultiUrls = ({ backlinkData, auditKeys }) => {
   return (
     <>
-      <div className="flex gap-6">
+      <div className='flex gap-6'>
         <MetricCard metric={backlinkData} />
       </div>
       <SummaryTable
@@ -15,7 +15,7 @@ const MultiUrls = ({ backlinkData, auditKeys }) => {
         summaryList={allSummaryList}
       />
     </>
-  );
-};
+  )
+}
 
-export default MultiUrls;
+export default MultiUrls

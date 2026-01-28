@@ -8,8 +8,8 @@ import { connectToDatabase } from '@/lib/db'
 import Order from '@/models/order'
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
+  key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
+  key_secret: process.env.NEXT_PUBLIC_RAZORPAY_KEY_SECRET!,
 })
 
 export async function POST(req: Request) {
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     if (!session || !_user.id) {
       return new Response(
         JSON.stringify({ success: false, message: 'Not authenticated' }),
-        { status: 401 }
+        { status: 401 },
       )
     }
 
@@ -71,7 +71,7 @@ export async function POST(req: Request) {
     if (!cart) {
       return Response.json(
         { success: false, message: 'Cart not found or unauthorized' },
-        { status: 404 }
+        { status: 404 },
       )
     }
 
@@ -92,7 +92,7 @@ export async function POST(req: Request) {
     if (!order) {
       return Response.json(
         { success: false, message: 'Failed to create order' },
-        { status: 500 }
+        { status: 500 },
       )
     }
     // Prepare the order data
@@ -115,7 +115,7 @@ export async function POST(req: Request) {
         message: 'Order placed successfully',
         newOrder,
       },
-      { status: 201 }
+      { status: 201 },
     )
   } catch (error) {
     console.error('Error in POST placeorder:', error)
