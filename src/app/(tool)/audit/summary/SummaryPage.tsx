@@ -6,8 +6,9 @@ import SingleAuditSummary from './single/SingleAuditSummary'
 
 const SummaryPage = () => {
   const searchParams = useSearchParams()
+  const queries = Object.keys(Object.fromEntries(searchParams.entries()))
 
-  if (searchParams.size > 1) {
+  if (queries.some((item) => item.includes('competitor'))) {
     return <MultiAuditSummary />
   } else {
     return <SingleAuditSummary />

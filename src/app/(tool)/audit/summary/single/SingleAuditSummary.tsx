@@ -13,11 +13,52 @@ import {
 import { auditDataType } from '@/../types/type'
 import LoadingSkeleton from '@/components/shared/layout/loadingSkeleton'
 import SummaryCardWrapper from './SummaryCardWrapper'
+import { Button } from '@/components/ui/button'
 
 const SingleAuditSummary = () => {
   const [auditData, setAuditData] = useState<auditDataType>()
   const searchParams = useSearchParams()
   const url = searchParams.get('url')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const handleExport = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/v1/exports/backlinks?type=all-data&target=${url}`,
+        {
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+
+      const data = await response.json()
+
+      if (!data.downloadUrl) {
+        throw new Error('Download URL not returned')
+      }
+
+      /**
+       * Trigger file download
+       */
+      const link = document.createElement('a')
+      link.href = `${process.env.NEXT_PUBLIC_API_BASE}${data.downloadUrl}`
+      link.download = ''
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (err: any) {
+      console.error(err)
+      setError(err.message || 'Something went wrong')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
     const fetchAuditData = async () => {
@@ -51,6 +92,12 @@ const SingleAuditSummary = () => {
         ]}
       />
       <h1 className='my-8 text-xl font-bold'>{url} Summary</h1>
+
+      <div className='mb-8'>
+        <Button onClick={handleExport}>
+          {loading ? 'Exporting...' : 'Export All Data'}
+        </Button>
+      </div>
       <SummaryCardWrapper
         metrics={auditData.metrics}
         summary={auditData.summary}
