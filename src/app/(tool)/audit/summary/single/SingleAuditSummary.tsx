@@ -28,7 +28,7 @@ const SingleAuditSummary = () => {
       setError(null)
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/v1/exports/backlinks?type=all-data&target=${url}`,
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/v1/exports/backlinks?type=all-data&target=${searchParams.get('url')}`,
         {
           method: 'get',
           headers: {
@@ -43,15 +43,24 @@ const SingleAuditSummary = () => {
         throw new Error('Download URL not returned')
       }
 
-      /**
-       * Trigger file download
-       */
-      const link = document.createElement('a')
-      link.href = `${process.env.NEXT_PUBLIC_API_BASE}${data.downloadUrl}`
-      link.download = ''
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
+      const fileName = data.downloadUrl
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/v1/exports/download?file=${encodeURIComponent(fileName)}`,
+      )
+
+      const blob = await res.blob()
+
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+
+      a.href = url
+      a.download = fileName
+      document.body.appendChild(a)
+      a.click()
+
+      a.remove()
+      window.URL.revokeObjectURL(url)
     } catch (err: any) {
       console.error(err)
       setError(err.message || 'Something went wrong')
