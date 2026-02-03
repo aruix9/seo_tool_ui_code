@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/shared/breadcrumb'
 import SummaryDisplayCards from './SummaryDisplayCards'
 import SummaryTable from './SummaryTable'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { getSummary } from '@/lib/actions/audit/auditActions'
 import LoadingSkeleton from '@/components/shared/layout/loadingSkeleton'
@@ -15,32 +15,28 @@ const MultiAuditSummary = () => {
 
   const searchParams = useSearchParams()
 
-  useEffect(() => {
-    const fetchAuditData = async () => {
-      // Collect the main website
-      const urls: string[] = []
-      const mainUrl = searchParams.get('url')
-      if (mainUrl) urls.push(mainUrl)
+  const fetchAuditData = useCallback(async () => {
+    const urls: string[] = []
+    const mainUrl = searchParams.get('url')
+    if (mainUrl) urls.push(mainUrl)
 
-      // Collect competitors (competitor1..5)
-      for (let i = 1; i <= 5; i++) {
-        const competitor = searchParams.get(`competitor${i}`)
-        if (competitor) urls.push(competitor)
-      }
-
-      if (urls.length === 0) return // avoid empty API calls
-
-      const summaryResponse = await getSummary(urls)
-      setAuditData({
-        summary: summaryResponse,
-      })
-      setAuditKeys({
-        summaryKeys: Object.keys(summaryResponse[0]),
-      })
+    for (let i = 1; i <= 5; i++) {
+      const competitor = searchParams.get(`competitor${i}`)
+      if (competitor) urls.push(competitor)
     }
 
-    fetchAuditData()
+    if (urls.length === 0) return
+
+    const summaryResponse = await getSummary(urls)
+    if (summaryResponse.length > 0) {
+      setAuditData({ summary: summaryResponse })
+      setAuditKeys({ summaryKeys: Object.keys(summaryResponse[0]) })
+    }
   }, [searchParams])
+
+  useEffect(() => {
+    fetchAuditData()
+  }, [fetchAuditData])
 
   if (!auditData && !auditKeys) {
     return <LoadingSkeleton />

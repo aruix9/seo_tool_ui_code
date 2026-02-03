@@ -14,7 +14,6 @@ export async function getSummary(targets: string[]) {
 // get Summary
 export async function getbacklinkData() {
   const response = await axios.get(API_BASE + '/api/v1/audit/all-backlinks')
-  console.log(response.data)
   return response.data
 }
 
