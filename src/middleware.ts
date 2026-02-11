@@ -1,28 +1,48 @@
-import { getToken } from 'next-auth/jwt'
-import { NextRequest, NextResponse } from 'next/server'
-
-export { default } from 'next-auth/middleware'
-
-export const config = {
-  matcher: ['/sign-in', '/sign-up', '/orders'],
-}
+import { getToken } from "next-auth/jwt";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  const token = await getToken({ req: request })
-  const url = request.nextUrl
+  const token = await getToken({ req: request });
+  const { pathname } = request.nextUrl;
 
-  // Redirect to dashboard if the user is already authenticated
-  // and trying to access sign-in, sign-up, or home page
+  // Allow NextAuth API routes
+  if (pathname.startsWith("/api/auth")) {
+    return NextResponse.next();
+  }
+
+  // Allow public routes
   if (
-    token &&
-    (url.pathname.startsWith('/sign-in') || url.pathname.startsWith('/sign-up'))
+    pathname.startsWith("/auth") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/favicon")
   ) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    return NextResponse.next();
   }
 
-  if (!token && url.pathname.startsWith('/dashboard')) {
-    return NextResponse.redirect(new URL('/sign-in', request.url))
+  // Protect other routes
+  if (!token) {
+    return NextResponse.redirect(new URL("/auth/signin", request.url));
   }
 
-  return NextResponse.next()
+  return NextResponse.next();
 }
+
+// See "Matching Paths" below to learn more
+export const config = {
+  matcher: [
+    "/",
+    "/orders",
+    "/api/:path*",
+    "/ai/:path*",
+    "/audit/:path*",
+    "/backlinks/:path*",
+    "/keywords/:path*",
+    "/checkout",
+    "/order-confirmed",
+    "/cart",
+    "/orders",
+    "/admin/:path*",
+    "/dashboard/:path*",
+  ],
+};

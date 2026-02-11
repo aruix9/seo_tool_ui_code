@@ -1,120 +1,120 @@
-import { signInSchema, signUpSchema } from '@/schemas/zodAuthFormSchemas'
-import axios, { AxiosError } from 'axios'
-import { signIn } from 'next-auth/react'
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
-import { toast } from 'sonner'
-import { z } from 'zod'
-import { ApiResponse } from '../../../types/ApiResponse'
+import { signInSchema, signUpSchema } from "@/schemas/zodAuthFormSchemas";
+import axios, { AxiosError } from "axios";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { toast } from "sonner";
+import { z } from "zod";
+import { ApiResponse } from "../../../types/ApiResponse";
+import { signIn } from "next-auth/react";
 
 export const handleSignInSumit = async (
   values: z.infer<typeof signInSchema>,
-  router: AppRouterInstance
+  router: AppRouterInstance,
 ) => {
-  const result = await signIn('credentials', {
+  const result = await signIn("credentials", {
     redirect: false,
     email: values.email,
     password: values.password,
-  })
+  });
 
   if (result?.error) {
-    if (result.error === 'CredentialsSignin') {
-      toast.error('Login Failed', {
-        description: 'Invalid email or password',
-      })
+    if (result.error === "CredentialsSignin") {
+      toast.error("Login Failed", {
+        description: "Invalid email or password",
+      });
     } else {
-      toast.error('Login Failed', {
+      toast.error("Login Failed", {
         description: result.error,
-      })
+      });
     }
   }
 
   if (result?.url) {
-    router.replace('/')
+    router.replace("/");
   }
-}
+};
 
 export const handleSignUpSubmit = async (
   values: z.infer<typeof signUpSchema>,
-  router: AppRouterInstance
+  router: AppRouterInstance,
 ) => {
   try {
-    const response = await axios.post('/api/auth/signup', values)
+    const response = await axios.post("/api/auth/signup", values);
 
-    toast.success('Sign Up Success', {
+    toast.success("Sign Up Success", {
       description: response.data.message,
-    })
+    });
 
     // Auto-login with NextAuth
-    const result = await signIn('credentials', {
+    const result = await signIn("credentials", {
       redirect: true, // Redirect after successful login
       email: values.email,
       password: values.password,
-      callbackUrl: '/', // Redirect URL after login
-    })
+      callbackUrl: "/", // Redirect URL after login
+    });
 
     if (result?.error) {
-      console.error('Login error:', result.error)
+      console.error("Login error:", result.error);
     }
 
-    router.replace('/')
+    router.replace("/");
   } catch (error) {
-    console.error('Error during sign up:', error)
-    const axiosError = error as AxiosError<ApiResponse>
+    console.error("Error during sign up:", error);
+    const axiosError = error as AxiosError<ApiResponse>;
 
-    const errorMessage = axiosError.response?.data.message
+    const errorMessage = axiosError.response?.data.message;
     // ('There was a problem with your sign up. Please try again.');
 
-    toast.error('Sign Up Failed', {
+    toast.error("Sign Up Failed", {
       description: errorMessage,
-      className: 'bg-red-200 text-red-900',
-    })
+      className: "bg-red-200 text-red-900",
+    });
   }
-}
+};
 
 export const handleForgotPasswordSubmit = async (
   values: string,
-  router: AppRouterInstance
+  router: AppRouterInstance,
 ) => {
   try {
-    await axios.post('/api/auth/forgot-password', values)
-    router.replace('/')
-    toast.success('Forgot Password Success', {
+    await axios.post("/api/auth/forgot-password", values);
+    router.replace("/");
+    toast.success("Forgot Password Success", {
       description:
-        'An email is sent to your email address to reset your password.',
-    })
+        "An email is sent to your email address to reset your password.",
+    });
   } catch (error) {
-    console.error('Error during sign up:', error)
-    const axiosError = error as AxiosError<ApiResponse>
+    console.error("Error during sign up:", error);
+    const axiosError = error as AxiosError<ApiResponse>;
 
-    const errorMessage = axiosError.response?.data.message
+    const errorMessage = axiosError.response?.data.message;
 
-    toast.error('Forgot Password Failed', {
+    toast.error("Forgot Password Failed", {
       description: errorMessage,
-      className: 'bg-red-200 text-red-900',
-    })
+      className: "bg-red-200 text-red-900",
+    });
   }
-}
+};
 
 export const handleResetPasswordSubmit = async (
   password: string,
   token: string | undefined,
-  router: AppRouterInstance
+  router: AppRouterInstance,
 ) => {
   try {
-    await axios.post('/api/auth/reset-password', { password, token })
-    router.replace('/')
-    toast.success('Reset Password Success', {
-      description: 'Password was successfully reset.',
-    })
+    await axios.post("/api/auth/reset-password", { password, token });
+    router.replace("/");
+    toast.success("Reset Password Success", {
+      description: "Password was successfully reset.",
+    });
   } catch (error) {
-    console.error('Error during sign up:', error)
-    const axiosError = error as AxiosError<ApiResponse>
+    console.error("Error during sign up:", error);
+    const axiosError = error as AxiosError<ApiResponse>;
 
-    const errorMessage = axiosError.response?.data.message
+    const errorMessage = axiosError.response?.data.message;
 
-    toast.error('Reset Password Failed', {
+    toast.error("Reset Password Failed", {
       description: errorMessage,
-      className: 'bg-red-200 text-red-900',
-    })
+      className: "bg-red-200 text-red-900",
+    });
   }
-}
+};
