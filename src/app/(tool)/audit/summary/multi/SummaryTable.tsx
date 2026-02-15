@@ -5,12 +5,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
-import { summaryList } from '../../../../../../data'
+} from "@/components/ui/table";
+import { summaryList } from "../../../../../../data";
 
 const SummaryTable = ({ auditData, auditKeys }) => {
   return (
-    <div className='w-full my-8'>
+    <div className="w-full my-8">
       <Table>
         {summaryList.length === 4 && (
           <TableHeader>
@@ -29,14 +29,14 @@ const SummaryTable = ({ auditData, auditKeys }) => {
               (currentKey: string) =>
                 summaryList.includes(currentKey) && (
                   <TableRow key={currentKey}>
-                    <TableCell className='capitalize'>
-                      {currentKey.replaceAll('_', ' ')}
+                    <TableCell className="capitalize">
+                      {currentKey.replaceAll("_", " ")}
                     </TableCell>
 
                     {auditData &&
                       auditData.summary.map((summary, index: number) => (
                         <TableCell key={index}>
-                          {summary[currentKey].toLocaleString('en-IN')}
+                          {summary[currentKey].toLocaleString("en-IN")}
                         </TableCell>
                       ))}
                   </TableRow>
@@ -45,7 +45,7 @@ const SummaryTable = ({ auditData, auditKeys }) => {
         </TableBody>
       </Table>
     </div>
-  )
-}
+  );
+};
 
-export default SummaryTable
+export default SummaryTable;
