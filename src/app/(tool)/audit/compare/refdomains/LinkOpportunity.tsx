@@ -13,12 +13,43 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
+import { User } from "next-auth";
+import { addLinkToCart, getUserCart } from "@/lib/actions/cartActions";
+import { Cart } from "../../../../../../types/cart";
 
 const LinkOpportunity = () => {
+  const { data: session } = useSession();
+  const user: User = session?.user;
   const searchParams = useSearchParams();
   const [comparedData, setComparedData] = useState();
   const targets = searchParams.get("targets");
   const targetsArray = targets?.split(",");
+
+  const [cartItems, setCartItems] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchCartData = async () => {
+      const userId = user?.id;
+      const cartData = await getUserCart(userId);
+      getCartLinkId(cartData);
+    };
+    if (user) fetchCartData();
+  }, [user]);
+
+  const handleAddToCart = async (linkId: string) => {
+    const userId = user.id;
+    const response = await addLinkToCart(linkId, userId);
+    const cart = response.cart;
+    getCartLinkId(cart);
+  };
+
+  const getCartLinkId = (cart: Cart | null) => {
+    if (cart && cart.items) {
+      const links: string[] = cart.items.map((item) => item.linkUrl);
+      setCartItems(links);
+    }
+  };
 
   useEffect(() => {
     const fetchComparedData = async () => {
@@ -54,6 +85,7 @@ const LinkOpportunity = () => {
   if (!comparedData && !targetsArray) {
     return;
   }
+  console.log(cartItems);
 
   return (
     <div className="container grow flex flex-col">
@@ -114,7 +146,13 @@ const LinkOpportunity = () => {
               </div>
             </CardContent>
             <CardFooter className="w-1/3 justify-end">
-              <Button>Add to Card</Button>
+              <Button
+                className="cursor-pointer"
+                disabled={cartItems.includes(target._id)}
+                onClick={() => handleAddToCart(target._id)}
+              >
+                Add to Card
+              </Button>
             </CardFooter>
           </Card>
         ))}
