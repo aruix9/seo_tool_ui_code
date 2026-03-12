@@ -83,7 +83,7 @@ const Filters = ({ onFiltered }: FilterFormProps) => {
               field={filterForm.register("source")}
               error={filterForm.formState.errors?.source}
             />
-            <SelectField
+            {/* <SelectField
               label="Scope"
               name="scope"
               className="grow"
@@ -102,7 +102,7 @@ const Filters = ({ onFiltered }: FilterFormProps) => {
               control={filterForm.control}
               field={filterForm.register("sort")}
               error={filterForm.formState.errors?.sort}
-            />
+            /> */}
             <div className="grow self-end">
               <Button
                 type="submit"

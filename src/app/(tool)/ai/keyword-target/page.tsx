@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { Suspense, useState } from "react";
 import Filters from "./Filters";
 import KeywordContent from "./KeywordContent";
+import AiLinks from "../AiLinks";
 
 const AiOverviewPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +28,8 @@ const AiOverviewPage = () => {
             { name: "Overview", link: "" },
           ]}
         />
-        <h1 className="my-8 font-bold text-xl">Ai Keywords by Target</h1>
+        
+        <AiLinks />
 
         <Filters onFiltered={handleFilteredData} />
         <KeywordContent data={aiOverviewData} isLoading={isLoading} />

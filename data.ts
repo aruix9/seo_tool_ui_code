@@ -58,7 +58,7 @@ export const data = {
     },
     {
       title: "AI",
-      slug: "/ai",
+      slug: "/ai/overview",
     },
     {
       title: "Dashboard",

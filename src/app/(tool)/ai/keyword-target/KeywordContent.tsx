@@ -17,13 +17,15 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const KeywordContent = ({
   data,
   isLoading,
 }: {
   data: any;
-  isLoading: Boolean;
+  isLoading: boolean;
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -61,10 +63,8 @@ const KeywordContent = ({
     return <LoadingSkeleton />;
   }
 
-  console.log(data);
-
   return (
-    <Card>
+    <Card className="mb-8">
       <CardHeader>
         <CardTitle className="flex gap-8">
           <div>
@@ -88,7 +88,7 @@ const KeywordContent = ({
           </TableHeader>
           <TableBody>
             {data.keywords.map((item, i) => (
-              <TableRow>
+              <TableRow key={i}>
                 <TableCell className="whitespace-normal align-top">
                   {item.keyword}
                 </TableCell>
@@ -96,7 +96,9 @@ const KeywordContent = ({
                   {new Intl.NumberFormat("en-IN").format(Number(item.volume))}
                 </TableCell>
                 <TableCell className="whitespace-normal align-top">
-                  {item?.snippet?.text}
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>       
+                    {item?.snippet?.text}
+                  </ReactMarkdown>
                 </TableCell>
                 <TableCell className="whitespace-normal overflow-hidden align-top">
                   <div className="max-h-[300px] overflow-y-auto">
@@ -114,7 +116,7 @@ const KeywordContent = ({
           </TableBody>
         </Table>
       </CardContent>
-      <CardFooter className="gap-2 justify-end">
+      {/* <CardFooter className="gap-2 justify-end">
         <Button
           disabled={data.total <= 50}
           onClick={() => updateParam("prev")}
@@ -128,7 +130,7 @@ const KeywordContent = ({
         >
           &raquo;
         </Button>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 };

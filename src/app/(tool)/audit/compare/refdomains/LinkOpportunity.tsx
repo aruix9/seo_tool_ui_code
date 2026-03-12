@@ -85,7 +85,6 @@ const LinkOpportunity = () => {
   if (!comparedData && !targetsArray) {
     return;
   }
-  console.log(cartItems);
 
   return (
     <div className="container grow flex flex-col">
