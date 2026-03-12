@@ -17,16 +17,19 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const KeywordContent = ({
   data,
   isLoading,
 }: {
   data: any;
-  isLoading: Boolean;
+  isLoading: boolean;
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [selectedContent, setSelectedContent] = useState(null);
 
   const updateParam = (type: string) => {
     let offset = searchParams.get("offset");
@@ -61,92 +64,104 @@ const KeywordContent = ({
     return <LoadingSkeleton />;
   }
 
-  console.log(data);
-
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex gap-8">
-          <div>
-            Total number of keywords -{" "}
-            {new Intl.NumberFormat("en-IN").format(Number(data.total))}
-          </div>
-          <div>Date: {data.date}</div>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Table className="table-fixed">
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[200px]">Keyword</TableHead>
-              <TableHead className="w-[100px]">Volume</TableHead>
-              <TableHead className="w-auto">Text</TableHead>
-              <TableHead className="w-[400px]">Links</TableHead>
-              <TableHead className="w-[100px]">Link Type</TableHead>
-              <TableHead className="w-[100px]">Snippet Length</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
+    <>
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex gap-8">
+            <div>
+              Total number of keywords -{" "}
+              {new Intl.NumberFormat("en-IN").format(Number(data.total))}
+            </div>
+            <div>Date: {data.date}</div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap -mx-4">
             {data.keywords.map((item, i) => (
-              <TableRow>
-                <TableCell className="whitespace-normal align-top">
-                  {item.keyword}
-                </TableCell>
-                <TableCell className="align-top">
-                  {new Intl.NumberFormat("en-IN").format(Number(item.volume))}
-                </TableCell>
-                <TableCell className="whitespace-normal align-top">
-                  {item?.snippet?.text}
-                </TableCell>
-                <TableCell className="whitespace-normal overflow-hidden align-top">
-                  <div className="max-h-[300px] overflow-y-auto">
-                    <LinkList list={item?.snippet?.links} />
+              <div className="w-1/2 p-4" key={i}>
+                <div className="border rounded-md p-6 flex flex-col">
+                  <h3 className="mb-4 font-bold text-2xl">{item.keyword}</h3>
+                  <div className="mb-4 flex gap-6 text-muted-foreground">
+                    <span><span>Snippet Lenght:</span> {new Intl.NumberFormat("en-IN").format(Number(item?.snippet?.text?.length))}</span>
+                    <span><span>Link Type:</span> {item.type}</span>
+                    <span><span>Volume:</span> {new Intl.NumberFormat("en-IN").format(Number(item.volume))}</span>
                   </div>
-                </TableCell>
-                <TableCell className="align-top">{item.type}</TableCell>
-                <TableCell className="align-top">
-                  {new Intl.NumberFormat("en-IN").format(
-                    Number(item?.snippet?.text?.length)
-                  )}
-                </TableCell>
-              </TableRow>
+                  <div className="mb-6">
+                    <div className="max-h-[124px] overflow-hidden">
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          p: ({children}) => <p className="mb-2">{children}</p>,
+                          pre: ({children}) => (
+                            <code className="font-[inherit] whitespace-normal mb-2">{children}</code>
+                          ),
+                          code: ({children}) => (
+                            <code className="font-[inherit]">{children}</code>
+                          )
+                        }}
+                      >
+                        {item?.snippet?.text}
+                      </ReactMarkdown>
+                    </div>
+                    <div className="max-h-[150px] overflow-y-auto mt-6">
+                      <h4 className="mb-2 font-bold">Links</h4>
+                      <LinkList list={item?.snippet?.links} />
+                    </div>
+                  </div>
+                  <span className="text-primary cursor-pointer" onClick={() => setSelectedContent(item?.snippet?.text)}>Read More</span>
+                </div>
+              </div>
             ))}
-          </TableBody>
-        </Table>
-      </CardContent>
-      <CardFooter className="gap-2 justify-end">
-        <Button
-          disabled={data.total <= 50}
-          onClick={() => updateParam("prev")}
-          className="w-10 h-10 flex leading-none items-center hover:bg-purple-300 rounded-md text-2xl border-1 border-primary"
-        >
-          &laquo;
-        </Button>
-        <Button
-          onClick={() => updateParam("next")}
-          className="w-10 h-10 flex leading-none items-center hover:bg-purple-300 rounded-md text-2xl border-1 border-primary"
-        >
-          &raquo;
-        </Button>
-      </CardFooter>
-    </Card>
+          </div>
+        </CardContent>
+      </Card>
+
+      {selectedContent && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white max-w-4xl w-full p-6 rounded-lg shadow-lg">
+            <div className="flex justify-between items-center mb-4 border-b-2">
+              <h2 className="text-2xl font-bold">AI Description</h2>
+              <button
+                onClick={() => setSelectedContent(null)}
+                className="mb-4 text-4xl font-light hover:text-gray-700"
+              >&times;</button>
+            </div>
+            <div className="max-h-[78vh] overflow-auto">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  p: ({children}) => <p className="mb-2">{children}</p>,
+                  pre: ({children}) => (
+                    <code className="font-[inherit] whitespace-normal mb-2">{children}</code>
+                  ),
+                  code: ({children}) => (
+                    <code className="font-[inherit]">{children}</code>
+                  )
+                }}
+              >
+                {selectedContent}
+              </ReactMarkdown>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
-import React from "react";
+import React, { useState } from "react";
 
 const LinkList = ({ list }: any) => {
   if (!list.length) return;
   return list.map((item, i) => (
-    <div className="mb-2">
-      <Link
-        key={i}
-        href={item}
-        className="hover:underline text-purple-600 truncate block"
-      >
-        {item}
-      </Link>
-    </div>
+    <Link
+      key={i}
+      href={item}
+      className="hover:underline hover:text-purple-600 text-muted-foreground truncate block"
+    >
+      {item}
+    </Link>
   ));
 };
 
