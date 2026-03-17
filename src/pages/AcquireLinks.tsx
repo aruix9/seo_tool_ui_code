@@ -110,10 +110,10 @@ export default function AcquireLinks() {
                         </div>
                       </div>
                       <div className="col-span-2 text-right">
-                        <button className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all whitespace-nowrap">
+                        <Link to="/cart" className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all whitespace-nowrap">
                           <ShoppingCart className="w-4 h-4" />
                           Acquire Now
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   ))}

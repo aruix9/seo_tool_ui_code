@@ -16,13 +16,13 @@ export function Header() {
         </Link>
         <div className="hidden md:flex items-center gap-10">
           <Link to="/analysis" className="text-sm font-semibold hover:text-primary transition-colors">Audit</Link>
-          <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">Keywords</Link>
+          <Link to="/keyword-analyzer" className="text-sm font-semibold hover:text-primary transition-colors">Keywords</Link>
           <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">AI Analyzer</Link>
         </div>
         <div className="flex items-center gap-4">
           {isLoggedIn ? (
             <div className="flex items-center gap-6">
-              <Link to="#" className="relative text-slate-400 hover:text-primary transition-colors">
+              <Link to="/cart" className="relative text-slate-400 hover:text-primary transition-colors">
                 <ShoppingCart className="w-6 h-6" />
                 <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full flex items-center justify-center text-[8px] font-bold text-white">4</span>
               </Link>
