@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7c3bed;
+  --color-background-light: #f7f6f8;
+  --color-background-alt: #f9fafb;
+  --color-background-dark: #171121;
+  --font-display: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--color-background-light);
+}
+
+.glass-nav {
+  backdrop-filter: blur(12px);
+  background-color: rgba(247, 246, 248, 0.8);
+}
