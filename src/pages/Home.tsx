@@ -30,7 +30,7 @@ export default function Home() {
                 />
               </div>
               <Link
-                to="#"
+                to="/analysis"
                 className="bg-primary text-white px-12 py-5 rounded-xl font-black text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/30 flex items-center justify-center"
               >
                 Analyze

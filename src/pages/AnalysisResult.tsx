@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom"
 import { 
-  Info, Route, Check, ArrowRight, ShoppingCart, Rocket, Zap
+  Info, ArrowRight, ShoppingCart, Rocket, Zap
 } from "lucide-react"
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
+import { Breadcrumb } from "../components/ui/Breadcrumb"
+import { AuthorityRoadmap } from "../components/widgets/AuthorityRoadmap"
+import { GapSummary } from "../components/widgets/GapSummary"
 
 const pieData = [
   { name: 'You', value: 13.5, color: '#7C3AED' },
@@ -14,18 +17,11 @@ const pieData = [
 export default function AnalysisResult() {
   return (
     <div className="bg-background-light font-display text-slate-900 min-h-screen">
-      {/* breadcrumb */}
-      <section className="max-w-[1440px] pt-8 px-6 mx-auto">
-        <div className="mb-8">
-          <nav className="flex items-center gap-2 mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-            <Link className="hover:text-primary transition-colors" to="/">Home</Link>
-            <span className="text-slate-300">/</span>
-            <Link className="hover:text-primary transition-colors" to="/analysis">Audit Analyse Gap</Link>
-            <span className="text-slate-300">/</span>
-            <span className="text-slate-600">Analysis</span>
-          </nav>
-        </div>
-      </section>
+      <Breadcrumb items={[
+        { label: "Home", href: "/" },
+        { label: "Audit Analyse Gap", href: "/analysis" },
+        { label: "Analysis" }
+      ]} />
 
       {/* Full Width Leaderboard Section */}
       <section className="pb-8 border-b border-slate-200 bg-white/50">
@@ -246,7 +242,7 @@ export default function AnalysisResult() {
                 </div>
                 <div className="mt-8">
                   <Link
-                    to="#"
+                    to="/acquire-links"
                     className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group"
                   >
                     <span>128 New Opportunities Today</span>
@@ -348,81 +344,13 @@ export default function AnalysisResult() {
           {/* Sidebar */}
           <aside className="w-full lg:w-80 space-y-6">
             {/* Authority Roadmap Widget */}
-            <div className="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
-              <div className="flex items-center gap-2 mb-6">
-                <Route className="text-primary w-5 h-5" />
-                <h3 className="font-bold text-lg">Authority Roadmap</h3>
-              </div>
-              <div className="space-y-4 mb-8">
-                {/* Step 1 */}
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center mt-0.5">
-                    <Check className="w-3 h-3 text-primary font-bold" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">Audit Site Profile</p>
-                    <p className="text-[11px] text-slate-500">Completed 2 days ago</p>
-                  </div>
-                </div>
-                {/* Step 2 */}
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center mt-0.5">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">Identify Competitor Gaps</p>
-                    <p className="text-[11px] text-primary font-medium">In Progress</p>
-                  </div>
-                </div>
-                {/* Step 3 */}
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 border-slate-300"></div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-400">Acquire High-Trust Links</p>
-                    <p className="text-[11px] text-slate-500 font-medium">Next Step</p>
-                  </div>
-                </div>
-                {/* Step 4 */}
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center mt-0.5"></div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-400">Complete Secure Purchase</p>
-                    <p className="text-[11px] text-slate-500">Upcoming</p>
-                  </div>
-                </div>
-                {/* Step 5 */}
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center mt-0.5"></div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-400">Monitor Backlink Indexing</p>
-                    <p className="text-[11px] text-slate-500">Final Stage</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Gap Summary Box */}
-              <div className="bg-primary/5 rounded-xl p-4 border border-primary/10 mb-6">
-                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Gap Summary</p>
-                <p className="text-sm text-slate-600 mb-4">
-                  You need <span className="text-slate-900 font-bold">12 more links</span> to match Competitor B.
-                </p>
-                <div className="h-2 w-full bg-slate-200 rounded-full mb-2">
-                  <div className="h-full bg-primary rounded-full" style={{ width: '75%' }}></div>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-[10px] text-slate-400">75% to authority target</p>
-                  <div>
-                    <Link to="#" className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline group">
-                      Find Links to Bridge This Gap
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
+            <div className="space-y-6">
+              <AuthorityRoadmap currentStep={2} />
+              <GapSummary linksNeeded={12} competitorName="Competitor B" progressPercentage={75} />
             </div>
 
             {/* Marketplace Mini Card */}
-            <Link to="#" className="block bg-primary hover:bg-primary/95 transition-all rounded-xl p-8 text-white shadow-xl shadow-primary/20 relative overflow-hidden group">
+            <Link to="/acquire-links" className="block bg-primary hover:bg-primary/95 transition-all rounded-xl p-8 text-white shadow-xl shadow-primary/20 relative overflow-hidden group">
               <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-4">
                   <ShoppingCart className="w-6 h-6 text-white" />

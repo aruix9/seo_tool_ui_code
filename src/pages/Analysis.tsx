@@ -1,22 +1,18 @@
 import { Link } from "react-router-dom"
 import { 
-  Globe, X, Plus, Activity, Route, Lightbulb, 
+  Globe, X, Plus, Activity, Lightbulb, 
   Search, ListChecks, BarChart2
 } from "lucide-react"
+import { Breadcrumb } from "../components/ui/Breadcrumb"
+import { AuthorityRoadmap } from "../components/widgets/AuthorityRoadmap"
 
 export default function Analysis() {
   return (
     <div className="bg-background-light font-display text-slate-900 min-h-screen">
-      {/* breadcrumb */}
-      <section className="max-w-[1440px] pt-8 px-6 mx-auto">
-        <div className="mb-8">
-          <nav className="flex items-center gap-2 mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-            <Link className="hover:text-primary transition-colors" to="/">Home</Link>
-            <span className="text-slate-300">/</span>
-            <span className="text-slate-600">Audit Analyse Gap</span>
-          </nav>
-        </div>
-      </section>
+      <Breadcrumb items={[
+        { label: "Home", href: "/" },
+        { label: "Audit Analyse Gap" }
+      ]} />
 
       {/* Hero Section */}
       <section className="border-b border-slate-200 bg-white/50">
@@ -71,60 +67,14 @@ export default function Analysis() {
               </div>
 
               {/* Right Column */}
-              <div className="lg:col-span-4 h-full">
-                <div className="bg-white rounded-xl border border-slate-200 p-8 shadow-sm h-full flex flex-col">
-                  <div className="flex items-center gap-2 mb-6">
-                    <Route className="text-primary w-5 h-5" />
-                    <h3 className="font-bold text-lg">Authority Roadmap</h3>
-                  </div>
-                  <div className="space-y-4 mb-8 flex-grow">
-                    {/* Step 1 */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center mt-0.5">
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-900">Audit Site Profile</p>
-                        <p className="text-[11px] text-primary font-medium">In Progress</p>
-                      </div>
-                    </div>
-                    {/* Step 2 */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 border-slate-300"></div>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-900">Identify Competitor Gaps</p>
-                        <p className="text-[11px] text-slate-500 font-medium">Next Step</p>
-                      </div>
-                    </div>
-                    {/* Step 3 */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 border-slate-300"></div>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-400">Acquire High-Trust Links</p>
-                        <p className="text-[11px] text-slate-500 font-medium">Upcoming</p>
-                      </div>
-                    </div>
-                    {/* Step 4 */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center mt-0.5"></div>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-400">Complete Secure Purchase</p>
-                        <p className="text-[11px] text-slate-500 font-medium">Upcoming</p>
-                      </div>
-                    </div>
-                    {/* Step 5 */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center mt-0.5"></div>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-400">Monitor Indexing</p>
-                        <p className="text-[11px] text-slate-500 font-medium">Final Phase</p>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Analysis Quick Tips Card */}
-                  <div className="bg-primary/5 rounded-xl p-5 border border-primary/20 mt-auto">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Lightbulb className="text-primary w-5 h-5" />
+              <div className="lg:col-span-4 h-full flex flex-col">
+                <div className="flex-grow">
+                  <AuthorityRoadmap currentStep={1} />
+                </div>
+                {/* Analysis Quick Tips Card */}
+                <div className="bg-primary/5 rounded-xl p-5 border border-primary/20 mt-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Lightbulb className="text-primary w-5 h-5" />
                       <p className="text-xs font-bold text-primary uppercase tracking-widest">Analysis Quick Tips</p>
                     </div>
                     <ul className="space-y-3">
@@ -142,8 +92,7 @@ export default function Analysis() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Recently Analyzed Section */}
       <section className="mb-12 py-8">
