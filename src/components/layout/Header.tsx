@@ -17,7 +17,7 @@ export function Header() {
         <div className="hidden md:flex items-center gap-10">
           <Link to="/analysis" className="text-sm font-semibold hover:text-primary transition-colors">Audit</Link>
           <Link to="/keyword-analyzer" className="text-sm font-semibold hover:text-primary transition-colors">Keywords</Link>
-          <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">AI Analyzer</Link>
+          <Link to="/ai-analyzer" className="text-sm font-semibold hover:text-primary transition-colors">AI Analyzer</Link>
         </div>
         <div className="flex items-center gap-4">
           {isLoggedIn ? (

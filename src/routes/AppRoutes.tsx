@@ -10,6 +10,8 @@ import AnalysisResult from '../pages/AnalysisResult';
 import AcquireLinks from '../pages/AcquireLinks';
 import Cart from '../pages/Cart';
 import KeywordAnalyzer from '../pages/KeywordAnalyzer';
+import AiAnalyzer from '../pages/AiAnalyzer';
+import AiKeywordAnalyzer from '../pages/AiKeywordAnalyzer';
 
 export default function AppRoutes() {
   return (
@@ -21,6 +23,8 @@ export default function AppRoutes() {
         <Route path="/acquire-links" element={<AcquireLinks />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/keyword-analyzer" element={<KeywordAnalyzer />} />
+        <Route path="/ai-analyzer" element={<AiAnalyzer />} />
+        <Route path="/ai-keyword-analyzer" element={<AiKeywordAnalyzer />} />
       </Route>
       <Route element={<AuthLayout />}>
         <Route path="/register" element={<Register />} />
