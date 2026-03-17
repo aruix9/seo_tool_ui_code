@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Activity } from "lucide-react";
 
 export function Header() {
+  const location = useLocation();
+  const isLogin = location.pathname === '/login';
+
   return (
     <nav className="glass-nav sticky top-0 z-50 border-b border-primary/10">
       <div className="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
@@ -15,12 +18,21 @@ export function Header() {
           <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">AI Analyzer</Link>
         </div>
         <div className="flex items-center gap-4">
-          <Link
-            to="/register"
-            className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20"
-          >
-            Sign Up
-          </Link>
+          {isLogin ? (
+            <Link
+              to="/register"
+              className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20"
+            >
+              Sign Up
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </nav>
