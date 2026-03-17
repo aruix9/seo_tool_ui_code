@@ -5,12 +5,14 @@ import Register from '../pages/Auth/Register';
 import Login from '../pages/Auth/Login';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
 import Home from '../pages/Home';
+import Analysis from '../pages/Analysis';
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/analysis" element={<Analysis />} />
       </Route>
       <Route element={<AuthLayout />}>
         <Route path="/register" element={<Register />} />
