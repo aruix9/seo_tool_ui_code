@@ -6,6 +6,7 @@ import Login from '../pages/Auth/Login';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
 import Home from '../pages/Home';
 import Analysis from '../pages/Analysis';
+import AnalysisResult from '../pages/AnalysisResult';
 
 export default function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ export default function AppRoutes() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/analysis" element={<Analysis />} />
+        <Route path="/analysis-result" element={<AnalysisResult />} />
       </Route>
       <Route element={<AuthLayout />}>
         <Route path="/register" element={<Register />} />
