@@ -2,7 +2,7 @@
 
 import EmailField from "@/components/shared/form/emailField";
 import PasswordField from "@/components/shared/form/passwordField";
-import Logo from "@/components/shared/header/logo";
+import Logo from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { handleSignInSumit } from "@/lib/actions/handleAuthFormSubmits";

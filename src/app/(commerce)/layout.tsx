@@ -1,4 +1,4 @@
-import Logo from '@/components/shared/header/logo'
+import Logo from '@/components/shared/logo'
 
 export default async function Layout({
   children,

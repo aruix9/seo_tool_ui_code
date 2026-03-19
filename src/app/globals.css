@@ -159,7 +159,11 @@ h6,
   font-family: var(--font-lato);
 }
 
-
 .auditSummary .recharts-surface {
   overflow: visible;
+}
+
+.glass-nav {
+  backdrop-filter: blur(12px);
+  background-color: rgba(247, 246, 248, 0.8);
 }
