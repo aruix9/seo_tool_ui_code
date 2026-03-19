@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import Logo from './logo'
+import Logo from '../logo'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import {

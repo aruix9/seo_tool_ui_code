@@ -1,7 +1,7 @@
 'use client'
 
 import EmailField from '@/components/shared/form/emailField'
-import Logo from '@/components/shared/header/logo'
+import Logo from '@/components/shared/logo'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { handleForgotPasswordSubmit } from '@/lib/actions/handleAuthFormSubmits'

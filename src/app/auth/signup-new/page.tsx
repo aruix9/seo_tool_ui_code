@@ -3,7 +3,7 @@
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import Logo from '@/components/shared/header/logo'
+import Logo from '@/components/shared/logo'
 import { Form } from '@/components/ui/form'
 import NameField from '@/components/shared/form/nameField'
 import EmailField from '@/components/shared/form/emailField'

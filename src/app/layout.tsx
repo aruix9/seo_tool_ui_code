@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Outfit, Lato } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import AuthProvider from "@/context/AuthProvider";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
-
-const lato = Lato({
-  weight: ["100", "400", "700"],
-  variable: "--font-lato",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -27,8 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,-25&display=optional" />
+      </head>
       <AuthProvider>
-        <body className={`xyz ${outfit.variable} ${lato.variable}`}>
+        <body className={`${inter.variable}`}>
           {children}
           <Toaster
             position="top-right"
