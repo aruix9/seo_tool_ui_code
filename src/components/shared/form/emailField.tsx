@@ -17,7 +17,7 @@ const EmailField = ({
           type='email'
           placeholder={placeholder}
           {...field}
-          className='bg-white h-10'
+          className="h-12 px-4 rounded-lg border-slate-300 bg-white focus-visible:ring-primary focus-visible:border-primary text-base" 
         />
       </FormControl>
       {error && (

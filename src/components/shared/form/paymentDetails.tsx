@@ -21,14 +21,14 @@ const PaymentDetails = ({
       <h2 className='h2-bold mb-6'>Payment Details</h2>
       <div className='flex gap-6 mb-6 items-start'>
         <div className='w-full'>
-          <FormItem>
+          <FormItem className="space-y-2">
             <FormLabel>Cardholder Name</FormLabel>
             <FormControl>
               <Input
                 type='text'
                 placeholder='Enter cardholder name'
                 {...register('ccName')}
-                className='bg-white h-10'
+                className="h-12 px-4 pr-12 rounded-lg border-slate-300 bg-white focus-visible:ring-primary focus-visible:border-primary text-base" 
               />
             </FormControl>
             {errors?.ccName && (
@@ -41,14 +41,14 @@ const PaymentDetails = ({
       </div>
       <div className='flex gap-6 mb-6 items-start'>
         <div className='w-1/2'>
-          <FormItem>
+          <FormItem className="space-y-2">
             <FormLabel>Card Number</FormLabel>
             <FormControl>
               <Input
                 type='text'
                 placeholder='Enter card Number'
                 {...register('ccNumber')}
-                className='bg-white h-10'
+                className="h-12 px-4 pr-12 rounded-lg border-slate-300 bg-white focus-visible:ring-primary focus-visible:border-primary text-base" 
               />
             </FormControl>
             {errors?.ccNumber && (
@@ -60,14 +60,14 @@ const PaymentDetails = ({
         </div>
         <div className='w-1/2 flex gap-6 mb-6 items-start'>
           <div className='w-2/3'>
-            <FormItem>
+            <FormItem className="space-y-2">
               <FormLabel>Expiry Date</FormLabel>
               <FormControl>
                 <Input
                   type='text'
                   placeholder='Enter expiry date'
                   {...register('ccExpiry')}
-                  className='bg-white h-10'
+                  className="h-12 px-4 pr-12 rounded-lg border-slate-300 bg-white focus-visible:ring-primary focus-visible:border-primary text-base" 
                 />
               </FormControl>
               {errors?.ccExpiry && (
@@ -78,14 +78,14 @@ const PaymentDetails = ({
             </FormItem>
           </div>
           <div className='w-1/3'>
-            <FormItem>
+            <FormItem className="space-y-2">
               <FormLabel>CVV</FormLabel>
               <FormControl>
                 <Input
                   type='text'
                   placeholder='Enter cvv'
                   {...register('ccCVV')}
-                  className='bg-white h-10'
+                  className="h-12 px-4 pr-12 rounded-lg border-slate-300 bg-white focus-visible:ring-primary focus-visible:border-primary text-base" 
                 />
               </FormControl>
               {errors?.ccCVV && (

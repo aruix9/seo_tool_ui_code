@@ -60,16 +60,11 @@ const BacklinkTable = () => {
         )
       }
     } catch (err: any) {
-      console.error(err)
       setError(err.message || 'Something went wrong')
     } finally {
       setLoading(false)
     }
   }
-
-  useEffect(() => {
-    console.log('STATE CHANGED', backlinkData)
-  }, [backlinkData])
 
   if (!backlinkData || loading) {
     return <LoadingSkeleton />

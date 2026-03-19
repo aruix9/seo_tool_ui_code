@@ -6,6 +6,8 @@ export interface FormFieldProps {
   placeholder?: string;
   label?: string;
   error?: FieldError;
+  showPassword?:boolean
+  setShowPassword?: (value) => void
 }
 
 export interface CheckoutFormProps {

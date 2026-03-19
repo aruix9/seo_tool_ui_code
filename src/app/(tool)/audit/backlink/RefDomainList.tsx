@@ -33,8 +33,6 @@ const RefDomainList = () => {
     fetchAuditData();
   }, [searchParams]);
 
-  console.log(backlinkRefdomains);
-
   return (
     <Card className="w-1/2">
       <CardContent>

@@ -1,7 +1,6 @@
 "use client";
 
 import Breadcrumbs from "@/components/shared/breadcrumb";
-import Link from "next/link";
 import React, { Suspense, useState } from "react";
 import Filters from "./Filters";
 import KeywordContent from "./KeywordContent";
@@ -12,7 +11,6 @@ const AiOverviewPage = () => {
 
   const handleFilteredData = (data: any) => {
     setAiOverviewData(data);
-    console.log(data);
   };
 
   return (

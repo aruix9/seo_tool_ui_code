@@ -1,11 +1,16 @@
+import Footer from "@/components/Layout/footer"
+import Header from "@/components/Layout/header"
+
 export default async function HomeLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <div className='flex flex-col min-h-screen'>
+    <>
+      <Header />
       {children}
-    </div>
+      <Footer />
+    </>
   )
 }

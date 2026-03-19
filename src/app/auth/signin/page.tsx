@@ -2,19 +2,25 @@
 
 import EmailField from "@/components/shared/form/emailField";
 import PasswordField from "@/components/shared/form/passwordField";
-import Logo from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Form } from "@/components/ui/form";
+import { Label } from "@/components/ui/label";
 import { handleSignInSumit } from "@/lib/actions/handleAuthFormSubmits";
 import { signInSchema } from "@/schemas/zodAuthFormSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { TrendingUp } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { data } from "../../../../data";
 
 const SignIn = () => {
+  const [showPassword, setShowPassword] = useState(false)
+
   const router = useRouter();
 
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -29,59 +35,90 @@ const SignIn = () => {
   };
 
   return (
-    <main className="flex max-xl:flex-col grow">
-      <div className="2xl:w-1/2 xl:w-1/2 max-xl:items-center flex flex-col grow gap-4 justify-center px-16 bg-purple-50">
-        <Logo />
-        <h2 className="text-4xl font-bold mt-4">Signin Page Title</h2>
-        <p className="text-xl max-xl:text-center">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
-          facilis quaerat possimus dolores voluptatibus repudiandae, molestias
-          ut eligendi cum eos veritatis tempore dolorem corporis asperiores
-          neque iste. Nulla, similique alias!
-        </p>
-      </div>
+    <section className="max-w-[1440px] px-6 mx-auto py-8 w-full">
+      <div className="flex flex-col md:flex-row items-stretch gap-16">
+        {/* Left Column: Marketing Content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl lg:text-6xl font-black text-slate-900 leading-[1.1] mb-6 tracking-tight">
+              Welcome <span className="text-primary">Back</span>
+            </h1>
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+              Bridging the authority gap with data-driven SEO strategies. Log in to manage your link-building campaigns and monitor your domain authority growth.
+            </p>
 
-      <div className="2xl:w-1/2 xl:w-1/2 flex flex-col grow items-center justify-center">
-        <h2 className="text-3xl mb-6 font-[900]">Sign In</h2>
-        <p className="mb-4 max-w-88 text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </p>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 bg-blue-50 p-8 rounded-lg w-sm"
-          >
-            <EmailField
-              field={form.register("email")}
-              error={form.formState.errors?.email}
-            />
-            <div className="text-right text-sm text-primary underline underline-offset-4">
-              <Link href="/auth/forgot-password">Forgot Password</Link>
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl shadow-primary/20 group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10"></div>
+              <Image
+                fill
+                alt="Analytics Dashboard"
+                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auhref=format&fit=crop"
+              />
+              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-lg z-20 border border-white/20">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white">
+                    <TrendingUp className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-900">+24% Domain Authority</p>
+                    <p className="text-xs text-slate-500">Average client growth this month</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <PasswordField
-              field={form.register("password")}
-              error={form.formState.errors?.password}
-            />
-            <Button
-              type="submit"
-              size="lg"
-              className="bg-primary text-blue-50 h-10 w-full cursor-pointer"
-            >
-              Submit
-            </Button>
-          </form>
-        </Form>
-        {/* <p className='mb-4 max-w-88 text-center mt-4'>
-          Do not have an account?{' '}
-          <Link
-            href='/auth/signup'
-            className='text-primary underline underline-offset-4'
-          >
-            Sign Up
-          </Link>
-        </p> */}
+          </div>
+        </div>
+
+        {/* Right Column: Sign-in Form */}
+        <div className="flex-1 flex items-center justify-end">
+          <div className="w-full max-w-lg bg-background-light rounded-xl shadow-xl border border-slate-200 p-8 lg:p-10">
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">Sign In to ButterSwipe</h2>
+              <p className="text-slate-500">Enter your credentials to access your account</p>
+            </div>
+
+            <Form {...form}>
+              <form
+                className="space-y-2"
+                onSubmit={form.handleSubmit(onSubmit)}
+              >
+                <EmailField
+                  field={form.register("email")}
+                  error={form.formState.errors?.email}
+                />
+                <div className="text-right text-sm text-primary underline underline-offset-4">
+                  <Link href="/auth/forgot-password">Forgot Password</Link>
+                </div>
+                <PasswordField
+                  setShowPassword={setShowPassword}
+                  showPassword={showPassword}
+                  field={form.register("password")}
+                  error={form.formState.errors?.password}
+                />
+
+                <div className="flex items-center gap-2 my-6">
+                  <Checkbox id="remember-me" className="rounded text-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary" />
+                  <Label htmlFor="remember-me" className="text-sm font-normal text-slate-600 cursor-pointer">
+                    Keep me signed in
+                  </Label>
+                </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full h-[52px] bg-primary hover:bg-primary/90 text-white font-bold rounded-lg shadow-lg shadow-primary/20 transition-all active:scale-[0.98] text-base"
+                >Sign In</Button>
+              </form>
+            </Form>
+            <p className="mt-8 text-center text-sm text-slate-600">
+              New to ButterSwipe?
+              <Link href={data.signup.slug} className="font-bold text-primary hover:underline ml-1">Create an account</Link>
+            </p>
+          </div>
+        </div>
       </div>
-    </main>
+    </section>
   );
 };
 

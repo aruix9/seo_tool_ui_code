@@ -38,7 +38,7 @@ const CheckboxGroupField = ({
       control={control}
       defaultValue={defaultValue ?? false}
       render={({ field, fieldState }) => (
-        <FormItem>
+        <FormItem className="space-y-2">
           <FormLabel>{label}</FormLabel>
 
           <FormControl>

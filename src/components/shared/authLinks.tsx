@@ -12,9 +12,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { usePathname } from 'next/navigation'
+import { data } from '../../../data'
 
 const AuthLinks = () => {
   const { data: session } = useSession()
+  const pathname = usePathname();
   
   // user
   const user: User = session?.user
@@ -53,10 +56,10 @@ const AuthLinks = () => {
           </div>
         </div>
       ) : (
-        <Button>
-          <Link href='/auth/signin' passHref>
-            Sign In
-          </Link>
+        pathname.includes("/signin") ? <Button>
+          <Link href={data.signup.slug} passHref>{data.signup.title}</Link>
+        </Button> : <Button>
+          <Link href={data.signin.slug} passHref>{data.signin.title}</Link>
         </Button>
       )}
     </>

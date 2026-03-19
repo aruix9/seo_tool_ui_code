@@ -16,35 +16,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
+import { UrlFormValues, UrlSchema } from "@/schemas/zodAuditSchemas";
 
-const urlLikeSchema = z
-  .string()
-  .min(3, "URL is too short")
-  .regex(
-    /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/.*)?$/i,
-    "Please enter a valid URL or domain"
-  );
-
-// 1️⃣ Zod schema for URL validation
-const UrlSchema = z.object({
-  url: urlLikeSchema,
-  competitor1: urlLikeSchema.optional().or(z.literal("")),
-  competitor2: urlLikeSchema.optional().or(z.literal("")),
-  competitor3: urlLikeSchema.optional().or(z.literal("")),
-  competitor4: urlLikeSchema.optional().or(z.literal("")),
-  competitor5: urlLikeSchema.optional().or(z.literal("")),
-  backlinkTypes: z
-    .array(z.enum(["dofollow", "nofollow", "sponsored"]))
-    .optional(),
-  includeHistoricalData: z.boolean().default(false),
-});
-
-type UrlFormValues = z.infer<typeof UrlSchema>;
-
-const AuditPage = () => {
+const HomeAuditPage = () => {
   const router = useRouter();
 
-  // 2️⃣ Hook form with zod resolver
   const form = useForm<UrlFormValues>({
     resolver: zodResolver(UrlSchema),
     defaultValues: {
@@ -59,7 +35,6 @@ const AuditPage = () => {
     },
   });
 
-  // 3️⃣ Handle submit
   const onSubmit = (values: UrlFormValues) => {
     const params = new URLSearchParams();
     params.set("url", values.url);
@@ -86,12 +61,11 @@ const AuditPage = () => {
     <div className="container mx-auto p-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Website URL */}
           <FormField
             control={form.control}
             name="url"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="space-y-2">
                 <FormLabel>Website URL</FormLabel>
                 <FormControl>
                   <Input placeholder="https://www.example.com" {...field} />
@@ -100,14 +74,13 @@ const AuditPage = () => {
               </FormItem>
             )}
           />
-          {/* Competitors */}
           {Array.from({ length: 5 }, (_, i) => (
             <FormField
               key={`competitor${i + 1}`}
               control={form.control}
               name={`competitor${i + 1}` as keyof UrlFormValues}
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="space-y-2">
                   <FormLabel>Competitor {i + 1}</FormLabel>
                   <FormControl>
                     <Input placeholder="https://competitor.com" {...field} />
@@ -172,4 +145,4 @@ const AuditPage = () => {
   );
 };
 
-export default AuditPage;
+export default HomeAuditPage;

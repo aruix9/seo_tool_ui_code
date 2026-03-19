@@ -13,7 +13,7 @@ const RadioBtnFields = ({
   error,
 }: RadioFieldProps) => {
   return (
-    <FormItem>
+    <FormItem className="space-y-2">
       <FormLabel>{label}</FormLabel>
       <FormControl>
         <RadioGroup
