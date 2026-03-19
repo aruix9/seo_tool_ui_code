@@ -1,6 +1,5 @@
 'use client'
 
-import Breadcrumbs from '@/components/shared/breadcrumb'
 import SummaryDisplayCards from './SummaryDisplayCards'
 import SummaryTable from './SummaryTable'
 import Link from 'next/link'
@@ -43,25 +42,21 @@ const MultiAuditSummary = () => {
   }
 
   return (
-    <div className='container grow flex flex-col'>
-      <Breadcrumbs
-        list={[
-          { name: 'Home', link: '/' },
-          { name: 'Audit', link: '' },
-        ]}
-      />
-      <h1 className='my-8 font-bold text-xl'>Audit Summary</h1>
-      <SummaryDisplayCards auditData={auditData} />
-      <SummaryTable auditData={auditData} auditKeys={auditKeys} />
-      <div className='text-center mb-16'>
-        <Link
-          href={`backlink?${searchParams.toString()}`}
-          className='border-2 px-2 py-1 border-primary rounded-md'
-        >
-          More
-        </Link>
+    <>
+      <div className='container grow flex flex-col'>
+        <h1 className='my-8 font-bold text-xl'>Audit Summary</h1>
+        <SummaryDisplayCards auditData={auditData} />
+        <SummaryTable auditData={auditData} auditKeys={auditKeys} />
+        <div className='text-center mb-16'>
+          <Link
+            href={`backlink?${searchParams.toString()}`}
+            className='border-2 px-2 py-1 border-primary rounded-md'
+          >
+            More
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

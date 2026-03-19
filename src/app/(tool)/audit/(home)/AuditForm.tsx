@@ -70,7 +70,7 @@ const AuditForm = () => {
       params.set(`competitor${i + 1}`, value as string);
     });
 
-    router.push(`audit/summary?${params.toString()}`);
+    router.push(`audit/result?${params.toString()}`);
   };
 
   const removeCompetitors= (el: string) => {

@@ -11,7 +11,7 @@ interface BreadcrumbProps {
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <section className="max-w-[1440px] pt-8 px-6 mx-auto">
+    <section className="max-w-[1440px] w-full pt-8 px-6 mx-auto">
       <div className="mb-8">
         <nav className="flex items-center gap-2 mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
           {items.map((item, index) => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import MetricCard from './MetricCard'
 import { allSummaryList } from '../../../../../data'
-import SummaryTable from '../summary/multi/SummaryTable'
+import SummaryTable from '../result/multi/SummaryTable'
 
 const MultiUrls = ({ backlinkData, auditKeys }) => {
   return (

@@ -5,7 +5,7 @@ const CommonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-        <main className='flex-1 flex flex-col items-center grow'>{children}</main>
+      {children}
       <Footer />
     </>
   )

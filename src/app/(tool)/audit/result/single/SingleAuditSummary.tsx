@@ -93,13 +93,7 @@ const SingleAuditSummary = () => {
   }
 
   return (
-    <div className='container grow flex flex-col max-h-[calc(100vh-95px)] overflow-y-auto'>
-      <Breadcrumbs
-        list={[
-          { name: 'Home', link: '/' },
-          { name: 'Audit Summary', link: '' },
-        ]}
-      />
+    <div className='w-full max-w-[1440px] px-6 mx-auto'>
       <h1 className='my-8 text-xl font-bold'>{url} Summary</h1>
 
       <div className='mb-8'>
