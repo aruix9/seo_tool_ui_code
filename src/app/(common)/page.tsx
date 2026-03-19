@@ -1,7 +1,11 @@
-import AuditPage from "../(tool)/audit/(home)/HomeAuditPage";
+import AuditHomePage from "../(tool)/audit/(home)";
 
 const HomePage = () => {
-  return <AuditPage />;
+  return (
+    <div className="mt-12">
+      <AuditHomePage />
+    </div>
+  );
 };
 
 export default HomePage;
