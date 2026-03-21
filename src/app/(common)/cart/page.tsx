@@ -1,13 +1,5 @@
 "use client";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -21,27 +13,38 @@ import {
 import { useEffect, useState } from "react";
 import { getUserCart } from "@/lib/actions/cartActions";
 import { Cart } from "../../../../types/cart";
-import { Input } from "@/components/ui/input";
-import { CircleHelp, LinkIcon, Upload } from "lucide-react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { User } from "next-auth";
 import { toast } from "sonner";
+
+import { Breadcrumb } from "@/components/Layout/Breadcrumb";
+import { AuthorityRoadmap } from "@/app/(tool)/audit/(shared)/AuditAuthorityRoadmap";
+import OrderSummary from "./OrderSummary";
+import LoadingSkeleton from "@/components/shared/layout/loadingSkeleton";
+import CartItems from "./CartItems";
 import axios from "axios";
 
 const CartPage = () => {
   const { data: session } = useSession();
   const user: User = session?.user;
+
+  const [isLoading, setIsLoading] = useState(true);
   const [cart, setCart] = useState<Cart | null>(null);
 
   const fetchCartData = async () => {
     const cartData = await getUserCart(user.id);
     setCart(cartData);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     if (user) fetchCartData();
-  }, []);
+  }, [user]);
+
+  if (isLoading && !cart) return <LoadingSkeleton />
+
+  console.log(cart)
 
   const handleFileUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -70,122 +73,42 @@ const CartPage = () => {
   };
 
   return (
-    <main className="container">
-      <Breadcrumb className="my-4">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Cart</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <h2 className="h2-bold mb-8">Cart</h2>
-      {cart && cart.items ? (
-        <>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="font-bold">URL</TableHead>
-                <TableHead className="font-bold">Qty</TableHead>
-                <TableHead className="font-bold">Price</TableHead>
-                <TableHead className="font-bold text-center">
-                  Attachment
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {cart.items.map((item, index) => (
-                <TableRow
-                  key={index}
-                  className={index % 2 == 0 ? "bg-purple-100" : ""}
-                >
-                  <TableCell>{item.linkUrl}</TableCell>
-                  <TableCell>{item.quantity}</TableCell>
-                  <TableCell>{item.price}</TableCell>
-                  <TableCell className="text-center">
-                    Attached File
-                    {/* <div className="flex items-center justify-center gap-2">
-                      {!item.attachmentUrl ? (
-                        <>
-                          <label
-                            htmlFor={`attachment-${item.linkId}`}
-                            className="inline-flex items-center justify-center  gap-2 cursor-pointer "
-                            title="Upload an Attachment"
-                          >
-                            <Upload className="text-primary" />
-                            Upload Document
-                          </label>
-                          <Input
-                            type="file"
-                            id={`attachment-${item.linkId}`}
-                            name={`attachment-${item.linkId}`}
-                            className="hidden"
-                            onChange={(e) => handleFileUpload(e, item.linkId)}
-                          />
-                          <div className="relative group">
-                            <CircleHelp className="cursor-pointer w-4 h-4" />
-                            <div className="hidden group-hover:block absolute top-1/2 right-4 -translate-y-1/2 bg-gray-100 border border-gray-300 rounded-md p-2 w-[150px] shadow-lg z-10 whitespace-normal">
-                              Reference document to write the article on this
-                              site.
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <Link
-                          href={item.attachmentUrl}
-                          target="_blank"
-                          className="inline-flex gap-2 text-primary"
-                        >
-                          <LinkIcon className=" w-4 h-4" />
-                          Link to File
-                        </Link>
-                      )}
-                    </div> */}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter>
-              <TableRow>
-                <TableHead colSpan={2} className="text-right font-bold">
-                  Subtotal
-                </TableHead>
-                <TableHead colSpan={2} className="font-bold">
-                  {cart.totalPrice}
-                </TableHead>
-              </TableRow>
-              <TableRow className="bg-white">
-                <TableHead colSpan={2} className="text-right font-bold">
-                  Tax
-                </TableHead>
-                <TableHead colSpan={2} className="font-bold">
-                  12
-                </TableHead>
-              </TableRow>
-              <TableRow>
-                <TableHead colSpan={2} className="text-right font-bold">
-                  Total
-                </TableHead>
-                <TableHead colSpan={2} className="font-bold">
-                  {cart.totalPrice + 12}
-                </TableHead>
-              </TableRow>
-            </TableFooter>
-          </Table>
-          <div className="mt-8 text-right">
-            <Button className="w-full max-w-48" size="lg">
-              <Link href="/checkout">Proceed to Checkout</Link>
-            </Button>
+    <>
+      <Breadcrumb items={[
+        { label: "Home", href: "/" },
+        { label: "Cart" }
+      ]} />
+      <main>
+        <section className="max-w-[1440px] mx-auto px-6 pb-20">
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-3xl font-black tracking-tight text-slate-900 flex items-center">Cart ({cart?.items.length})</h1>
           </div>
-        </>
-      ) : (
-        <h2 className="h2-bold text-rose-400 text-center">No cart found</h2>
-      )}
-    </main>
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <aside className="w-full lg:w-1/4 space-y-6 flex-shrink-0">
+              <AuthorityRoadmap currentStep={4} />
+            </aside>
+
+            <div className="flex-1 w-full lg:w-1/2 space-y-6">
+              <div className="space-y-6">
+                <div className="uppercase text-sm px-6 text-slate-400 flex justify-between gap-6">
+                  <div className="flex-1">Source Domain</div>
+                  <div className="flex items-center gap-8">
+                    <div className="text-right min-w-[120px]">Price</div>
+                  </div>
+                </div>
+                {cart && cart.items ? <CartItems items={cart.items} />
+                  : <h2 className="h2-bold text-rose-400 text-center">No cart found</h2>}
+              </div>
+              {/* <div className="text-right">
+                <Link href="/audit/opportunities" className="text-sm font-bold text-primary hover:underline">Add more links</Link>
+              </div> */}
+            </div>
+
+            <OrderSummary totalPrice={cart?.totalPrice} />
+          </div>
+        </section>
+      </main>
+    </>
   );
 };
 

@@ -44,37 +44,38 @@ const AuthLinks = () => {
     };
 
     if (user) fetchCartData();
-  }, [])
+  }, [user])
 
   return (
     <>
       {session ? (
         <div className="flex items-center gap-6">
-          {cartItems.length ? <Link href="/cart" className="relative text-slate-400 hover:text-primary transition-colors">
-            <ShoppingCart className="size-7" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full flex items-center justify-center text-[8px] font-bold text-white">{cartItems.length}</span>
-          </Link>:''}
-          <div className="sm:border-l border-slate-200 sm:pl-6">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild className='flex items-center'>
-                <Button className='!p-0 !bg-transparent h-auto cursor-pointer text-slate-400'>
-                  <div className="max-sm:hidden w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-400 flex items-center justify-center text-white font-bold text-sm border-2 border-white shadow-sm">
-                    {initials}
-                  </div>
-                  <div className="max-sm:hidden text-left">
-                    <p className="text-xs font-bold text-slate-900">{userName}</p>
-                    <span className="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Upgrade</span>
-                  </div>
-                  <UserRound className="size-7 sm:hidden" absoluteStrokeWidth />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel onClick={() => signOut()} className='cursor-pointer'>Sign Out</DropdownMenuLabel>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          {cartItems.length ?
+            <div className="sm:border-r border-slate-200 sm:mr-6">
+              <Link href="/cart" className="relative text-slate-400 hover:text-primary transition-colors">
+                <ShoppingCart className="size-7" />
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full flex items-center justify-center text-[8px] font-bold text-white">{cartItems.length}</span>
+              </Link>
+            </div> : ''}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild className='flex items-center'>
+              <Button className='!p-0 !bg-transparent h-auto cursor-pointer text-slate-400'>
+                <div className="max-sm:hidden w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-400 flex items-center justify-center text-white font-bold text-sm border-2 border-white shadow-sm">
+                  {initials}
+                </div>
+                <div className="max-sm:hidden text-left">
+                  <p className="text-xs font-bold text-slate-900">{userName}</p>
+                  <span className="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Upgrade</span>
+                </div>
+                <UserRound className="size-7 sm:hidden" absoluteStrokeWidth />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel onClick={() => signOut()} className='cursor-pointer'>Sign Out</DropdownMenuLabel>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       ) : (
         pathname.includes("/signin") ? <Button>

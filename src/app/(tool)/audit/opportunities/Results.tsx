@@ -73,9 +73,10 @@ const Results = () => {
         if (user) fetchCartData();
     }, [targets, user]);
 
+    
     if (isLoading && !comparedData) return <LoadingSkeleton />
-
-    const gaps = comparedData.gap.gap
+    
+    const gaps = comparedData?.gap.gap
     const competitors = comparedData.gap.competitors
 
     return (
