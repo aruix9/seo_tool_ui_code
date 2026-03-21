@@ -1,34 +1,38 @@
 "use client";
 
-import Breadcrumbs from "@/components/shared/breadcrumb";
+import { Breadcrumb } from "@/components/Layout/Breadcrumb";
 
-import { useState } from "react";
 import Link from "next/link";
+import TabNavigations from "./TabNavigations";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
+import HeroTitle from "./cms/HeroTitle";
 
-const page = () => {
-  const [keywordData, setKeywordData] = useState(null);
+const KeywordsPage = () => {
 
-  const handleFilteredData = (data: any) => {
-    setKeywordData(data);
-  };
+  useEffect(() => {
+    redirect("/keywords/similar")
+  }, [])
 
   return (
-    <div className="container grow flex flex-col mb-16">
-      <Breadcrumbs
-        list={[
-          { name: "Home", link: "/" },
-          { name: "Keywords", link: "" },
-        ]}
+    <>
+      <Breadcrumb items={[
+        { label: "Home", href: "/" },
+        { label: "Keywords" },
+      ]}
       />
-      <h1 className="my-8 font-bold text-xl">Keywords</h1>
-      <div className="flex gap-6">
-        <Link href="keywords/similar">Similar Keywords</Link>
-        <Link href="keywords/related">Related Keywords</Link>
-        <Link href="keywords/question">Questions Keywords</Link>
-        <Link href="keywords/longtail">Longtail Keywords</Link>
-      </div>
-    </div>
+      <main className="max-w-[1440px] mx-auto px-6 pb-8 w-full">
+        <HeroTitle />
+        <TabNavigations />
+        <div className="flex gap-6">
+          <Link href="keywords/similar">Similar Keywords</Link>
+          <Link href="keywords/related">Related Keywords</Link>
+          <Link href="keywords/question">Questions Keywords</Link>
+          <Link href="keywords/longtail">Longtail Keywords</Link>
+        </div>
+      </main>
+    </>
   );
 };
 
-export default page;
+export default KeywordsPage;
