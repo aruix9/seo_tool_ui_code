@@ -87,13 +87,7 @@ const LinkOpportunity = () => {
   }
 
   return (
-    <div className="container grow flex flex-col">
-      <Breadcrumbs
-        list={[
-          { name: "Home", link: "/" },
-          { name: "Audit", link: "" },
-        ]}
-      />
+    <div className="max-w-[1440px] w-full px-6 mx-auto grow flex flex-col">
       <h1 className="my-8 text-xl">
         <span className="font-bold">{comparedData?.analysis.primary}</span>{" "}
         Oppoturnity Score

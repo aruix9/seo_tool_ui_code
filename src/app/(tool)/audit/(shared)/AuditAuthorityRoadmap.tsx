@@ -63,8 +63,8 @@ export function AuthorityRoadmap({ currentStep }: AuthorityRoadmapProps) {
                                     <p className={`text-sm font-bold ${isCompleted || isCurrent ? 'text-slate-900' : 'text-slate-400'}`}>
                                         {step.title}
                                     </p>
-                                    <p className={`text-[11px] font-medium uppercase tracking-wider ${isCompleted ? 'text-slate-400' :
-                                        isCurrent ? 'text-primary' : 'text-slate-400'
+                                    <p className={`text-xs tracking-wider ${isCompleted ? 'text-slate-400' :
+                                        isCurrent ? 'text-primary uppercase font-bold' : 'text-slate-400'
                                         }`}>
                                         {isCompleted ? step.completedText : isCurrent ? step.inProgressText : step.upcomingText}
                                     </p>

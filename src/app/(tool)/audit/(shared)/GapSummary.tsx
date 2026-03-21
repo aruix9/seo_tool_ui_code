@@ -13,7 +13,7 @@ export function GapSummary({ noLinksRequired, competitorName, allUrls, showLink 
     <div className="bg-primary/5 rounded-xl p-5 border border-primary/10">
       <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-2">Gap Summary</p>
       <p className="text-sm text-slate-600 mb-4 font-medium">
-        You need <span className="text-slate-900 font-black">{noLinksRequired} more links</span> to match {competitorName}.
+        You need <span className="text-slate-900 font-black">{noLinksRequired} more links</span> to match <strong>{competitorName}</strong>.
       </p>
       <div className="space-y-3">
         {showLink && (

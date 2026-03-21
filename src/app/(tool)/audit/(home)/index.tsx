@@ -9,7 +9,6 @@ import HowItWorks from "./cms/HowItWorks";
 const AuditHomePage = () => {
     return (
         <>
-
             <section className="border-b border-slate-200 bg-white/50">
                 <div className="max-w-[1440px] px-6 mx-auto mb-12">
                     <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
