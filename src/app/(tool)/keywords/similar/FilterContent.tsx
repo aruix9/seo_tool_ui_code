@@ -53,7 +53,11 @@ const FilterContent = ({ onFiltered }: FilterFormProps) => {
 
     const filterForm = useForm<z.infer<typeof filterSchema>>({
         resolver: zodResolver(filterSchema),
-        defaultValues: filterDefaultValues,
+        defaultValues: {
+            keyword: searchParams.get('keyword') || "",
+            source: searchParams.get('source') || "",
+            sort: searchParams.get('sort') || "",
+        },
     });
 
     const onSubmit = async (data: z.infer<typeof filterSchema>) => {
