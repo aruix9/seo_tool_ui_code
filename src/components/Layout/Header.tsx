@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 
 import Logo from "@/components/shared/logo";
-import AuthLinks from "@/components/shared/authLinks";
-import PrimaryNavigation from "@/components/shared/header/primaryNavigation";
-import { Button } from "@/components/ui/button";
+import PrimaryNavigation from "./PrimaryNavigation";
+import AuthLinks from "./AuthLinks";
+import { Button } from "../ui/button";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false)

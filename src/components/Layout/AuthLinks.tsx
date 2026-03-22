@@ -64,7 +64,7 @@ const AuthLinks = () => {
                   {initials}
                 </div>
                 <div className="max-sm:hidden text-left">
-                  <p className="text-xs font-bold text-slate-900">{userName}</p>
+                  <p className="text-xs font-bold text-slate-500">{userName}</p>
                   <span className="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Upgrade</span>
                 </div>
                 <UserRound className="size-7 sm:hidden" absoluteStrokeWidth />
