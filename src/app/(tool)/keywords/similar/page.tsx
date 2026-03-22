@@ -1,38 +1,32 @@
 "use client";
 
-import Filters from "./Filters";
 import { Suspense, useState } from "react";
-import KeywordContent from "./KeywordContent";
 import { Breadcrumb } from "@/components/Layout/Breadcrumb";
-import HeroTitle from "../cms/HeroTitle";
-import TabNavigations from "../TabNavigations";
-import FilterContent from "./FilterContent";
 import LoadingSkeleton from "@/components/shared/layout/loadingSkeleton";
+
 import Results from "./Results";
 
+import HeroTitle from "../cms/HeroTitle";
+import TabNavigations from "../shared/TabNavigations";
+import Filters from "../shared/Filters";
+
 const SimilarKeywordPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [keywordData, setKeywordData] = useState(null);
 
-  const handleFilteredData = async (data: any) => {
-    setIsLoading(true);
-    const response = await data;
-    setKeywordData(response);
-    setIsLoading(false);
-  };
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="w-full max-w-[1440px] mx-auto"><LoadingSkeleton /></div>}>
       <Breadcrumb items={[
         { label: "Home", href: "/" },
-        { label: "Keywords" },
+        { label: "Keywords", href: "/" },
+        { label: "Similar Keywords" },
       ]}
       />
       <main className="max-w-[1440px] mx-auto px-6 pb-8 w-full">
         <HeroTitle />
-        <TabNavigations />
-        <FilterContent onFiltered={handleFilteredData} />
-        {isLoading ? <LoadingSkeleton /> : <Results data={keywordData} />}
+        <TabNavigations activeTab={1} />
+        <Filters setKeywordData={setKeywordData} setIsLoading={setIsLoading} />
+        <Results data={keywordData} isLoading={isLoading} />
       </main>
     </Suspense>
   );

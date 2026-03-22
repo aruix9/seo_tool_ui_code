@@ -3,7 +3,7 @@
 import { Breadcrumb } from "@/components/Layout/Breadcrumb";
 
 import Link from "next/link";
-import TabNavigations from "./TabNavigations";
+import TabNavigations from "./shared/TabNavigations";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import HeroTitle from "./cms/HeroTitle";

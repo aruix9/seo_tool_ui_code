@@ -61,7 +61,6 @@ export const getRefdomains = async (
 
 // Similar keywords
 export const getSimilarKeywordData = async (body: any) => {
-  // return summaryData.similarKeywordData;
   const response = await axios.post(
     API_BASE + "/api/v1/keywords/similar",
     body,

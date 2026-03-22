@@ -3,10 +3,8 @@
 import { formatNumber } from '@/lib/utils'
 import Pagination from '../shared/Pagination'
 import TableHead from '../shared/TableHead'
-import LoadingSkeleton from '@/components/shared/layout/loadingSkeleton'
 
-const Results = ({ data, isLoading }: {data: any; isLoading: boolean}) => {
-
+const Results = ({ data }) => {
     const getDifficulty = (num:number) => {
         if (Math.abs(num) <= 33.33) {
             return ["Easy", "emerald"];
@@ -16,9 +14,6 @@ const Results = ({ data, isLoading }: {data: any; isLoading: boolean}) => {
             return ["Hard", "red"];
         }
     }
-
-    if(isLoading) return <LoadingSkeleton />
-
     return (
         <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
             <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">

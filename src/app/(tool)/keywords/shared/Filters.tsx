@@ -1,55 +1,40 @@
+'use Effect'
+
 import { z } from "zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter, useSearchParams } from "next/navigation";
 
 import { Form } from "@/components/ui/form";
-import { getSimilarKeywordData } from "@/lib/actions/audit/auditActions";
-import { filterDefaultValues, filterSchemaObject } from "../SchemaFilters";
+import { filterSchemaObject } from "../SchemaFilters";
 import TextField from "@/components/shared/form/textField";
-import SelectField from "@/components/shared/form/selectField";
 import { Button } from "@/components/ui/button";
-import { ChartNoAxesColumn, ChartNoAxesCombined } from "lucide-react";
+import { ChartNoAxesCombined } from "lucide-react";
+import { getSimilarKeywordData } from "@/lib/actions/audit/auditActions";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 type FilterFormProps = {
-    onFiltered: (data: any) => void;
+    setKeywordData: React.Dispatch<React.SetStateAction<any>>;
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const filterSchema = z.object(filterSchemaObject);
 
-const selectList = [
-    { value: "keyword", text: "Keyword" },
-    { value: "volume", text: "Volume" },
-    { value: "cpc", text: "CPC" },
-    { value: "difficulty", text: "Difficulty" },
-    { value: "competition", text: "Competition" },
-];
-const sortOrderByList = [
-    { value: "asc", text: "ASC" },
-    { value: "desc", text: "DESC" },
-];
-
-const FilterContent = ({ onFiltered }: FilterFormProps) => {
+const Filters = ({ setKeywordData, setIsLoading }: FilterFormProps) => {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const paramsObj = Object.fromEntries(searchParams.entries());
 
-    const getData = async (data) => {
-        return await getSimilarKeywordData(data);
+    const fetchData = async (paramsObj) => {
+        const response = await getSimilarKeywordData(paramsObj);
+        setKeywordData(response);
+        setIsLoading(false);
     };
 
     useEffect(() => {
-        const paramsObj = Object.fromEntries(searchParams.entries());
-
-        if (!paramsObj.keyword) return;
-
-        const fetchData = async () => {
-            onFiltered(getData(paramsObj));
-        };
-
-        fetchData();
-    }, [searchParams]);
+        fetchData(paramsObj);
+    }, []);
 
     const filterForm = useForm<z.infer<typeof filterSchema>>({
         resolver: zodResolver(filterSchema),
@@ -61,6 +46,8 @@ const FilterContent = ({ onFiltered }: FilterFormProps) => {
     });
 
     const onSubmit = async (data: z.infer<typeof filterSchema>) => {
+        setIsLoading(true);
+        fetchData(paramsObj)
         router.push(`similar?${new URLSearchParams(data).toString()}`);
     };
 
@@ -109,4 +96,4 @@ const FilterContent = ({ onFiltered }: FilterFormProps) => {
     )
 }
 
-export default FilterContent
+export default Filters
