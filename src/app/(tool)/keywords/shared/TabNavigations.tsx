@@ -3,8 +3,8 @@ import Link from "next/link"
 const tabItems = [
     { label: "Similar", href: "/similar" },
     { label: "Related", href: "/related" },
-    { label: "Short Tail", href: "/short-tail" },
     { label: "Long Tail", href: "/long-tail" },
+    { label: "Question", href: "/question" },
 ]
 
 const TabNavigations = ({ activeTab = 1 }: { activeTab: number }) => {

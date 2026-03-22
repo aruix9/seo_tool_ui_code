@@ -9,6 +9,7 @@ import Results from "./Results";
 import HeroTitle from "../cms/HeroTitle";
 import TabNavigations from "../shared/TabNavigations";
 import Filters from "../shared/Filters";
+import { getSimilarKeywordData } from "@/lib/actions/audit/auditActions";
 
 const SimilarKeywordPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +26,7 @@ const SimilarKeywordPage = () => {
       <main className="max-w-[1440px] mx-auto px-6 pb-8 w-full">
         <HeroTitle />
         <TabNavigations activeTab={1} />
-        <Filters setKeywordData={setKeywordData} setIsLoading={setIsLoading} />
+        <Filters currentUrl="similar" setKeywordData={setKeywordData} setIsLoading={setIsLoading} getKeywordData={getSimilarKeywordData} />
         <Results data={keywordData} isLoading={isLoading} />
       </main>
     </Suspense>

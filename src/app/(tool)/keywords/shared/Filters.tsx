@@ -10,29 +10,32 @@ import { filterSchemaObject } from "../SchemaFilters";
 import TextField from "@/components/shared/form/textField";
 import { Button } from "@/components/ui/button";
 import { ChartNoAxesCombined } from "lucide-react";
-import { getSimilarKeywordData } from "@/lib/actions/audit/auditActions";
 import { useRouter, useSearchParams } from "next/navigation";
 
 
 type FilterFormProps = {
+    currentUrl: string;
+    getKeywordData: (body: any) => void
     setKeywordData: React.Dispatch<React.SetStateAction<any>>;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const filterSchema = z.object(filterSchemaObject);
 
-const Filters = ({ setKeywordData, setIsLoading }: FilterFormProps) => {
+const Filters = ({ currentUrl, setKeywordData, setIsLoading, getKeywordData }: FilterFormProps) => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const paramsObj = Object.fromEntries(searchParams.entries());
 
-    const fetchData = async (paramsObj) => {
-        const response = await getSimilarKeywordData(paramsObj);
+    const fetchData = async (paramsObj: {[k: string]: string;}) => {
+        const response = await getKeywordData(paramsObj);
         setKeywordData(response);
         setIsLoading(false);
+        router.push(`${currentUrl}?${new URLSearchParams(paramsObj).toString()}`);
     };
 
     useEffect(() => {
+        if(!paramsObj.keyword) return;
         fetchData(paramsObj);
     }, []);
 
@@ -47,8 +50,7 @@ const Filters = ({ setKeywordData, setIsLoading }: FilterFormProps) => {
 
     const onSubmit = async (data: z.infer<typeof filterSchema>) => {
         setIsLoading(true);
-        fetchData(paramsObj)
-        router.push(`similar?${new URLSearchParams(data).toString()}`);
+        fetchData(data)
     };
 
     return (

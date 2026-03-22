@@ -1,38 +1,36 @@
 "use client";
 
-import Breadcrumbs from "@/components/shared/breadcrumb";
-
-import Filters from "./Filters";
 import { Suspense, useState } from "react";
-import KeywordContent from "./KeywordContent";
+import { Breadcrumb } from "@/components/Layout/Breadcrumb";
+import LoadingSkeleton from "@/components/shared/layout/loadingSkeleton";
 
-const QuestionsKeywordPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
+import Results from "./Results";
+
+import HeroTitle from "../cms/HeroTitle";
+import TabNavigations from "../shared/TabNavigations";
+import Filters from "../shared/Filters";
+import { getQuestionsKeywordData } from "@/lib/actions/audit/auditActions";
+
+const QuestionKeywordPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [keywordData, setKeywordData] = useState(null);
 
-  const handleFilteredData = async (data: any) => {
-    setIsLoading(true);
-    const response = await data;
-    setKeywordData(response);
-    setIsLoading(false);
-  };
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="container grow flex flex-col mb-16">
-        <Breadcrumbs
-          list={[
-            { name: "Home", link: "/" },
-            { name: "Keywords", link: "/keywords" },
-            { name: "Questions", link: "" },
-          ]}
-        />
-        <h1 className="my-8 font-bold text-xl">Questions Keywords</h1>
-        <Filters onFiltered={handleFilteredData} />
-        <KeywordContent data={keywordData} isLoading={isLoading} />
-      </div>
+    <Suspense fallback={<div className="w-full max-w-[1440px] mx-auto"><LoadingSkeleton /></div>}>
+      <Breadcrumb items={[
+        { label: "Home", href: "/" },
+        { label: "Keywords", href: "/" },
+        { label: "Long Tail Keywords" },
+      ]}
+      />
+      <main className="max-w-[1440px] mx-auto px-6 pb-8 w-full">
+        <HeroTitle />
+        <TabNavigations activeTab={4} />
+        <Filters currentUrl="question" setKeywordData={setKeywordData} setIsLoading={setIsLoading} getKeywordData={getQuestionsKeywordData} />
+        <Results data={keywordData} isLoading={isLoading} />
+      </main>
     </Suspense>
   );
 };
 
-export default QuestionsKeywordPage;
+export default QuestionKeywordPage;
