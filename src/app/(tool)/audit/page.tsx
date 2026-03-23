@@ -1,5 +1,5 @@
 import AuditHomePage from "./(home)";
-import { Breadcrumb } from "@/components/Layout/Breadcrumb";
+import Breadcrumb from "@/components/Layout/Breadcrumb";
 
 const Page = () => {
   return (

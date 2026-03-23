@@ -1,6 +1,6 @@
 import { Suspense} from "react";
 
-import { Breadcrumb } from "@/components/Layout/Breadcrumb";
+import Breadcrumb from "@/components/Layout/Breadcrumb";
 // import LinkOpportunity from "./LinkOpportunity";
 import Results from "./Results";
 

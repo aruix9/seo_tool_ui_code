@@ -9,7 +9,7 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[];
 }
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+const Breadcrumb = ({ items }: BreadcrumbProps) => {
   return (
     <section className="max-w-[1440px] w-full pt-8 px-6 mx-auto">
       <div className="mb-8">
@@ -31,3 +31,5 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
     </section>
   );
 }
+
+export default Breadcrumb

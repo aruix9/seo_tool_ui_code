@@ -1,17 +1,15 @@
-'use Effect'
+"use client"
 
-import { z } from "zod";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import { Form } from "@/components/ui/form";
-import { filterSchemaObject } from "../SchemaFilters";
-import TextField from "@/components/shared/form/textField";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { filterSchemaObject } from "./SchemaFilters";
 import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import TextField from "@/components/shared/form/textField";
 import { ChartNoAxesCombined } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-
+import { useEffect } from "react";
 
 type FilterFormProps = {
     currentUrl: string;
@@ -22,12 +20,12 @@ type FilterFormProps = {
 
 const filterSchema = z.object(filterSchemaObject);
 
-const Filters = ({ currentUrl, setKeywordData, setIsLoading, getKeywordData }: FilterFormProps) => {
+const Fill = ({ currentUrl, setKeywordData, setIsLoading, getKeywordData }: FilterFormProps) => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const paramsObj = Object.fromEntries(searchParams.entries());
 
-    const fetchData = async (paramsObj: {[k: string]: string;}) => {
+    const fetchData = async (paramsObj: { [k: string]: string; }) => {
         const response = await getKeywordData(paramsObj);
         setKeywordData(response);
         setIsLoading(false);
@@ -35,16 +33,15 @@ const Filters = ({ currentUrl, setKeywordData, setIsLoading, getKeywordData }: F
     };
 
     useEffect(() => {
-        if(!paramsObj.keyword) return;
+        if (!paramsObj.keyword) return;
         fetchData(paramsObj);
     }, []);
 
     const filterForm = useForm<z.infer<typeof filterSchema>>({
         resolver: zodResolver(filterSchema),
         defaultValues: {
-            keyword: searchParams.get('keyword') || "",
-            source: searchParams.get('source') || "",
-            sort: searchParams.get('sort') || "",
+            target: searchParams.get('target') || "",
+            source: searchParams.get('source') || ""
         },
     });
 
@@ -54,36 +51,27 @@ const Filters = ({ currentUrl, setKeywordData, setIsLoading, getKeywordData }: F
     };
 
     return (
-        <div className="bg-primary/2 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-8">
+        <div className="bg-primary/2 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-8">
             <div className="flex gap-4 items-end">
                 <Form {...filterForm}>
                     <form
                         onSubmit={filterForm.handleSubmit(onSubmit)}
-                        className="flex flex-wrap gap-6 w-full"
+                        className="flex flex-wrap gap-6 grow"
                     >
                         <TextField
-                            label="Keyword"
+                            label="Target"
                             className="grow"
-                            placeholder="Eg: avocado"
-                            field={filterForm.register("keyword")}
-                            error={filterForm.formState.errors?.keyword}
+                            placeholder="Eg: example.com"
+                            field={filterForm.register("target")}
+                            error={filterForm.formState.errors?.target}
                         />
                         <TextField
-                            className="grow"
                             label="Source (country)"
-                            placeholder="Ex: us"
+                            className="grow"
+                            placeholder="Eg: us"
                             field={filterForm.register("source")}
                             error={filterForm.formState.errors?.source}
                         />
-                        {/* <SelectField
-                            className="grow"
-                            label="Sort By"
-                            name="sort"
-                            selectList={selectList}
-                            control={filterForm.control}
-                            field={filterForm.register("sort")}
-                            error={filterForm.formState.errors?.sort}
-                        /> */}
                         <div className="self-end">
                             <Button type="submit" size="lg" className="bg-primary text-blue-50 h-10 w-[200px] cursor-pointer">
                                 <ChartNoAxesCombined />
@@ -97,4 +85,4 @@ const Filters = ({ currentUrl, setKeywordData, setIsLoading, getKeywordData }: F
     )
 }
 
-export default Filters
+export default Fill

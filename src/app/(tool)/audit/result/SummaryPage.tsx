@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Breadcrumb } from '@/components/Layout/Breadcrumb'
+import Breadcrumb from "@/components/Layout/Breadcrumb";
 import SingleAuditSummary from './single/SingleAuditSummary'
 import MultiDomainSummary from './(multiDomains)'
 

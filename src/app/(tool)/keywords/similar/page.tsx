@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { Breadcrumb } from "@/components/Layout/Breadcrumb";
+import Breadcrumb from "@/components/Layout/Breadcrumb";
 import LoadingSkeleton from "@/components/shared/layout/loadingSkeleton";
 
 import Results from "./Results";

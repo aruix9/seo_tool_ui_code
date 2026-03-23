@@ -25,7 +25,6 @@ const PrimaryNavigation = ({ openMenu, setOpenMenu }: { openMenu: boolean; setOp
                 index: number
               ): JSX.Element => {
                 const isActive = pathname === link?.slug;
-                console.log(isActive, pathname, link?.slug)
                 return (
                   <li key={index}>
                     <Link href={link?.slug || '#'} passHref className={`px-4 py-2 text-sm max-lg:hover:bg-slate-100 block ${isActive ? 'text-primary font-bold' : 'text-slate-500 font-medium'}`}>
