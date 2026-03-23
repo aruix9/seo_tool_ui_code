@@ -68,7 +68,7 @@ const BacklinkPage = () => {
           <div className="text-center mt-8">
             <Button>
               <Link
-                href={`/audit/compare/refdomains?targets=${backlinkData?.targets.join(",")}`}
+                href={`/audit/opportunities?targets=${backlinkData?.targets.join(",")}`}
                 className="btn"
               >
                 Find Link Opportunities

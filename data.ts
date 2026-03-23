@@ -48,18 +48,18 @@ export const data = {
       title: "Audit",
       slug: "/audit",
     },
-    {
-      title: "All Audits",
-      slug: "/audit/list",
-    },
-    {
-      title: "All Refdomains",
-      slug: "/audit/refdomains",
-    },
-    {
-      title: "All Anchors",
-      slug: "/audit/anchors",
-    },
+    // {
+    //   title: "All Audits",
+    //   slug: "/audit/list",
+    // },
+    // {
+    //   title: "All Refdomains",
+    //   slug: "/audit/refdomains",
+    // },
+    // {
+    //   title: "All Anchors",
+    //   slug: "/audit/anchors",
+    // },
     {
       title: "Keywords",
       slug: "/keywords",
@@ -68,14 +68,14 @@ export const data = {
       title: "AI",
       slug: "/ai/overview",
     },
-    {
-      title: "Dashboard",
-      slug: "/dashboard",
-    },
-    {
-      title: "Admin",
-      slug: "/admin",
-    },
+    // {
+    //   title: "Dashboard",
+    //   slug: "/dashboard",
+    // },
+    // {
+    //   title: "Admin",
+    //   slug: "/admin",
+    // },
     {
       title: "Cart",
       slug: "/cart",

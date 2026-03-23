@@ -1,10 +1,10 @@
-import Footer from "@/components/Layout/footer"
-import Header from "@/components/Layout/header"
+import Footer from "@/components/Layout/Footer";
+import Header from "@/components/Layout/Header";
 
 export default async function HomeLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <>
@@ -12,5 +12,5 @@ export default async function HomeLayout({
       {children}
       <Footer />
     </>
-  )
+  );
 }
