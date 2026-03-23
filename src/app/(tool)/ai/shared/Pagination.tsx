@@ -9,8 +9,6 @@ const Pagination = ({ total }) => {
         const totalNumber = Number(total.replaceAll(',', ''))
         let offset = searchParams.get("offset");
 
-        console.log(type, totalNumber)
-
         if (totalNumber < 50) {
             offset = String(50);
         }

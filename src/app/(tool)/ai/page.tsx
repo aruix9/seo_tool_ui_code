@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 const Page = () => {
   useEffect(() => {
-    redirect("/ai-overview")
+    redirect("/ai/keyword-target")
   }, [])
 
   return (

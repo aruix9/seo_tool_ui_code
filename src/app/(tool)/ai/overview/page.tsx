@@ -13,7 +13,7 @@ import Results from "./Results";
 
 const AiOverviewPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [keywordData, setKeywordData] = useState(null);
+  const [keywordData, setKeywordData] = useState<dataProp>();
 
   return (
     <Suspense fallback={<div className="w-full max-w-[1440px] mx-auto"><LoadingSkeleton /></div>}>

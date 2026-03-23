@@ -3,7 +3,8 @@ import SummaryCard from './SummaryCard';
 import PerformanceTraffics from './PerformanceTraffics';
 import TrafficDynamicsCard from './TrafficDynamicsCard';
 
-const Results = ({ data, isLoading }: { data: any; isLoading: boolean }) => {
+const Results = ({ data, isLoading }: { data: dataProp | undefined; isLoading: boolean }) => {
+
     if (isLoading) return <LoadingSkeleton />
 
     if (!data) return;

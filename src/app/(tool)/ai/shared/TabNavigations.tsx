@@ -2,8 +2,8 @@ import Link from "next/link"
 
 const tabItems = [
     { label: "AI Overview", href: "/overview" },
-    { label: "AI Keyword by Target", href: "/target-keyword" },
-    { label: "AI Keyword by Brand", href: "/brand-keyword" },
+    { label: "AI Keyword by Target", href: "/keyword-target" },
+    { label: "AI Keyword by Brand", href: "/keyword-brand" },
 ]
 
 const TabNavigations = ({ activeTab = 1 }: { activeTab: number }) => {

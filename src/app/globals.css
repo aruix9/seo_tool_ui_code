@@ -167,3 +167,47 @@ h6,
   backdrop-filter: blur(12px);
   background-color: rgba(247, 246, 248, 0.8);
 }
+.modal-overlay {
+    display: none;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-overlay p {
+  margin-bottom: 16px;
+}
+
+.modal-overlay p:not(:first-of-type) {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.modal-overlay p + p {
+  margin-top: 32px;
+}
+
+.modal-overlay pre, .modal-overlay ul {
+  margin-bottom: 32px;
+}
+.modal-overlay ul p {
+  display: inline;
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-transform: initial;
+}
+.modal-overlay ul li {
+  list-style: disc;
+  line-height: 20x;
+  margin-left: 20px;
+  margin-bottom: 8px;
+  list-style-position: outside;
+}
+
+.modal-overlay pre, .modal-overlay code {
+  text-wrap: inherit;
+  font-family: inherit;
+}
