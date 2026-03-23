@@ -1,6 +1,6 @@
 "use client";
 
-import Breadcrumb from "@/components/Layout/Breadcrumb";
+import LoadingSkeleton from "@/components/shared/layout/loadingSkeleton";
 
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
@@ -12,11 +12,7 @@ const KeywordsPage = () => {
   }, [])
 
   return (
-    <Breadcrumb items={[
-      { label: "Home", href: "/" },
-      { label: "Keywords" },
-    ]}
-    />
+    <LoadingSkeleton />
   );
 };
 

@@ -179,12 +179,6 @@ h6,
   margin-bottom: 16px;
 }
 
-.modal-overlay p:not(:first-of-type) {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
 .modal-overlay p + p {
   margin-top: 32px;
 }

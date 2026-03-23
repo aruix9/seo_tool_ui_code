@@ -28,7 +28,6 @@ export type dataProp = {
   keywords: keywordProp[]
 }
 
-
 const AiKeywordByTargetPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [keywordData, setKeywordData] = useState(null);
@@ -38,7 +37,7 @@ const AiKeywordByTargetPage = () => {
       <Breadcrumb items={[
         { label: "Home", href: "/" },
         { label: "AI", href: "/ai" },
-        { label: "Overview" },
+        { label: "Keyword by Target" },
       ]}
       />
       <main className="max-w-[1440px] mx-auto px-6 pb-8 w-full">
