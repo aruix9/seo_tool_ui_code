@@ -1,16 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  productionBrowserSourceMaps: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
 
   typescript: {
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
   },
-  
+
   images: {
-    domains: ['images.unsplash.com', "lh3.googleusercontent.com"],
+    domains: ["images.unsplash.com", "lh3.googleusercontent.com"],
   },
 };
 
