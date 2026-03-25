@@ -28,9 +28,7 @@ export const handleSignInSumit = async (
     }
   }
 
-  if (result?.url) {
-    router.replace("/");
-  }
+  router.replace("/audit");
 };
 
 export const handleSignUpSubmit = async (
