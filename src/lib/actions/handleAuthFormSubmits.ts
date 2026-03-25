@@ -55,7 +55,9 @@ export const handleSignUpSubmit = async (
       console.error("Login error:", result.error);
     }
 
-    redirect("/audit");
+    if (!result?.error) {
+      router.push("/audit");
+    }
   } catch (error) {
     console.error("Error during sign up:", error);
     const axiosError = error as AxiosError<ApiResponse>;
