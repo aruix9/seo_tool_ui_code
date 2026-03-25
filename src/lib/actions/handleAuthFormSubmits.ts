@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { ApiResponse } from "../../../types/ApiResponse";
 import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export const handleSignInSumit = async (
   values: z.infer<typeof signInSchema>,
@@ -28,7 +29,7 @@ export const handleSignInSumit = async (
     }
   }
 
-  router.replace("/audit");
+  redirect("/audit");
 };
 
 export const handleSignUpSubmit = async (
@@ -54,7 +55,7 @@ export const handleSignUpSubmit = async (
       console.error("Login error:", result.error);
     }
 
-    router.replace("/");
+    redirect("/audit");
   } catch (error) {
     console.error("Error during sign up:", error);
     const axiosError = error as AxiosError<ApiResponse>;
@@ -75,7 +76,7 @@ export const handleForgotPasswordSubmit = async (
 ) => {
   try {
     await axios.post("/api/auth/forgot-password", values);
-    router.replace("/");
+    router.replace("/auth/signin");
     toast.success("Forgot Password Success", {
       description:
         "An email is sent to your email address to reset your password.",
@@ -100,7 +101,7 @@ export const handleResetPasswordSubmit = async (
 ) => {
   try {
     await axios.post("/api/auth/reset-password", { password, token });
-    router.replace("/");
+    router.replace("/auth/signin");
     toast.success("Reset Password Success", {
       description: "Password was successfully reset.",
     });
