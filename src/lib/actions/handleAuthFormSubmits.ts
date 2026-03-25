@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { ApiResponse } from "../../../types/ApiResponse";
 import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
 
 export const handleSignInSumit = async (
   values: z.infer<typeof signInSchema>,
@@ -29,7 +28,9 @@ export const handleSignInSumit = async (
     }
   }
 
-  redirect("/audit");
+  if (!result?.error) {
+    router.push("/audit");
+  }
 };
 
 export const handleSignUpSubmit = async (
@@ -53,10 +54,6 @@ export const handleSignUpSubmit = async (
 
     if (result?.error) {
       console.error("Login error:", result.error);
-    }
-
-    if (!result?.error) {
-      router.push("/audit");
     }
   } catch (error) {
     console.error("Error during sign up:", error);

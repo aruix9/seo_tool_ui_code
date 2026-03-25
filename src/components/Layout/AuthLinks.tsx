@@ -12,14 +12,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { redirect, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { data } from "../../../data";
 import { useEffect, useState } from "react";
 import { getUserCart } from "@/lib/actions/cartActions";
 import { Cart } from "../../../types/cart";
-import path from "path";
 
 const AuthLinks = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const pathname = usePathname();
   const [cartItems, setCartItems] = useState<string[]>([]);
@@ -34,7 +34,7 @@ const AuthLinks = () => {
 
   if (user?.id && pathname.includes("signin")) {
     // redirect to /audit if user is already logged in and tries to access signin page
-    redirect("/audit");
+    router.push("/audit");
   }
 
   const getCartLinkId = (cart: Cart | null) => {
