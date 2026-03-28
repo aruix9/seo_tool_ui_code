@@ -19,7 +19,7 @@ import { z } from "zod";
 import { data } from "../../../../data";
 
 const SignIn = () => {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
 
@@ -44,7 +44,9 @@ const SignIn = () => {
               Welcome <span className="text-primary">Back</span>
             </h1>
             <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-              Bridging the authority gap with data-driven SEO strategies. Log in to manage your link-building campaigns and monitor your domain authority growth.
+              Bridging the authority gap with data-driven SEO strategies. Log in
+              to manage your link-building campaigns and monitor your domain
+              authority growth.
             </p>
 
             <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl shadow-primary/20 group">
@@ -61,8 +63,12 @@ const SignIn = () => {
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-slate-900">+24% Domain Authority</p>
-                    <p className="text-xs text-slate-500">Average client growth this month</p>
+                    <p className="text-sm font-bold text-slate-900">
+                      +24% Domain Authority
+                    </p>
+                    <p className="text-xs text-slate-500">
+                      Average client growth this month
+                    </p>
                   </div>
                 </div>
               </div>
@@ -74,14 +80,21 @@ const SignIn = () => {
         <div className="flex-1 flex items-center justify-end">
           <div className="w-full max-w-lg bg-background-light rounded-xl shadow-xl border border-slate-200 p-8 lg:p-10">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">Sign In to ButterSwipe</h2>
-              <p className="text-slate-500">Enter your credentials to access your account</p>
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                Sign In to ButterSwipe
+              </h2>
+              <p className="text-slate-500">
+                Enter your credentials to access your account
+              </p>
             </div>
 
             <Form {...form}>
               <form
                 className="space-y-2"
-                onSubmit={form.handleSubmit(onSubmit)}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  form.handleSubmit(onSubmit);
+                }}
               >
                 <EmailField
                   field={form.register("email")}
@@ -98,8 +111,14 @@ const SignIn = () => {
                 />
 
                 <div className="flex items-center gap-2 my-6">
-                  <Checkbox id="remember-me" className="rounded text-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary" />
-                  <Label htmlFor="remember-me" className="text-sm font-normal text-slate-600 cursor-pointer">
+                  <Checkbox
+                    id="remember-me"
+                    className="rounded text-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                  />
+                  <Label
+                    htmlFor="remember-me"
+                    className="text-sm font-normal text-slate-600 cursor-pointer"
+                  >
                     Keep me signed in
                   </Label>
                 </div>
@@ -108,12 +127,19 @@ const SignIn = () => {
                   type="submit"
                   size="lg"
                   className="w-full h-[52px] bg-primary hover:bg-primary/90 text-white font-bold rounded-lg shadow-lg shadow-primary/20 transition-all active:scale-[0.98] text-base"
-                >Sign In</Button>
+                >
+                  Sign In
+                </Button>
               </form>
             </Form>
             <p className="mt-8 text-center text-sm text-slate-600">
               New to ButterSwipe?
-              <Link href={data.signup.slug} className="font-bold text-primary hover:underline ml-1">Create an account</Link>
+              <Link
+                href={data.signup.slug}
+                className="font-bold text-primary hover:underline ml-1"
+              >
+                Create an account
+              </Link>
             </p>
           </div>
         </div>
