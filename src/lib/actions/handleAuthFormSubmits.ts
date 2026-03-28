@@ -10,6 +10,9 @@ export const handleSignInSumit = async (
   values: z.infer<typeof signInSchema>,
   router: AppRouterInstance,
 ) => {
+  console.log("-----");
+  console.log("Sign In Values:", values);
+  console.log(router);
   const result = await signIn("credentials", {
     redirect: false,
     email: values.email,
