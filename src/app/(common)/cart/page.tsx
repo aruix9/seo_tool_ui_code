@@ -42,9 +42,7 @@ const CartPage = () => {
     if (user) fetchCartData();
   }, [user]);
 
-  if (isLoading && !cart) return <LoadingSkeleton />
-
-  console.log(cart)
+  if (isLoading && !cart) return <LoadingSkeleton />;
 
   const handleFileUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -74,14 +72,13 @@ const CartPage = () => {
 
   return (
     <>
-      <Breadcrumb items={[
-        { label: "Home", href: "/" },
-        { label: "Cart" }
-      ]} />
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} />
       <main>
         <section className="max-w-[1440px] mx-auto px-6 pb-20">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-3xl font-black tracking-tight text-slate-900 flex items-center">Cart ({cart?.items.length})</h1>
+            <h1 className="text-3xl font-black tracking-tight text-slate-900 flex items-center">
+              Cart ({cart?.items.length})
+            </h1>
           </div>
           <div className="flex flex-col lg:flex-row gap-8 items-start">
             <aside className="w-full lg:w-1/4 space-y-6 flex-shrink-0">
@@ -96,8 +93,13 @@ const CartPage = () => {
                     <div className="text-right min-w-[120px]">Price</div>
                   </div>
                 </div>
-                {cart && cart.items ? <CartItems items={cart.items} />
-                  : <h2 className="h2-bold text-rose-400 text-center">No cart found</h2>}
+                {cart && cart.items ? (
+                  <CartItems items={cart.items} />
+                ) : (
+                  <h2 className="h2-bold text-rose-400 text-center">
+                    No cart found
+                  </h2>
+                )}
               </div>
               {/* <div className="text-right">
                 <Link href="/audit/opportunities" className="text-sm font-bold text-primary hover:underline">Add more links</Link>

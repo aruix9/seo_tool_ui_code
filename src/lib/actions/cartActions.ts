@@ -14,7 +14,6 @@ export async function addLinkToCart(
   linkId: string,
   userId: string | undefined,
 ) {
-  console.log(linkId, userId)
   const response = await axios.post(API_BASE + "/api/v1/cart/addtocart", {
     linkId,
     userId,

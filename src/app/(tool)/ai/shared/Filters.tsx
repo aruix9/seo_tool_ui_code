@@ -51,7 +51,6 @@ const Filters = ({
   });
 
   const onSubmit = async (data: z.infer<typeof filterSchema>) => {
-    console.log(data);
     setIsLoading(true);
     fetchData(data);
   };
