@@ -26,6 +26,11 @@ export const handleSignInSumit = async (
         description: result.error,
       });
     }
+  } else {
+    toast.success("Login Success", {
+      description: "You have successfully logged in.",
+    });
+    router.replace("/audit");
   }
 };
 
