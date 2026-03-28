@@ -16,6 +16,7 @@ const RefDomainBacklinkProgress = ({ mainUrl, allUrls, auditData }: Props) => {
     const highest = Number(Object.values(data)[0].dofollow_refdomains);
     return (current / highest) * 100;
   };
+
   return (
     <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm flex flex-col">
       <div className="flex items-center justify-between mb-8">

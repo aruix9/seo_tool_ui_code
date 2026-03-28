@@ -34,7 +34,9 @@ const MultiDomainSummary = ({ searchParams }: Props) => {
   const [auditData, setAuditData] = useState<AuditProps>();
 
   const fetchAuditData = useCallback(async () => {
-    const urls: string[] = [searchParams.get("url")!];
+    let url = searchParams.get("url");
+    if (url) url = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    const urls = [url!];
 
     // get only competitor1, competitor2, competitor3 from search params
     for (let i = 1; i <= searchParams.size; i++) {
@@ -74,7 +76,7 @@ const MultiDomainSummary = ({ searchParams }: Props) => {
         <div className="max-w-[1440px] px-6 mx-auto">
           <HeroTitle />
           <CardsHeroDomain
-            mainUrl={mainUrl}
+            mainUrl={mainUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
             allUrls={allUrls}
             auditData={auditData}
           />
@@ -87,7 +89,7 @@ const MultiDomainSummary = ({ searchParams }: Props) => {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
               <CardBacklinksPieChart auditData={auditData} />
               <RefDomainBacklinkProgress
-                mainUrl={mainUrl}
+                mainUrl={mainUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                 allUrls={allUrls}
                 auditData={auditData}
               />
@@ -95,7 +97,7 @@ const MultiDomainSummary = ({ searchParams }: Props) => {
 
             <CardDomainTable
               data={auditData}
-              mainUrl={mainUrl}
+              mainUrl={mainUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
               allUrls={allUrls}
             />
           </div>
