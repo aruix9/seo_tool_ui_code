@@ -21,8 +21,6 @@ import { data } from "../../../../data";
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const router = useRouter();
-
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -31,7 +29,7 @@ const SignIn = () => {
     },
   });
   const onSubmit = async (values: z.infer<typeof signInSchema>) => {
-    handleSignInSumit(values, router);
+    handleSignInSumit(values);
   };
 
   return (
@@ -91,10 +89,7 @@ const SignIn = () => {
             <Form {...form}>
               <form
                 className="space-y-2"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  form.handleSubmit(onSubmit);
-                }}
+                onSubmit={form.handleSubmit(onSubmit)}
               >
                 <EmailField
                   field={form.register("email")}

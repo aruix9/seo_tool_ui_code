@@ -8,13 +8,13 @@ import { signIn } from "next-auth/react";
 
 export const handleSignInSumit = async (
   values: z.infer<typeof signInSchema>,
-  router: AppRouterInstance,
 ) => {
+  // Auto-login with NextAuth
   const result = await signIn("credentials", {
-    redirect: true,
+    redirect: true, // Redirect after successful login
     email: values.email,
     password: values.password,
-    callbackUrl: "/audit",
+    callbackUrl: "/audit", // Redirect URL after login
   });
 
   if (result?.error) {
@@ -27,17 +27,11 @@ export const handleSignInSumit = async (
         description: result.error,
       });
     }
-  } else {
-    toast.success("Login Success", {
-      description: "You have successfully logged in.",
-    });
-    router.replace("/audit");
   }
 };
 
 export const handleSignUpSubmit = async (
   values: z.infer<typeof signUpSchema>,
-  router: AppRouterInstance,
 ) => {
   try {
     const response = await axios.post("/api/auth/signup", values);
