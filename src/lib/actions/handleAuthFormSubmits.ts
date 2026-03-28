@@ -10,13 +10,11 @@ export const handleSignInSumit = async (
   values: z.infer<typeof signInSchema>,
   router: AppRouterInstance,
 ) => {
-  console.log("-----");
-  console.log("Sign In Values:", values);
-  console.log(router);
   const result = await signIn("credentials", {
-    redirect: false,
+    redirect: true,
     email: values.email,
     password: values.password,
+    callbackUrl: "/audit",
   });
 
   if (result?.error) {
@@ -53,7 +51,7 @@ export const handleSignUpSubmit = async (
       redirect: true, // Redirect after successful login
       email: values.email,
       password: values.password,
-      callbackUrl: "/", // Redirect URL after login
+      callbackUrl: "/audit", // Redirect URL after login
     });
 
     if (result?.error) {
