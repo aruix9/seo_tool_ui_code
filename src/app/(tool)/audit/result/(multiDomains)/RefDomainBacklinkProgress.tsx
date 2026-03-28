@@ -2,17 +2,17 @@ import { checkGap, noLinksRequired, sortedAuditResults } from "@/lib/utils";
 import { ArrowDown, ArrowUp, Zap } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { BacklinkDataType } from "../../../../../../types/type";
 
-const RefDomainBacklinkProgress = ({
-  mainUrl,
-  allUrls,
-  auditData,
-}: {
+type Props = {
   mainUrl: string;
   allUrls: string[];
-}) => {
+  auditData: { [key: string]: BacklinkDataType };
+};
+
+const RefDomainBacklinkProgress = ({ mainUrl, allUrls, auditData }: Props) => {
   const data = sortedAuditResults(auditData, "dofollow_refdomains");
-  const progressWidth = (current) => {
+  const progressWidth = (current: number) => {
     const highest = Number(Object.values(data)[0].dofollow_refdomains);
     return (current / highest) * 100;
   };
@@ -25,7 +25,7 @@ const RefDomainBacklinkProgress = ({
                     <button className="px-3 py-1 text-xs font-medium text-slate-500">6M</button>
                 </div> */}
       </div>
-      <div className="space-y-6 h-64 flex flex-col justify-flex-start">
+      <div className="space-y-6 h-32 mb-auto flex flex-col justify-flex-start">
         {Object.keys(data).map((url, i) => (
           <div key={i} className="space-y-2">
             <div className="flex justify-between text-xs font-bold uppercase tracking-wider mb-1">

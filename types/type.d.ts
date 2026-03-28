@@ -12,6 +12,7 @@ export interface APIError {
 export interface BacklinkDataType {
   anchors: number;
   backlinks: number;
+  target: string;
 
   createdAt: string; // ISO date string
   updatedAt: string; // ISO date string

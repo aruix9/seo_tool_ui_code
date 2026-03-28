@@ -32,11 +32,6 @@ const AuthLinks = () => {
     ? nameParts[0][0] + nameParts[nameParts.length - 1][0]
     : "";
 
-  if (user?.id && pathname.includes("signin")) {
-    // redirect to /audit if user is already logged in and tries to access signin page
-    router.push("/audit");
-  }
-
   const getCartLinkId = (cart: Cart | null) => {
     if (cart && cart.items) {
       const links: string[] = cart.items.map((item) => item.linkUrl);
