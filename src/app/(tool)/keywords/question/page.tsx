@@ -16,17 +16,29 @@ const QuestionKeywordPage = () => {
   const [keywordData, setKeywordData] = useState(null);
 
   return (
-    <Suspense fallback={<div className="w-full max-w-[1440px] mx-auto"><LoadingSkeleton /></div>}>
-      <Breadcrumb items={[
-        { label: "Home", href: "/" },
-        { label: "Keywords", href: "/" },
-        { label: "Long Tail Keywords" },
-      ]}
+    <Suspense
+      fallback={
+        <div className="w-full max-w-[1440px] mx-auto">
+          <LoadingSkeleton />
+        </div>
+      }
+    >
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Keywords", href: "/" },
+          { label: "Long Tail Keywords" },
+        ]}
       />
       <main className="max-w-[1440px] mx-auto px-6 pb-8 w-full">
         <HeroTitle />
-        <TabNavigations activeTab={4} />
-        <Filters currentUrl="question" setKeywordData={setKeywordData} setIsLoading={setIsLoading} getKeywordData={getQuestionsKeywordData} />
+        <TabNavigations activeTab={3} />
+        <Filters
+          currentUrl="question"
+          setKeywordData={setKeywordData}
+          setIsLoading={setIsLoading}
+          getKeywordData={getQuestionsKeywordData}
+        />
         <Results data={keywordData} isLoading={isLoading} />
       </main>
     </Suspense>
